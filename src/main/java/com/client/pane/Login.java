@@ -103,6 +103,9 @@ public class Login extends GridPane{
                         pwBox.setText("");
                         pwBox.setPromptText("Wrong Credentials");
                     }
+
+                    String content2 = ClientApplication.request.loginRequest(userTextField.getText() , pwBox.getText());
+
                 }
             }
         });

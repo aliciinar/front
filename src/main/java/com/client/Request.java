@@ -51,6 +51,19 @@ public class Request {
         return "";
     }
 
+    public String addWeekRequest(int score , String userName , String password){
+        HttpPost post = new HttpPost(ClientApplication.backend + "login");
+        try {
+            StringEntity params = new StringEntity(ClientApplication.gson.toJson(new LoginDto(userName,password)));
+            return getResponse(post , params);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
     public String RegisterRequest(String userName , String password , String email) {
         HttpPost post = new HttpPost(ClientApplication.backend + "register");
         try {
