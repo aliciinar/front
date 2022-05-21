@@ -3,14 +3,19 @@ package com.client.controller;
 import com.client.ClientApplication;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import java.io.IOException;
+
 public class StageInitializer extends Application {
 
-    private ConfigurableApplicationContext applicationContext;
+   private ConfigurableApplicationContext applicationContext;
 
     @Override
     public void init()  {
@@ -25,7 +30,10 @@ public class StageInitializer extends Application {
 
     @Override
     public void start(Stage stage)  {
-        applicationContext.publishEvent(new StageReadyEvent(stage));
+       applicationContext.publishEvent(new StageReadyEvent(stage));
+
+
+
     }
 
     static class StageReadyEvent extends ApplicationEvent {
@@ -37,4 +45,8 @@ public class StageInitializer extends Application {
             return (Stage) getSource();
         }
     }
+
+
+
+
 }
