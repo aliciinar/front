@@ -104,8 +104,6 @@ public class Login extends GridPane{
                         pwBox.setPromptText("Wrong Credentials");
                     }
 
-                    String content2 = ClientApplication.request.loginRequest(userTextField.getText() , pwBox.getText());
-
                 }
             }
         });
@@ -116,6 +114,13 @@ public class Login extends GridPane{
         Button button = new Button("Forgot Password?");
         button.setPrefHeight(50);
         button.setPrefWidth(200);
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                StageController.screenController.activate("ForgetPassword");
+            }
+        });
         return button;
     }
 

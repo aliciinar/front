@@ -17,7 +17,7 @@ public class SceneController {
         screenMap.put(name, pane);
     }
 
-    protected void removeScreen(String name){
+    public void removeScreen(String name){
         screenMap.remove(name);
     }
 

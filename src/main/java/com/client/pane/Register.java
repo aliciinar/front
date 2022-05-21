@@ -84,7 +84,7 @@ public class Register extends GridPane{
                     }
                     else {
                         userTextField.setText("");
-                        userTextField.setPromptText("User Exists");
+                        userTextField.setPromptText("User or Email Exists");
                     }
                 }
             }
@@ -143,7 +143,7 @@ public class Register extends GridPane{
         email.setFont(Font.font("Tahoma", FontWeight.NORMAL, 50));
         add(email, 0, 3);
 
-        emailTextField = new PasswordField();
+        emailTextField = new TextField();
         emailTextField.setFont(Font.font(30));
         add(emailTextField, 1, 3);
 

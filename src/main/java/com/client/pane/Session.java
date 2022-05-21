@@ -1,6 +1,8 @@
 package com.client.pane;
 
+import com.client.ClientApplication;
 import com.client.controller.StageController;
+import com.google.gson.JsonObject;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -8,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import org.json.JSONArray;
 
 public class Session extends VBox {
 
@@ -56,7 +59,7 @@ public class Session extends VBox {
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-
+                StageController.screenController.removeScreen("Session");
                 StageController.screenController.activate("MainMenu");
             }
         });
@@ -89,7 +92,18 @@ public class Session extends VBox {
     private Button leaderBordButton() {
 
         Button button = commonButton("LeaderBoard");
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                JSONArray scoreWeeks = ClientApplication.request.GetWeekTableRequest(token);
+                JSONArray scoreMonths = ClientApplication.request.GetMonthTableRequest(token);
+                StageController.screenController.addScreen("Scores",new Scores(width,height,scoreWeeks,scoreMonths ));
+                StageController.screenController.activate("Scores");
+            }
+        });
         return button;
     }
+
+
 
 }

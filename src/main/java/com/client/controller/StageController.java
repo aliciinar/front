@@ -1,10 +1,7 @@
 package com.client.controller;
 
 
-import com.client.pane.Login;
-import com.client.pane.MainMenu;
-import com.client.pane.Register;
-import com.client.pane.Session;
+import com.client.pane.*;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -35,6 +32,8 @@ public class StageController implements ApplicationListener<StageInitializer.Sta
         screenController.addScreen("MainMenu",pane);
         screenController.addScreen("Login",new Login(width , height));
         screenController.addScreen("Register",new Register(width , height));
+        screenController.addScreen("ForgetPassword",new ForgetPassword(width , height));
+
 
     }
 
@@ -42,6 +41,7 @@ public class StageController implements ApplicationListener<StageInitializer.Sta
     public void onApplicationEvent(StageInitializer.StageReadyEvent event) {
 
         Stage stage = event.getStage();
+        stage.setTitle("Monopoly");
         stage.setScene(screenController.getScene());
         stage.show();
 
