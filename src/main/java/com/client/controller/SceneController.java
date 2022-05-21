@@ -28,4 +28,5 @@ public class SceneController {
     public Scene getScene(){
         return main;
     }
+
 }

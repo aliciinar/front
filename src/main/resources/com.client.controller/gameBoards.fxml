@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="769.0" prefWidth="1044.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.client.controller.GameBoard">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="769.0" prefWidth="1044.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.client.pane.game.GameBoard">
    <children>
       <VBox prefHeight="769.0" prefWidth="1044.0">
          <children>
@@ -47,15 +47,11 @@
                                     <Image url="@../images/Dice1.png" />
                                  </image>
                               </ImageView>
-                              <Button layoutX="273.0" layoutY="78.0" mnemonicParsing="false" onAction="#roll" prefHeight="51.0" prefWidth="90.0" text="Roll" />
+                              <Button fx:id="rollButton" layoutX="273.0" layoutY="78.0" mnemonicParsing="false" onAction="#rollPressed" prefHeight="51.0" prefWidth="90.0" text="Roll" />
                            </children></Pane>
                      </children>
                   </HBox>
-                  <ImageView fx:id="player1" fitHeight="36.0" fitWidth="37.0" layoutX="20.0" layoutY="600.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/duck.jpg" />
-                     </image>
-                  </ImageView>
+
                </children>
             </Pane>
          </children>

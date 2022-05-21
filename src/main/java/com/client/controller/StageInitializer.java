@@ -32,8 +32,6 @@ public class StageInitializer extends Application {
     public void start(Stage stage)  {
        applicationContext.publishEvent(new StageReadyEvent(stage));
 
-
-
     }
 
     static class StageReadyEvent extends ApplicationEvent {

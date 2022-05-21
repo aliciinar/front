@@ -5,12 +5,16 @@ import com.client.controller.StageController;
 import com.google.gson.JsonObject;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import org.json.JSONArray;
+
+import java.io.IOException;
 
 public class Session extends VBox {
 
@@ -76,7 +80,15 @@ public class Session extends VBox {
             @Override
             public void handle(ActionEvent event) {
 
-                StageController.screenController.activate("Login");
+
+                try {
+                    Pane root = FXMLLoader.load(getClass().getResource("/com.client.controller/gameBoards.fxml"));
+                    StageController.screenController.addScreen("Game" , root);
+                    StageController.screenController.activate("Game");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
             }
         });
 

@@ -3,7 +3,6 @@ package com.client.controller;
 
 import com.client.pane.*;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -43,20 +42,13 @@ public class StageController implements ApplicationListener<StageInitializer.Sta
 
     @Override
     public void onApplicationEvent(StageInitializer.StageReadyEvent event) {
-
-        try {
-            Pane root = FXMLLoader.load(getClass().getResource("/com.client.controller/gameBoards.fxml"));
-            screenController.addScreen("Game" , root);
-            Stage stage = event.getStage();
-            stage.setTitle("Monopoly");
-            stage.setScene(screenController.getScene());
-            screenController.activate("Game");
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
+        Stage stage = event.getStage();
+        stage.setTitle("Monopoly");
+        stage.setScene(screenController.getScene());
+        stage.setResizable(false);
+        //screenController.addScreen("Session" , new Session(1000.0 , 1000.0 , "test ","12"));
+        //screenController.activate("Session");
+        stage.show();
 
     }
 
