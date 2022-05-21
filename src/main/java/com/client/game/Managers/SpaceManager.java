@@ -1,6 +1,6 @@
 package com.client.game.Managers;
 
-import com.client.pane.game.space.ISpace;
+import com.client.game.Spaces.ISpace;
 
 ;
 

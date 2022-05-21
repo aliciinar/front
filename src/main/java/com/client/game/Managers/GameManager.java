@@ -1,6 +1,6 @@
 package com.client.game.Managers;
 
-import com.client.pane.game.Player.Player;
+import com.client.game.Player.Player;
 
 
 import java.util.ArrayList;

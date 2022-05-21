@@ -2,7 +2,8 @@ package com.client.controller;
 
 
 import com.client.pane.*;
-import com.client.pane.game.Game;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -11,6 +12,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
+
+import java.io.IOException;
 
 @Component
 public class StageController implements ApplicationListener<StageInitializer.StageReadyEvent> {
@@ -34,7 +37,6 @@ public class StageController implements ApplicationListener<StageInitializer.Sta
         screenController.addScreen("Login",new Login(width , height));
         screenController.addScreen("Register",new Register(width , height));
         screenController.addScreen("ForgetPassword",new ForgetPassword(width , height));
-        screenController.addScreen("Game", new Game(width , height));
 
 
     }
@@ -42,11 +44,19 @@ public class StageController implements ApplicationListener<StageInitializer.Sta
     @Override
     public void onApplicationEvent(StageInitializer.StageReadyEvent event) {
 
-        Stage stage = event.getStage();
-        stage.setTitle("Monopoly");
-        stage.setScene(screenController.getScene());
-        screenController.activate("Game");
-        stage.show();
+        try {
+            Pane root = FXMLLoader.load(getClass().getResource("/com.client.controller/gameBoards.fxml"));
+            screenController.addScreen("Game" , root);
+            Stage stage = event.getStage();
+            stage.setTitle("Monopoly");
+            stage.setScene(screenController.getScene());
+            screenController.activate("Game");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
 
     }
 
