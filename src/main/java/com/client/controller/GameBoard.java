@@ -63,10 +63,50 @@ public class GameBoard {
     }
 
 
-    public  void  move(int rollValue)  {
+    public  void  move(int rollValue) {
 
 
-       final  int rollVal = rollValue;
+        double xVal = player1.getX();
+        double yVal = player1.getY();
+        int rollVal =  lastindex + rollValue;
+
+            while (lastindex < rollValue ) {
+                if (lastindex < 4) {
+
+                    yVal -= 140;
+                } else if (lastindex < 8) {
+
+
+                    xVal += 110;
+
+                } else if (lastindex < 12) {
+                    yVal += 140;
+
+
+
+                } else {
+                    xVal -= 110;
+
+
+                }
+                lastindex += 1;
+                player1.setX(xVal);
+                player1.setY(yVal);
+                try{
+                    Thread.sleep(500);
+
+                }catch (InterruptedException e){
+                    e.printStackTrace();
+
+                }
+
+
+            }
+        }
+
+
+
+      /* final  int rollVal = rollValue;
         Thread thread = new Thread(){
             public void run(){
                 double xVal = player1.getX();
@@ -104,9 +144,9 @@ public class GameBoard {
             }
         };
         System.out.println("Thread başladı");
-        thread.start();
+        thread.start();*/
 
-        }
+
 
 
 
