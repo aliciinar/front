@@ -2,9 +2,7 @@ package com.client.pane;
 
 
 import com.client.ClientApplication;
-import com.client.controller.SceneController;
 import com.client.controller.StageController;
-import com.client.dto.LoginDto;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;

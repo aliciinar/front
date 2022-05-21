@@ -2,6 +2,7 @@ package com.client.controller;
 
 
 import com.client.pane.*;
+import com.client.pane.game.Game;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -33,6 +34,7 @@ public class StageController implements ApplicationListener<StageInitializer.Sta
         screenController.addScreen("Login",new Login(width , height));
         screenController.addScreen("Register",new Register(width , height));
         screenController.addScreen("ForgetPassword",new ForgetPassword(width , height));
+        screenController.addScreen("Game", new Game(width , height));
 
 
     }
@@ -43,6 +45,7 @@ public class StageController implements ApplicationListener<StageInitializer.Sta
         Stage stage = event.getStage();
         stage.setTitle("Monopoly");
         stage.setScene(screenController.getScene());
+        screenController.activate("Game");
         stage.show();
 
     }
