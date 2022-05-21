@@ -6,10 +6,13 @@ import com.client.game.Spaces.ISpace;
 import com.client.game.Spaces.PurchasableSpace.Property;
 import com.client.game.Spaces.SpaceCreation.ISpaceCreatorFactory;
 import com.client.game.Spaces.SpaceCreation.NormalCreation;
+import javafx.animation.SequentialTransition;
 import javafx.animation.TranslateTransition;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
@@ -21,10 +24,16 @@ import javafx.scene.control.TextField;
 
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 
+import javafx.event.ActionEvent;
+
+import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class GameBoard {
+
 
    @FXML
    GridPane gameBoardGrid;
@@ -33,48 +42,79 @@ public class GameBoard {
     ImageView player1;
 
     @FXML
-    ImageView player2;
-
-
-    public  void  Move(int index,int lastindex){
-
-           if(lastindex < 4){
-
-           }
-           else if(lastindex < 8 ){
-
-           }
-           else if(lastindex < 12){
-
-           }
-           else{
-
-           }
-
-
-    }
-
-
-    private  void  MoveUp(ImageView player,int multiplier){
-
-    }
-
-   private  void  MoveRight(ImageView player,int multiplier){
-
-   }
-
-   private  void  MoveLeft(ImageView player,int multiplier){
-
-   }
-
-   private  void  MoveDown(ImageView player,int multiplier){
-
-   }
-
+    private ImageView diceImage1;
 
     @FXML
-    public void initialize() {
+    private ImageView diceImage2;
 
+    int lastindex = 0;
+
+    @FXML
+    public  void  roll(ActionEvent event){
+        Random random = new Random();
+        int dice1Val = random.nextInt(6)+1;
+        int dice2Val = random.nextInt(6)+1;
+
+        File file1 = new File("src/main/resources/images/Dice" + (dice1Val)+".png");
+        File file2 = new File("src/main/resources/images/Dice" + (dice2Val)+".png");
+        diceImage1.setImage(new Image(file1.toURI().toString()));
+        diceImage2.setImage(new Image(file2.toURI().toString()));
+        move(dice1Val + dice2Val);
+    }
+
+
+    public  void  move(int rollValue)  {
+
+
+       final  int rollVal = rollValue;
+        Thread thread = new Thread(){
+            public void run(){
+                double xVal = player1.getX();
+                double yVal = player1.getY();
+                int rollValue =  lastindex + rollVal;
+                try {
+                    while (lastindex < rollValue ) {
+                        if (lastindex < 4) {
+
+                            yVal -= 140;
+                        } else if (lastindex < 8) {
+
+
+                            xVal += 110;
+
+                        } else if (lastindex < 12) {
+                            yVal += 140;
+
+
+
+                        } else {
+                            xVal -= 110;
+
+
+                        }
+                        lastindex += 1;
+                        player1.setX(xVal);
+                        player1.setY(yVal);
+                        Thread.sleep(500);
+                    }
+                }catch (InterruptedException e){
+                    e.printStackTrace();
+
+                }
+            }
+        };
+        System.out.println("Thread başladı");
+        thread.start();
+
+        }
+
+
+
+
+
+   @FXML
+    public void initialize() {
+        player1.setX(50);
         //  SpaceCreatorFactory createSpaces = new SpaceCreatorFactory(new NormalCreation());
         //  HashMap<ISpace, SpaceFxmlType>  spaces = createSpaces.createSpaces();
         // int spaceCount = spaces.length;
