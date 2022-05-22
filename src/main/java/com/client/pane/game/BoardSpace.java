@@ -22,6 +22,7 @@ public class BoardSpace extends VBox {
     private HBox hBox;
     private int gridX , gridY;
 
+
     BoardSpace(Double width , Double height , ISpace space , int gridX , int gridY) {
         this.width = width;
         this.height = height;
@@ -64,6 +65,7 @@ public class BoardSpace extends VBox {
     public void removeImage(ImageView image) {
         hBox.getChildren().remove(image);
     }
+    public  ISpace  getSpace(){ return  space; }
 
 
 }

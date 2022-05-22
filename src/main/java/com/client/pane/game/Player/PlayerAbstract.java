@@ -41,7 +41,8 @@ public abstract class PlayerAbstract  implements  IPlayer{
     public void movePlayer(int move){
         if(position + move >= 16 ) moneyTransition(1500);
         position = (position + move) % 16;
-        System.out.println(position);
+        System.out.println("Son pozisyounum " + position);
+
 
     }
 

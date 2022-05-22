@@ -1,13 +1,17 @@
 package com.client.game.Managers;
 
-import com.client.game.Spaces.ISpace;
+import com.client.pane.game.space.ISpace;
+import com.client.pane.game.BoardSpace;
+import com.client.pane.game.space.SpaceCreation.ISpaceCreatorFactory;
+import com.client.pane.game.space.SpaceCreation.NormalCreation;
 
-;
+;import java.util.ArrayList;
+import java.util.List;
 
 public class SpaceManager {
 
     private  static  SpaceManager instance = null;
-    private ISpace[] ISpaces = new ISpace[20];
+    private List<BoardSpace>  boardSpaces = new ArrayList<>();
     public  static  synchronized  SpaceManager getInstance(){
         if(instance == null){
             instance = new SpaceManager();
@@ -15,9 +19,19 @@ public class SpaceManager {
         return  instance;
     }
 
-    public  void  SetSpaces(ISpace[] ISpaces){
-        this.ISpaces = ISpaces;
+    public  void  setSpaces(List<BoardSpace>  boardSpaces){
+        this.boardSpaces = boardSpaces;
 
     }
+
+    public ISpace getSpace(int i){
+        return  boardSpaces.get(i).getSpace();
+    }
+
+    public  List<NormalCreation.GridCord> createSpaces(ISpaceCreatorFactory spaceCreatorFactory){
+         return    spaceCreatorFactory.createSpaces();
+    }
+
+
 
 }

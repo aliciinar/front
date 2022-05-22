@@ -1,4 +1,4 @@
-package com.client.game.Spaces.SpaceCreation;
+package com.client.pane.game.space.SpaceCreation;
 
 public class SpaceTest {
 
