@@ -1,6 +1,6 @@
 package com.client.pane.game.space.SpaceCreation;
 
-import com.client.controller.spaceCreate.*;
+
 import com.client.pane.game.space.ISpace;
 
 
@@ -37,8 +37,8 @@ public class NormalCreation implements   ISpaceCreatorFactory{
         propertyNames.put("Denizli",new ArrayList<Integer>(){{add(14);add(2);add(4);}});
 
         railFerry.put("KaraTren",new ArrayList<Integer>(){{add(3);add(0);add(1);}});
-        railFerry.put("TCDD",new ArrayList<Integer>(){{add(11);add(3);add(0);}});
-        railFerry.put("KadıKöy",new ArrayList<Integer>(){{add(7);add(4);add(3);}});
+        railFerry.put("TCDD",new ArrayList<Integer>(){{add(7);add(3);add(0);}});
+        railFerry.put("KadıKöy",new ArrayList<Integer>(){{add(11);add(4);add(3);}});
         railFerry.put("Alsancak",new ArrayList<Integer>(){{add(15);add(1);add(4);}});
 
         return  setSpaces(propertyNames,railFerry);

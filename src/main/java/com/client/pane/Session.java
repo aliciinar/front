@@ -2,6 +2,12 @@ package com.client.pane;
 
 import com.client.ClientApplication;
 import com.client.controller.StageController;
+import com.client.game.Managers.GameManager;
+import com.client.pane.game.BotScene;
+import com.client.pane.game.Player.BotAI;
+import com.client.pane.game.Player.IPlayer;
+import com.client.pane.game.Player.Player;
+import com.client.pane.game.PlayerScene;
 import com.google.gson.JsonObject;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -82,6 +88,10 @@ public class Session extends VBox {
 
 
                 try {
+                    IPlayer player1 = new Player(name);
+                    IPlayer player2 = new BotAI();
+                    GameManager.getInstance().addPlayer(player1, new PlayerScene());
+                    GameManager.getInstance().addPlayer(player2,new BotScene());
                     Pane root = FXMLLoader.load(getClass().getResource("/com.client.controller/gameBoards.fxml"));
                     StageController.screenController.addScreen("Game" , root);
                     StageController.screenController.activate("Game");

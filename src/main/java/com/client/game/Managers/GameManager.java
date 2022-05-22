@@ -1,8 +1,10 @@
 package com.client.game.Managers;
 
+import com.client.pane.game.BoardSpace;
 import com.client.pane.game.GameBoard;
 import com.client.pane.game.IPrepareScene;
 import com.client.pane.game.Player.IPlayer;
+import com.client.pane.game.space.ISpace;
 
 
 import java.util.ArrayList;
@@ -45,13 +47,12 @@ public class GameManager {
             this.sceneType.put(player,sceneType);
     }
 
-    public void  play(int rollValue){
+    public void  play(int rollValue , BoardSpace space){
         System.out.println("rollValuee");
         IPlayer activePlayer = players.get(playerNumber);
-       activePlayer.movePlayer(rollValue); // set new position
-     //   SpaceManager.getInstance().getSpace(rollValue).action(activePlayer); // do action
-      nextTurn();
-
+        activePlayer.movePlayer(rollValue); // set new position
+        space.action(activePlayer); // do action
+        nextTurn();
 
     }
 

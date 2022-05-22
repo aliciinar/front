@@ -46,8 +46,8 @@ public class StageController implements ApplicationListener<StageInitializer.Sta
         stage.setTitle("Monopoly");
         stage.setScene(screenController.getScene());
         stage.setResizable(false);
-        //screenController.addScreen("Session" , new Session(1000.0 , 1000.0 , "test ","12"));
-        //screenController.activate("Session");
+        screenController.addScreen("Session" , new Session(1000.0 , 1000.0 , "test ","12"));
+        screenController.activate("Session");
         stage.show();
 
     }

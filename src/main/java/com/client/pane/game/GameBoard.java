@@ -147,7 +147,7 @@ public class GameBoard {
                     });
                 }
                 System.out.println("Move bitti");
-                GameManager.getInstance().play(diceVal); // make actions in player according to the dice value
+                GameManager.getInstance().play(diceVal , spaces.get(player.getPosition())); // make actions in player according to the dice value
                /* player.movePlayer(diceVal);
                 if(playerTurn == 1) {
 
@@ -182,10 +182,10 @@ public class GameBoard {
 
     private void setImages() {
         try {
-            //InputStream stream1 = new FileInputStream("C:\\Users\\Sait\\Desktop\\SE\\Ceng453-TermProject-Group-4-frontend\\src\\main\\resources\\images\\duck.jpg");
-           // InputStream stream2 = new FileInputStream("C:\\Users\\Sait\\Desktop\\SE\\Ceng453-TermProject-Group-4-frontend\\src\\main\\resources\\images\\reyiz.jpg");
-            InputStream stream1 = new FileInputStream("D:\\Yüksek Lisans\\SoftwareConstruction\\FrontEnd\\Ceng453-TermProject-Group-4-frontend\\src\\main\\resources\\images\\duck.jpg");
-            InputStream stream2 = new FileInputStream("D:\\Yüksek Lisans\\SoftwareConstruction\\FrontEnd\\Ceng453-TermProject-Group-4-frontend\\src\\main\\resources\\images\\reyiz.jpg");
+            InputStream stream1 = new FileInputStream("C:\\Users\\Sait\\Desktop\\SE\\Ceng453-TermProject-Group-4-frontend\\src\\main\\resources\\images\\duck.jpg");
+            InputStream stream2 = new FileInputStream("C:\\Users\\Sait\\Desktop\\SE\\Ceng453-TermProject-Group-4-frontend\\src\\main\\resources\\images\\reyiz.jpg");
+            //InputStream stream1 = new FileInputStream("D:\\Yüksek Lisans\\SoftwareConstruction\\FrontEnd\\Ceng453-TermProject-Group-4-frontend\\src\\main\\resources\\images\\duck.jpg");
+            //InputStream stream2 = new FileInputStream("D:\\Yüksek Lisans\\SoftwareConstruction\\FrontEnd\\Ceng453-TermProject-Group-4-frontend\\src\\main\\resources\\images\\reyiz.jpg");
             Image image1 = new Image(stream1);
             Image image2 = new Image(stream2);
 
@@ -211,14 +211,15 @@ public class GameBoard {
         double width = 800;
         double height = 800;
 
-       /* ISpaceCreatorFactory spaceCreatorFactory = new NormalCreation();
+        ISpaceCreatorFactory spaceCreatorFactory = new NormalCreation();
         List<NormalCreation.GridCord> spaceInformation = SpaceManager.getInstance().createSpaces(spaceCreatorFactory);
 
         for(NormalCreation.GridCord space : spaceInformation){
             System.out.println( space.getSpace().getName());
             spaces.add(new BoardSpace(width / 5 , height /5 , space.getSpace() , space.getxCor(), space.getyCor()) );
-        }*/
+        }
 
+        /*
         spaces.add(new BoardSpace(width / 5 , height /5 , new StartingPoint() , 0, 4) );
         spaces.add(new BoardSpace(width / 5 , height /5 , new com.client.pane.game.space.PurchasableSpace.Property("Ankara" , 500) , 0, 3) );
         spaces.add(new BoardSpace(width / 5 , height /5 , new Property("Diyarbakır" , 1000) , 0, 2) );
@@ -234,7 +235,7 @@ public class GameBoard {
         spaces.add(new BoardSpace(width / 5 , height /5 , new GoJail() , 4, 4) );
         spaces.add(new BoardSpace(width / 5 , height /5 , new Property("İzmir" , 500) , 3 , 4));
         spaces.add(new BoardSpace(width / 5 , height /5 , new Property("Denizli" , 500) , 2 , 4));
-        spaces.add(new BoardSpace(width / 5 , height /5 , new RailFerrySpace("Ferry 2" , 500) , 1, 4) );
+        spaces.add(new BoardSpace(width / 5 , height /5 , new RailFerrySpace("Ferry 2" , 500) , 1, 4) );*/
         SpaceManager.getInstance().setSpaces(spaces);
     }
 
