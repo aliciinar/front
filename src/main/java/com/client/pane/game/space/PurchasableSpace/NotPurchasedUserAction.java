@@ -5,8 +5,9 @@ import com.client.pane.game.Player.IPlayer;
 
 public class NotPurchasedUserAction implements  InotPurchasedAction{
     @Override
-    public void notPurchasedAction(IPlayer player,SpaceDeed deed) {
+    public SpaceState notPurchasedAction(IPlayer player,SpaceDeed deed , SpaceState spaceState) {
         GameManager.getInstance().getSceneType().notPurchased(deed); // open  purchased scene
+        return  spaceState;
 
     }
 }

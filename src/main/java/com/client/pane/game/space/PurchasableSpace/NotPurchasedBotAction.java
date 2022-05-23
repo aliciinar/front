@@ -5,13 +5,15 @@ import com.client.pane.game.Player.IPlayer;
 
 public class NotPurchasedBotAction implements  InotPurchasedAction{
     @Override
-    public void notPurchasedAction(IPlayer player,SpaceDeed deed) {
+    public SpaceState notPurchasedAction(IPlayer player,SpaceDeed deed, SpaceState spaceState) {
         if(player.getMoney() > deed.GetCost()){
             // todo AI of the bot
            // GameManager.getInstance().setDeed(deed);
           //  GameManager.getInstance().purchaseActionBot();
           //  GameManager.getInstance().nextTurn();
             GameManager.getInstance().getSceneType().endTurn();
+            return  spaceState;
         }
+        return  spaceState;
     }
 }

@@ -4,5 +4,5 @@ import com.client.pane.game.Player.IPlayer;
 
 public interface InotPurchasedAction {
 
-    void  notPurchasedAction(IPlayer player,SpaceDeed deed);
+    SpaceState  notPurchasedAction(IPlayer player,SpaceDeed deed, SpaceState spaceState);
 }

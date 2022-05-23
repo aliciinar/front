@@ -15,15 +15,44 @@ public class GoJail  extends AbstractSpace {
         //System.out.println("GoJail " + "player " + player.getName());
         player.setNextTurn(true); // next player will play game
         player.setPrison(true);
-        Platform.runLater(new Runnable(){ // todo thread problem in hear
+
+        Thread taskThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                GameManager.getInstance().goJail(); // go to jail
+                for(int i = 0; i < 1 ; i++) {
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+
+                    }
+
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            GameManager.getInstance().goJail(); // go to jail
+
+                        }
+                    });
+                }
+
+
+                //  GameManager.getInstance().nextTurn(); // go to jail
+
+
+
 
             }
-// do your GUI stuff here
+
         });
+
+
+
+
+
+        taskThread.start();
+
     }
+
 
     @Override
     public String getName() {

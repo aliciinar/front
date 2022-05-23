@@ -3,6 +3,7 @@ package com.client.pane.game.Player;
 import com.client.game.Managers.GameManager;
 import com.client.pane.game.space.ISpace;
 import com.client.pane.game.space.PurchasableSpace.SpaceState;
+import javafx.application.Platform;
 import javafx.util.Pair;
 
 import java.util.List;
@@ -74,7 +75,7 @@ public abstract class PlayerAbstract  implements  IPlayer{
         Pair<PlayerState,Boolean> result =   state.Play(this,diceVal1,diceVal2,space);
         state = result.getKey();
 
-        System.out.println("***************** new State******************************************** " + state);
+        System.out.println("***************** new State******************************************** " + state + " " + getName());
        /* if(result.getValue()){
             GameManager.getInstance().nextTurn();
         }*/
@@ -101,6 +102,11 @@ public abstract class PlayerAbstract  implements  IPlayer{
         System.out.println("---------------------------------------------------- " + isPrison);
         this.isPrison = isPrison;
     }
+
+
+
+
+
 
 
 }

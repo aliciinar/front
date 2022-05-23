@@ -37,13 +37,16 @@ public class PlayerNotPrison implements PlayerState{
 
         }else{
             diceThrow = 3;
-            Pair<PlayerState,Boolean> response = new Pair<PlayerState,Boolean>(this,false);
+
             // do nothing
             space.action(player); // action in space
             System.out.println("action in space");
-
             player.setNextTurn(true);
-
+            if(space.getName().equals("Go To Jail")){
+                Pair<PlayerState,Boolean> response = new Pair<PlayerState,Boolean>(new PlayerPrison(),false);
+                return  response;
+            }
+            Pair<PlayerState,Boolean> response = new Pair<PlayerState,Boolean>(this,false);
             return  response;
         }
 

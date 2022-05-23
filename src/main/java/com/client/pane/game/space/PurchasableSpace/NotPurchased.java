@@ -22,10 +22,10 @@ public class NotPurchased implements SpaceState{
     public SpaceState Action(IPlayer player , SpaceDeed space) {
       //  System.out.println("Not purchased"  + "player" + player.getName() );
 
-        actionType.get(player.getUserType()).notPurchasedAction(player,space);
+     return    actionType.get(player.getUserType()).notPurchasedAction(player,space,this);
 
        // space.Purchase(player , - space.GetCost());
-        return null;
+
 
       /*
         boolean purchase = player.purchaseSpace(space.cost);

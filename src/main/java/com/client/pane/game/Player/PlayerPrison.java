@@ -47,6 +47,12 @@ public class PlayerPrison implements PlayerState{
     @Override
     public PlayerState determineState(IPlayer player, int diceValue1, int diceValue2) {
         System.out.println("Player prison determineState");
+        int prisTime = prisonTime -1;
+        if(prisTime == 0 ){
+            player.setPrison(false);
+            player.setNextTurn(true);
+            return  new PlayerNotPrison();
+        }
         return  this;
 
     }

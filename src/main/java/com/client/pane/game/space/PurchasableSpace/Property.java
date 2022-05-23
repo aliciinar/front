@@ -17,7 +17,7 @@ public class Property extends SpaceDeed {
     public void action(IPlayer player) {
        // System.out.println("Propery," + name + "player" + player.getName() );
 
-      state.Action(player , this);
+     state = state.Action(player , this);
        // System.out.println("name" + state);
     }
 

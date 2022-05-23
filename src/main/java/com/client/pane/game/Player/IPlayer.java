@@ -42,4 +42,6 @@ public interface IPlayer {
      void  setPrison(boolean isPrison);
 
 
+
+
 }
