@@ -18,6 +18,17 @@ public class Player extends  PlayerAbstract{
 
     @Override
     public boolean purchaseSpace(int spacePrice) {
-        return false;
+        if(money > spacePrice){
+            return  true;
+        } else {
+            return false;
+        }
     }
+
+    @Override
+    public String getUserType() {
+        return  "User";
+    }
+
+
 }

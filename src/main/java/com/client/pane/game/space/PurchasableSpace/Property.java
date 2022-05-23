@@ -15,13 +15,17 @@ public class Property extends SpaceDeed {
 
     @Override
     public void action(IPlayer player) {
-        state = state.Action(player , this);
+       // System.out.println("Propery," + name + "player" + player.getName() );
+
+      state.Action(player , this);
+       // System.out.println("name" + state);
     }
 
-    public void Purchase(IPlayer player , int cost){
-        player.moneyTransition(cost);
+    public void Purchase(IPlayer player ){
+        player.moneyTransition(-cost);
         player.purchaseSpecialTile();
         setOwner(player);
+        state = new Purchased();
 
     }
 

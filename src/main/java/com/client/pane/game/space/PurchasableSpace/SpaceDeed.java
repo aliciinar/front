@@ -4,7 +4,7 @@ import com.client.pane.game.Player.IPlayer;
 
 import com.client.pane.game.space.AbstractSpace;
 
-abstract class SpaceDeed extends AbstractSpace {
+public  abstract class SpaceDeed extends AbstractSpace {
 
     protected IPlayer owner = null;
     protected SpaceState state;
@@ -14,7 +14,7 @@ abstract class SpaceDeed extends AbstractSpace {
     protected void setOwner(IPlayer player){
         this.owner = player;
     }
-    abstract public void Purchase(IPlayer player , int cost);
+    abstract public void Purchase(IPlayer player );
 
     public int GetCost(){return cost;}
     public int GetRent(){

@@ -14,11 +14,13 @@ public class RailFerrySpace extends SpaceDeed {
 
     @Override
     public void action(IPlayer player) {
+       // System.out.println("RailFerry," + name + "player" + player.getName() );
+
         state = state.Action(player , this);
     }
 
-    public void Purchase(IPlayer player , int cost){
-        player.moneyTransition(cost);
+    public void Purchase(IPlayer player ){
+        player.moneyTransition(-cost);
         player.purchaseSpecialTile();
         setOwner(player);
         this.rent = player.getNumOfSpecialTile() * rent;

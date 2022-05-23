@@ -1,5 +1,7 @@
 package com.client.pane.game.Player;
 
+import com.client.pane.game.space.ISpace;
+
 public class BotAI extends  PlayerAbstract{
 
     public BotAI( ){
@@ -16,4 +18,13 @@ public class BotAI extends  PlayerAbstract{
         }
         return  false;
     }
+
+    @Override
+    public String getUserType() {
+        return  "Bot";
+    }
+
+
+
+
 }
