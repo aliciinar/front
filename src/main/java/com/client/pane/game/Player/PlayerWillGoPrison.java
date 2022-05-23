@@ -11,6 +11,7 @@ public class PlayerWillGoPrison implements PlayerState {
         System.out.println("Player Will go prison Play");
         player.setNextTurn(true); // next player will play game
         player.setPrison(true);
+
         Thread taskThread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -31,7 +32,7 @@ public class PlayerWillGoPrison implements PlayerState {
                 }
 
 
-                GameManager.getInstance().nextTurn(); // go to jail
+              //  GameManager.getInstance().nextTurn(); // go to jail
 
 
 

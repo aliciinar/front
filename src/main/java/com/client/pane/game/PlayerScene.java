@@ -9,7 +9,7 @@ public class PlayerScene implements  IPrepareScene{
     @Override
     public void notPurchased(SpaceDeed space) {
         System.out.println("Player Scene satın alma ekranı");
-        GameManager.getInstance().getGameBoard().activateButtons(true,false,false);
+        GameManager.getInstance().getGameBoard().activateButtons(true,false,false,true);
         GameManager.getInstance().setDeed(space);
 
 
@@ -18,7 +18,7 @@ public class PlayerScene implements  IPrepareScene{
     @Override
     public void normal() {
         System.out.println("Player Scene normal turn");
-        GameManager.getInstance().getGameBoard().activateButtons(true,true,false);
+        GameManager.getInstance().getGameBoard().activateButtons(true,true,false,true);
     }
 
 
@@ -27,12 +27,12 @@ public class PlayerScene implements  IPrepareScene{
     @Override
     public void playerEnd(GameBoard gameBoard) {
 
-        gameBoard.activateButtons(true , true , true);
+        gameBoard.activateButtons(true , true , true,true);
     }
 
     @Override
     public  void  nextTurnNormal(GameBoard gameBoard){
-        gameBoard.activateButtons(false , true , true);
+        gameBoard.activateButtons(false , true , true,true);
         System.out.println("Player scene user next turn normal");
 
     }
@@ -40,10 +40,13 @@ public class PlayerScene implements  IPrepareScene{
     @Override
     public void nextTurnJail(GameBoard gameBoard) {
         System.out.println("user next turn jail");
+        gameBoard.activateButtons(true,true,true,false);
     }
 
     @Override
     public void endTurn() {
-        GameManager.getInstance().getGameBoard().activateButtons(true,true,false);
+        GameManager.getInstance().getGameBoard().activateButtons(true,true,false,true);
     }
+
+
 }

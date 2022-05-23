@@ -18,7 +18,7 @@ public class BotScene implements IPrepareScene{
 
     @Override
     public void nextTurnNormal(GameBoard gameBoard) {
-        gameBoard.activateButtons(true , true , true);
+        gameBoard.activateButtons(true , true , true,true);
         gameBoard.roll();
         System.out.println("nextTurnNormal");
 
@@ -27,18 +27,19 @@ public class BotScene implements IPrepareScene{
     @Override
     public void nextTurnJail(GameBoard gameBoard) {
         System.out.println("botnextTurnJail");
+        gameBoard.activateButtons(true,true,true,false);
     }
 
 
     @Override
     public void playerEnd(GameBoard gameBoard) {
 
-        gameBoard.activateButtons(false , true , true);
+        gameBoard.activateButtons(false , true , true,true);
 
     }
 
     @Override
     public void endTurn() {
-        GameManager.getInstance().getGameBoard().activateButtons(true,true,false);
+        GameManager.getInstance().getGameBoard().activateButtons(true,true,false,true);
     }
 }

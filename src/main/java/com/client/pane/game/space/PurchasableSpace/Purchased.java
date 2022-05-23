@@ -9,13 +9,14 @@ public class Purchased implements SpaceState{
     @Override
     public SpaceState Action(IPlayer player , SpaceDeed space) {
         //System.out.println("Purchased,"  + player.getName());
-        GameManager.getInstance().getSceneType().normal();
+      //  GameManager.getInstance().getSceneType().normal();
         if(player.equals(space.GetOwner())) return this;
 
         int rent = space.GetRent();
 
         player.moneyTransition(-rent);
         space.GetOwner().moneyTransition(rent);
+        GameManager.getInstance().getSceneType().endTurn();
         return this;
     }
 

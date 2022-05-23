@@ -75,9 +75,9 @@ public abstract class PlayerAbstract  implements  IPlayer{
         state = result.getKey();
 
         System.out.println("***************** new State******************************************** " + state);
-        if(result.getValue()){
+       /* if(result.getValue()){
             GameManager.getInstance().nextTurn();
-        }
+        }*/
     }
 
     @Override

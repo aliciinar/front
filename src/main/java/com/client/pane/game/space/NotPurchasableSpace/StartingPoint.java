@@ -11,8 +11,8 @@ public class StartingPoint extends AbstractSpace {
         //System.out.println("Staring Point " + "player " + player.getName());
        // GameManager.getInstance().getSceneType().normal();
         player.moneyTransition(100);
-        GameManager.getInstance().nextTurn();
-       // GameManager.getInstance().getSceneType().endTurn();
+       // GameManager.getInstance().nextTurn();
+       GameManager.getInstance().getSceneType().endTurn();
     }
 
     @Override

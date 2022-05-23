@@ -108,11 +108,18 @@ public class GameManager {
         IPlayer activePlayer = activePlayer();
         System.out.println(activePlayer.getName() + "game manager nextTurn fonksiyonuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
         System.out.println("player hapistemi abiii: " + activePlayer.isPrison());
-        if(activePlayer.isPrison()){
+       /* if(activePlayer.isPrison()){
             activePlayer.action( SpaceManager.getInstance().getSpace(activePlayer.getPosition()),dice1,dice2);
             nextTurn();
         }else{
             sceneType.get(players.get(playerNumber)).nextTurnNormal(gameBoard);
+        }*/
+        if(activePlayer.isPrison()){
+            sceneType.get(players.get(playerNumber)).nextTurnJail(gameBoard);
+
+        }else{
+            sceneType.get(players.get(playerNumber)).nextTurnNormal(gameBoard);
+
         }
 
         //gameBoard.prepareScene(sceneType.get(players.get(playerNumber)));
@@ -155,6 +162,17 @@ public class GameManager {
       //todo  nextTurn();
     }
 
+
+    public  void  endTurn(){
+        sceneType.get(players.get(playerNumber)).endTurn();
+    }
+
+    public  void  jailTime(){
+        IPlayer activePlayer = activePlayer();
+        activePlayer.action( SpaceManager.getInstance().getSpace(4),dice1,dice2);
+        endTurn();
+
+    }
 
 
 }

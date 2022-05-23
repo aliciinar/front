@@ -11,7 +11,8 @@ public class JailVisit extends AbstractSpace {
     @Override
     public void action(IPlayer player) {
        // System.out.println("Visitjail " + "player " + player.getName());
-        GameManager.getInstance().nextTurn();
+       // GameManager.getInstance().nextTurn();
+        GameManager.getInstance().getSceneType().endTurn();
     }
 
     @Override

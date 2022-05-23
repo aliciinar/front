@@ -15,8 +15,8 @@ public class IncomeTax extends AbstractSpace {
       //  System.out.println("Income Tax " + "player " + player.getName());
         //GameManager.getInstance().getSceneType().normal();
         player.moneyTransition(tax);
-          GameManager.getInstance().nextTurn();
-       // GameManager.getInstance().getSceneType().endTurn();
+        //  GameManager.getInstance().nextTurn();
+        GameManager.getInstance().getSceneType().endTurn();
     }
 
     @Override

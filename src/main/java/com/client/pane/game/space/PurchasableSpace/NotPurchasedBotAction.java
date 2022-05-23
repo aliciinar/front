@@ -10,7 +10,8 @@ public class NotPurchasedBotAction implements  InotPurchasedAction{
             // todo AI of the bot
            // GameManager.getInstance().setDeed(deed);
           //  GameManager.getInstance().purchaseActionBot();
-            GameManager.getInstance().nextTurn();
+          //  GameManager.getInstance().nextTurn();
+            GameManager.getInstance().getSceneType().endTurn();
         }
     }
 }

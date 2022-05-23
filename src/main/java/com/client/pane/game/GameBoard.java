@@ -85,7 +85,7 @@ public class GameBoard  {
 
     public void roll() {
        // rollButton.setDisable(true);
-        activateButtons(true,true,true);
+        activateButtons(true,true,true,true);
 
         Thread taskThread = new Thread(new Runnable() {
             int dice1Val = 0 ;
@@ -100,10 +100,10 @@ public class GameBoard  {
 
                     }
                     Random random = new Random();
-                   // dice1Val = random.nextInt(6)+1;
-                  //  dice2Val = random.nextInt(6)+1;
-                  dice1Val = 1;
-                   dice2Val = 1;
+                    dice1Val = random.nextInt(6)+1;
+                   dice2Val = random.nextInt(6)+1;
+                 // dice1Val = 1;
+                  // dice2Val = 1;
 
                     Platform.runLater(new Runnable() {
                         @Override
@@ -181,6 +181,8 @@ public class GameBoard  {
     }
 
     public void goJail(){
+
+
         IPlayer player = GameManager.getInstance().activePlayer(); // active player of the game
         int startPos = player.getPosition();
         int imageIndex = GameManager.getInstance().activePlayerTurn();
@@ -190,7 +192,7 @@ public class GameBoard  {
         spaces.get((startPos) % spaces.size()).removeImage(images.get(imageIndex));
         spaces.get((4) % spaces.size()).putImage(images.get(imageIndex));
         player.movePlayer(newPos);
-        activateButtons(true,true,true);
+        activateButtons(true,true,false,true);
     }
 
 
@@ -278,10 +280,13 @@ public class GameBoard  {
         spaces.add(new BoardSpace(width / 5 , height /5 , new RailFerrySpace("Ferry 2" , 500) , 1, 4) );*/
         SpaceManager.getInstance().setSpaces(spaces);
     }
-    public   void  activateButtons(boolean rollButtonSet , boolean purchaseButtonSet , boolean endTurnButtonSet){
+    @FXML
+    Button playTimeInJail;
+    public   void  activateButtons(boolean rollButtonSet , boolean purchaseButtonSet , boolean endTurnButtonSet, boolean jailTime){
         rollButton.setDisable(rollButtonSet);
         purchaseButton.setDisable(purchaseButtonSet);
         endTurnButton.setDisable(endTurnButtonSet);
+        playTimeInJail.setDisable(jailTime);
     }
     @FXML
     public  void  endTurnPressed(ActionEvent event){
@@ -294,8 +299,13 @@ public class GameBoard  {
     @FXML
     public  void  purchasePressed(ActionEvent event){
             System.out.println("Game Board purchase Pressed");
-            activateButtons(true, true,false);
+            activateButtons(true, true,false,true);
             GameManager.getInstance().purchaseAction();
+    }
+
+    @FXML
+    public  void  jailTime(ActionEvent event){
+        GameManager.getInstance().jailTime();
     }
 
 }
