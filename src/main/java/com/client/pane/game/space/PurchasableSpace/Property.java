@@ -2,6 +2,7 @@ package com.client.pane.game.space.PurchasableSpace;
 
 import com.client.pane.game.Player.IPlayer;
 
+import java.sql.SQLOutput;
 
 
 public class Property extends SpaceDeed {
@@ -22,9 +23,19 @@ public class Property extends SpaceDeed {
     }
 
     public void Purchase(IPlayer player ){
+
+        System.out.println("Normal Player Purchase");
+        System.out.println("Alan Adı " + getName() + " Cost " + cost);
+        System.out.println("Sahip Olacak Kişi " + player.getName());
+
         player.moneyTransition(-cost);
-        player.purchaseSpecialTile();
+      //  player.purchaseSpecialTile();
         setOwner(player);
+         System.out.println("---------------------Alış veriş bitti------------------");
+        System.out.println("SAhip: " + player.getName());
+        System.out.println("Sahipin Parası: " + player.getMoney());
+        System.out.println("Sahibim : " + owner.getName());
+
         state = new Purchased();
 
     }

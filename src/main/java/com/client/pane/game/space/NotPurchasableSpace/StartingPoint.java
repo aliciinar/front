@@ -10,7 +10,7 @@ public class StartingPoint extends AbstractSpace {
     public void action(IPlayer player) {
         //System.out.println("Staring Point " + "player " + player.getName());
        // GameManager.getInstance().getSceneType().normal();
-        player.moneyTransition(100);
+         player.moneyTransition(100);
        // GameManager.getInstance().nextTurn();
        GameManager.getInstance().getSceneType().endTurn();
     }

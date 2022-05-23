@@ -53,7 +53,7 @@ public class GameManager {
     public void  play(int dice1 , int dice2){
        // this.dice1 = dice1;
        // this.dice2 = dice2;
-        System.out.println("roll buttonu basıldı play functionu gameManager" + " dice1 "+ dice1 + " dice2 " + dice2);
+      //  System.out.println("roll buttonu basıldı play functionu gameManager" + " dice1 "+ dice1 + " dice2 " + dice2);
         this.dice1 = dice1;
         this.dice2 = dice2;
         int rollValue = dice1 + dice2;
@@ -74,12 +74,12 @@ public class GameManager {
     }
 
     private  void  playerTurn(){
-        System.out.println("GamaManager player turn functionu -----------------"+ " yeni player: " + activePlayer().getName());
+       // System.out.println("GamaManager player turn functionu -----------------"+ " yeni player: " + activePlayer().getName());
         if(activePlayer().isNextTurn()){
-            System.out.println("yeniplayer");
+           // System.out.println("yeniplayer");
             playerNumber = (playerNumber + 1) % 2;
         }else{
-            System.out.println("eski player devamke");
+          //  System.out.println("eski player devamke");
 
         }
 
@@ -103,11 +103,11 @@ public class GameManager {
     public  int  activePlayerTurn() { return  playerNumber;}
 
     public  void  nextTurn(){
-        System.out.println("game manager nextTurn fonksiyonuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
+      //  System.out.println("game manager nextTurn fonksiyonuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
         playerTurn();
         IPlayer activePlayer = activePlayer();
-        System.out.println(activePlayer.getName() + "game manager nextTurn fonksiyonuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
-        System.out.println("player hapistemi abiii: " + activePlayer.isPrison());
+     //   System.out.println(activePlayer.getName() + "game manager nextTurn fonksiyonuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
+     //   System.out.println("player hapistemi abiii: " + activePlayer.isPrison());
        /* if(activePlayer.isPrison()){
             activePlayer.action( SpaceManager.getInstance().getSpace(activePlayer.getPosition()),dice1,dice2);
             nextTurn();
@@ -169,6 +169,7 @@ public class GameManager {
 
     public  void  jailTime(){
         IPlayer activePlayer = activePlayer();
+       // System.out.println("Jail Time Actionu:::" + "player : " + activePlayer.getName());
         activePlayer.action( SpaceManager.getInstance().getSpace(4),dice1,dice2);
         endTurn();
 

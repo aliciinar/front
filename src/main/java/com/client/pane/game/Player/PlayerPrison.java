@@ -16,7 +16,7 @@ public class PlayerPrison implements PlayerState{
         System.out.println("---------Player Prison Play----------");
         System.out.println("Player Namee : " + player.getName());
        // return EndPlay();
-       if(prisonTime == 0){ // player leave the jail next round
+       if(prisonTime == 1){ // player leave the jail next round
            System.out.println("Leave the jail");
          //  GameManager.getInstance().nextTurn();
            PlayerState playerState = new PlayerNotPrison();
@@ -47,12 +47,13 @@ public class PlayerPrison implements PlayerState{
     @Override
     public PlayerState determineState(IPlayer player, int diceValue1, int diceValue2) {
         System.out.println("Player prison determineState");
-        int prisTime = prisonTime -1;
+        // todo burdaki parentez kalkabilir
+        /*int prisTime = prisonTime -1;
         if(prisTime == 0 ){
             player.setPrison(false);
             player.setNextTurn(true);
             return  new PlayerNotPrison();
-        }
+        }*/
         return  this;
 
     }

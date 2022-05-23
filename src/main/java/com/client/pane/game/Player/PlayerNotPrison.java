@@ -31,8 +31,18 @@ public class PlayerNotPrison implements PlayerState{
                 // player roll again
                 player.setNextTurn(false);
                 System.out.println("rollllll aaaagaaaiiiiin");
+
                 space.action(player);
-                return  response;
+                if(space.getName().equals("Go To Jail")){
+                    System.out.println("JailDeyimmmm ------------------");
+                    player.setNextTurn(true); // player in jail so turn of next player
+                    response = new Pair<PlayerState,Boolean>(new PlayerPrison(),false);
+                    System.out.println("stateim "+ response.getKey());;
+                    return  response;
+                }else{
+                    return  response;
+                }
+
             }
 
         }else{
@@ -42,8 +52,11 @@ public class PlayerNotPrison implements PlayerState{
             space.action(player); // action in space
             System.out.println("action in space");
             player.setNextTurn(true);
+            System.out.println("space adııı" + space.getName());
             if(space.getName().equals("Go To Jail")){
+                System.out.println("JailDeyimmmm ------------------");
                 Pair<PlayerState,Boolean> response = new Pair<PlayerState,Boolean>(new PlayerPrison(),false);
+                System.out.println("stateim "+ response.getKey());;
                 return  response;
             }
             Pair<PlayerState,Boolean> response = new Pair<PlayerState,Boolean>(this,false);

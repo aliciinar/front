@@ -39,13 +39,19 @@ public abstract class PlayerAbstract  implements  IPlayer{
     @Override
     public void moneyTransition(int amount){
         //System.out.println("money azaldı" + money  + " - " + amount);
+        System.out.println("Ben Kimim" + getName());
         money = money + amount;
+
+        System.out.println("Param değişti " + amount + " son Param "  + getMoney());
         //System.out.println("son param" + money);
     }
 
     @Override
     public void movePlayer(int move){
         //if(position + move >= 16 ) moneyTransition(1500);
+        if((position + move ) > 17){
+            moneyTransition(100); // increase money of the player since it is go through start point but not  stop in start point
+        }
         position = (position + move) % 16;
        // System.out.println("Son pozisyounum " + position);
 

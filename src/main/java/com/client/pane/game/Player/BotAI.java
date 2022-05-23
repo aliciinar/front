@@ -4,6 +4,8 @@ import com.client.pane.game.space.ISpace;
 
 public class BotAI extends  PlayerAbstract{
 
+
+
     public BotAI( ){
 
         this.money = 1500;

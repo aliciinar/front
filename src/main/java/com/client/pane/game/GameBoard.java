@@ -102,8 +102,10 @@ public class GameBoard  {
                     Random random = new Random();
                     dice1Val = random.nextInt(6)+1;
                    dice2Val = random.nextInt(6)+1;
-                 // dice1Val = 1;
+                   // dice1Val = 1; // three time double test
                   // dice2Val = 1;
+                    //dice1Val = 6;       //jail and roll again
+                    //dice2Val = 6;
 
                     Platform.runLater(new Runnable() {
                         @Override
