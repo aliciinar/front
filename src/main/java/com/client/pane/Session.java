@@ -1,6 +1,7 @@
 package com.client.pane;
 
 import com.client.ClientApplication;
+import com.client.Request;
 import com.client.controller.StageController;
 import com.client.controller.gameboard.BotScene;
 import com.client.game.Managers.GameManager;
@@ -25,13 +26,16 @@ public class Session extends VBox {
 
 
     private double width , height;
-    private String name , token;
+    private String name ;
+    private int id;
+    public static String token;
 
-    public Session(Double width , Double height , String name , String token) {
+    public Session(Double width , Double height , String name , String token ) {
         this.width = width;
         this.height = height;
         this.name = name;
         this.token = token;
+
 
         setSpacing(50);
 
@@ -87,6 +91,7 @@ public class Session extends VBox {
 
 
                 try {
+
                     IPlayer player1 = new Player(name);
                     IPlayer player2 = new BotAI();
                     GameManager.getInstance().addPlayer(player1, new PlayerScene());

@@ -1,6 +1,7 @@
 package com.client;
 
 
+import com.client.dto.AddScoreDto;
 import com.client.dto.ForgetPasswordDto;
 import com.client.dto.LoginDto;
 import com.client.dto.RegisterDto;
@@ -139,6 +140,25 @@ public class Request {
         }
         return null;
     }
+
+    public void addScore(String userName , int score , String token) {
+        HttpPost post = new HttpPost(ClientApplication.backend + "addScoreWeek");
+        HttpPost post2 = new HttpPost(ClientApplication.backend + "addScoreMonth");
+        try {
+            StringEntity params = new StringEntity(ClientApplication.gson.toJson(new AddScoreDto(userName , score)));
+            post.setHeader("Authorization", "Bearer " + token);
+            post2.setHeader("Authorization", "Bearer " + token);
+            getResponse(post, params);
+            getResponse(post2, params);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
 
 
 

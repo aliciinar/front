@@ -1,17 +1,22 @@
 package com.client.controller.gameboard;
 
+import com.client.ClientApplication;
+import com.client.controller.StageController;
 import com.client.game.Managers.GameManager;
 import com.client.game.Managers.SpaceManager;
+import com.client.pane.Session;
 import com.client.pane.game.player.IPlayer;
 import com.client.pane.game.space.SpaceCreation.ISpaceCreatorFactory;
 import com.client.pane.game.space.SpaceCreation.NormalCreation;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 
 import javafx.event.ActionEvent;
@@ -52,9 +57,19 @@ public class GameBoardController {
 
     @FXML
     public void initialize() {
+
+        StageController.screenController.getScene().setOnKeyPressed(e -> {
+
+            if (e.getCode() == KeyCode.DIGIT9 && e.isControlDown()) {
+                GameManager.getInstance().getActivePlayer().moneyTransition(-10000000);
+                endGame();
+                System.out.println("A key was pressed");
+            }
+        });
         constructSpaces();
 
         GameManager.getInstance().setGameBoard(this);
+        activateButtons(false , true , true , true);
         setImages();
         setPlayers();
         setUserInformation();
@@ -67,13 +82,7 @@ public class GameBoardController {
 
     }
 
-    @FXML
-    public  void  endTurnPressed(ActionEvent event){
-        //endTurn();
-        System.out.println("Game Board End Turn Pressed");
-        GameManager.getInstance().nextTurn();
 
-    }
 
     @FXML
     public  void  purchasePressed(ActionEvent event){
@@ -95,18 +104,8 @@ public class GameBoardController {
 
     }
 
-    @FXML
-    public  void  purchasePressed(ActionEvent event){
-        System.out.println("Game Board purchase Pressed");
-        activateButtons(true, true,false,true);
-        int pos = GameManager.getInstance().getActivePlayer().getPosition();
-        GameManager.getInstance().purchaseAction();
-    }
 
-    @FXML
-    public  void  jailTime(ActionEvent event){
-        GameManager.getInstance().jailTime();
-    }
+
 
 
     @FXML
@@ -116,6 +115,17 @@ public class GameBoardController {
 
     }
 
+    private void endGame() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("End Game");
+        alert.setHeaderText("Game Ended");
+        alert.setContentText("Scores: \nPlayer1 : "+ + GameManager.getInstance().getPlayerIndex(0).getMoney() + " \n" + "Player2 : " + GameManager.getInstance().getPlayerIndex(1).getMoney()  );
+        alert.showAndWait();
+        ClientApplication.request.addScore(GameManager.getInstance().getPlayerIndex(0).getName() , GameManager.getInstance().getPlayerIndex(0).getScore() , Session.token);
+        StageController.screenController.removeScreen("Game");
+        StageController.screenController.activate("Session");
+        GameManager.destroy();
+    }
 
     public   void  activateButtons(boolean rollButtonSet , boolean purchaseButtonSet , boolean endTurnButtonSet, boolean jailTime){
         rollButton.setDisable(rollButtonSet);
@@ -241,8 +251,8 @@ public class GameBoardController {
         try {
            // InputStream stream1 = new FileInputStream("C:\\Users\\Sait\\Desktop\\SE\\Ceng453-TermProject-Group-4-frontend\\src\\main\\resources\\images\\duck.jpg");
            // InputStream stream2 = new FileInputStream("C:\\Users\\Sait\\Desktop\\SE\\Ceng453-TermProject-Group-4-frontend\\src\\main\\resources\\images\\reyiz.jpg");
-           InputStream stream1 = new FileInputStream("D:\\Yüksek Lisans\\SoftwareConstruction\\FrontEnd\\Ceng453-TermProject-Group-4-frontend\\src\\main\\resources\\images\\duck.jpg");
-            InputStream stream2 = new FileInputStream("D:\\Yüksek Lisans\\SoftwareConstruction\\FrontEnd\\Ceng453-TermProject-Group-4-frontend\\src\\main\\resources\\images\\reyiz.jpg");
+           InputStream stream1 = new FileInputStream("src/main/resources/images/duck.jpg");
+            InputStream stream2 = new FileInputStream("src/main/resources/images/reyiz.jpg");
             Image image1 = new Image(stream1);
             Image image2 = new Image(stream2);
 

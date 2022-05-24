@@ -29,6 +29,12 @@ public  class GameManager  implements IObservable {
         return  instance;
     }
 
+    public  static  synchronized    void destroy(){
+
+        instance = null;
+
+    }
+
     public  void  addPlayer(IPlayer player, IPrepareScene sceneType){
             players.add(player);
             this.sceneType.put(player,sceneType);
