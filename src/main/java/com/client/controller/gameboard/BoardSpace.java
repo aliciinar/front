@@ -52,6 +52,9 @@ public class BoardSpace extends VBox  implements IObserverText {
         button.setText(this.space.getName());
 
     }
+    public void update() {
+        button.setText("asd");
+    }
     public void setOwner(String owner) {
         this.owner = owner ;
     }

@@ -12,6 +12,7 @@ public  abstract class SpaceDeed extends AbstractSpace {
     protected int cost;
 
     protected void setOwner(IPlayer player){
+
         this.owner = player;
     }
     abstract public void Purchase(IPlayer player );

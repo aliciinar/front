@@ -16,7 +16,8 @@ public class ClientApplication {
 
 	public static Gson gson = new Gson();
 	public static HttpClient httpClient = HttpClients.createDefault();
-	public static String backend = "http://localhost:8080/";
+
+	public static String backend = "https://ceng453-term-project-group-4.herokuapp.com/";
 	public static Request request = new Request();
 
 	public static void main(String[] args) {

@@ -87,6 +87,27 @@ public class GameBoardController {
         GameManager.getInstance().jailTime();
     }
 
+    @FXML
+    public  void  endTurnPressed(ActionEvent event){
+        //endTurn();
+        System.out.println("Game Board End Turn Pressed");
+        GameManager.getInstance().nextTurn();
+
+    }
+
+    @FXML
+    public  void  purchasePressed(ActionEvent event){
+        System.out.println("Game Board purchase Pressed");
+        activateButtons(true, true,false,true);
+        int pos = GameManager.getInstance().getActivePlayer().getPosition();
+        GameManager.getInstance().purchaseAction();
+    }
+
+    @FXML
+    public  void  jailTime(ActionEvent event){
+        GameManager.getInstance().jailTime();
+    }
+
 
     @FXML
     public  void  rollPressed(ActionEvent event){
@@ -145,7 +166,6 @@ public class GameBoardController {
 
             }
         });
-
         taskThread.start();
     }
     public void movePlayer(int dice1, int dice2) {
@@ -184,7 +204,11 @@ public class GameBoardController {
         });
 
         taskThread.start();
-
+        try {
+            taskThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
 
     }
