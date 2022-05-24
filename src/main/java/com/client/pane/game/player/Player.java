@@ -1,8 +1,6 @@
-package com.client.pane.game.Player;
+package com.client.pane.game.player;
 
-import com.client.pane.game.space.ISpace;
-
-import java.util.*;
+import com.client.pane.game.player.playerActionStates.PlayerNotPrison;
 
 public class Player extends  PlayerAbstract{
 
@@ -13,6 +11,7 @@ public class Player extends  PlayerAbstract{
         this.name = name;
         this.position = 0;
         this.state = new PlayerNotPrison();
+        this.userType =  UserType.User;
     }
 
 
@@ -26,8 +25,8 @@ public class Player extends  PlayerAbstract{
     }
 
     @Override
-    public String getUserType() {
-        return  "User";
+    public UserType getUserType() {
+        return  userType;
     }
 
 

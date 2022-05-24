@@ -2,6 +2,7 @@ package com.client.controller;
 
 
 import com.client.pane.*;
+import  com.client.pane.ForgetPassword;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;

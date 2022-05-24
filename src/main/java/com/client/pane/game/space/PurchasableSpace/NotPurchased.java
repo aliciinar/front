@@ -1,20 +1,19 @@
 package com.client.pane.game.space.PurchasableSpace;
 
-import com.client.game.Managers.GameManager;
-import com.client.pane.game.GameBoard;
-import com.client.pane.game.Player.IPlayer;
+import com.client.pane.game.player.IPlayer;
+import com.client.pane.game.player.UserType;
 
 import java.util.HashMap;
 
 
 public class NotPurchased implements SpaceState{
 
-    HashMap<String, InotPurchasedAction> actionType = new HashMap<>();
+    HashMap<UserType, INotPurchasedAction> actionType = new HashMap<>();
 
     public  NotPurchased(){
 
-        actionType.put("Bot",new NotPurchasedBotAction());
-        actionType.put("User", new NotPurchasedUserAction());
+        actionType.put(UserType.Bot,new NotPurchasedBotAction());
+        actionType.put(UserType.User, new NotPurchasedUserAction());
 
     }
 
@@ -24,19 +23,7 @@ public class NotPurchased implements SpaceState{
 
      return    actionType.get(player.getUserType()).notPurchasedAction(player,space,this);
 
-       // space.Purchase(player , - space.GetCost());
 
-
-      /*
-        boolean purchase = player.purchaseSpace(space.cost);
-
-        //Get Action From Player via GUI
-
-        if(purchase) {
-            space.Purchase(player , - space.GetCost());
-            return new Purchased();
-        }
-        else return this;*/
 
     }
 }

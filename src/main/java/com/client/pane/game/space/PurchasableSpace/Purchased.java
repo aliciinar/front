@@ -1,7 +1,7 @@
 package com.client.pane.game.space.PurchasableSpace;
 
 import com.client.game.Managers.GameManager;
-import com.client.pane.game.Player.IPlayer;
+import com.client.pane.game.player.IPlayer;
 
 
 public class Purchased implements SpaceState{

@@ -1,18 +1,19 @@
-package com.client.pane.game.Player;
+package com.client.pane.game.player.playerActionStates;
 
-import com.client.game.Managers.GameManager;
+import com.client.pane.game.player.IPlayer;
 import com.client.pane.game.space.ISpace;
 import javafx.util.Pair;
 
 public class PlayerPrison implements PlayerState{
 
     private int prisonTime ;
-    PlayerPrison(){
+
+    public  PlayerPrison(){
         prisonTime = 2;
 
     }
     @Override
-    public Pair<PlayerState,Boolean> Play(IPlayer player, int diceValue1, int diceValue2 , ISpace space) {
+    public PlayerState Play(IPlayer player, int diceValue1, int diceValue2 , ISpace space) {
         System.out.println("---------Player Prison Play----------");
         System.out.println("Player Namee : " + player.getName());
        // return EndPlay();
@@ -20,27 +21,21 @@ public class PlayerPrison implements PlayerState{
            System.out.println("Leave the jail");
          //  GameManager.getInstance().nextTurn();
            PlayerState playerState = new PlayerNotPrison();
-           Pair<PlayerState,Boolean> response = new Pair<>(playerState, true);
+        //   PlayerState,Boolean> response = new Pair<>(playerState, true);
            player.setPrison(false);
-           return  response;
+           return  playerState;
        }else{
            System.out.println("Still In Jail");
            System.out.println("Player hapishane günlükleriiiiii " + player.getName() + "kalan gün " + prisonTime);
            prisonTime = prisonTime - 1 ;
 
-           Pair<PlayerState,Boolean> response = new Pair<>(this, false);
-           return  response;
+        //   Pair<PlayerState,Boolean> response = new Pair<>(this, false);
+           return  this;
        }
 
     }
 
 
-
-    @Override
-    public PlayerState EndPlay() {
-        if (prisonTime == 0) return new PlayerNotPrison();
-        else return this;
-    }
 
 
 

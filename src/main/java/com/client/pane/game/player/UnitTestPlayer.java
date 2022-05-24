@@ -1,4 +1,4 @@
-package com.client.pane.game.Player;
+package com.client.pane.game.player;
 
 public class UnitTestPlayer {
 

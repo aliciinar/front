@@ -1,13 +1,15 @@
-package com.client.pane.game.Player;
+package com.client.pane.game.player.playerActionStates;
+
 
 import com.client.game.Managers.GameManager;
+import com.client.pane.game.player.IPlayer;
 import com.client.pane.game.space.ISpace;
 import javafx.application.Platform;
 import javafx.util.Pair;
 
 public class PlayerWillGoPrison implements PlayerState {
     @Override
-    public Pair<PlayerState, Boolean> Play(IPlayer player, int diceValue1, int diceValue2, ISpace space) {
+    public PlayerState Play(IPlayer player, int diceValue1, int diceValue2, ISpace space) {
         System.out.println("Player Will go prison Play");
         player.setNextTurn(true); // next player will play game
         player.setPrison(true);
@@ -45,14 +47,10 @@ public class PlayerWillGoPrison implements PlayerState {
 
         taskThread.start();
 
-         Pair<PlayerState,Boolean> response = new Pair<>(new PlayerPrison(),false); // player in prison know
-         return  response;
+      //   Pair<PlayerState,Boolean> response = new Pair<>(new PlayerPrison(),false); // player in prison know
+         return  new PlayerPrison();
     }
 
-    @Override
-    public PlayerState EndPlay() {
-        return null;
-    }
 
 
 

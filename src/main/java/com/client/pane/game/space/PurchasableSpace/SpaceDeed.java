@@ -1,6 +1,6 @@
 package com.client.pane.game.space.PurchasableSpace;
 
-import com.client.pane.game.Player.IPlayer;
+import com.client.pane.game.player.IPlayer;
 
 import com.client.pane.game.space.AbstractSpace;
 

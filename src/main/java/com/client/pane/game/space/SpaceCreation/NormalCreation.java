@@ -25,8 +25,8 @@ public class NormalCreation implements   ISpaceCreatorFactory{
     @Override
     public List<GridCord> createSpaces() {
 
-        HashMap<String,ArrayList> railFerry = new HashMap<>();
-        HashMap<String,ArrayList> propertyNames = new HashMap<>();
+        LinkedHashMap<String,ArrayList> railFerry = new LinkedHashMap<>();
+        LinkedHashMap<String,ArrayList> propertyNames = new LinkedHashMap<>();
         propertyNames.put("Istanbul",new ArrayList<Integer>(){{add(1);add(0);add(3);}});
         propertyNames.put("Ankara",new ArrayList<Integer>(){{add(2);add(0);add(2);}});
         propertyNames.put("Antalya",new ArrayList<Integer>(){{add(5);add(1);add(0);}});
@@ -45,7 +45,7 @@ public class NormalCreation implements   ISpaceCreatorFactory{
 
     }
 
-    private   List<GridCord> setSpaces(HashMap<String,ArrayList> propertyNames, HashMap<String,ArrayList>  railFerry){
+    private   List<GridCord> setSpaces(LinkedHashMap<String,ArrayList> propertyNames, LinkedHashMap<String,ArrayList>  railFerry){
 
         AddSpace(new StartingPoint(),0,4,0);
         AddSpace( new JailVisit(),0,0,4);
@@ -85,19 +85,18 @@ public class NormalCreation implements   ISpaceCreatorFactory{
 
 
     }
-    private  void AddProperties(HashMap<String,ArrayList> propertyNames){
+    private  void AddProperties(LinkedHashMap<String,ArrayList> propertyNames){
 
         Set<String> keySet = propertyNames.keySet();
         ArrayList<String> listOfKeys = new ArrayList<String>(keySet);
         int count = listOfKeys.size();
-        int initialCost = 100; // initial cost of properties
         String name;
         int index;
         for(int i= 0; i < count ; i++ ){
             name = listOfKeys.get(i);
             ArrayList<Integer> values = propertyNames.get(name);
             index =  (int) values.get(0);
-            ISpace property = new Property(name, initialCost + i*57);
+            ISpace property = new Property(name, setPrice(i));
             AddSpace( property,(int)values.get(1),(int)values.get(2),(int) values.get(0));
 
 
@@ -105,10 +104,19 @@ public class NormalCreation implements   ISpaceCreatorFactory{
         }
     }
 
+    private  int setPrice(int index){
+        int initialCost = 100; // initial cost of properties
+        int price = 100 + index * 60;
+        if(price > 500){
+            price = 500;
+        }
+        return  price;
+    }
 
 
 
-    private  void  AddRailFerry(HashMap<String,ArrayList> railFerryInfo ){
+
+    private  void  AddRailFerry(LinkedHashMap<String,ArrayList> railFerryInfo ){
 
         Set<String> keySet = railFerryInfo.keySet();
         ArrayList<String> listOfKeys = new ArrayList<String>(keySet);

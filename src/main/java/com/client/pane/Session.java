@@ -2,13 +2,12 @@ package com.client.pane;
 
 import com.client.ClientApplication;
 import com.client.controller.StageController;
+import com.client.controller.gameboard.BotScene;
 import com.client.game.Managers.GameManager;
-import com.client.pane.game.BotScene;
-import com.client.pane.game.Player.BotAI;
-import com.client.pane.game.Player.IPlayer;
-import com.client.pane.game.Player.Player;
-import com.client.pane.game.PlayerScene;
-import com.google.gson.JsonObject;
+import com.client.pane.game.player.BotAI;
+import com.client.pane.game.player.IPlayer;
+import com.client.pane.game.player.Player;
+import com.client.controller.gameboard.PlayerScene;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;

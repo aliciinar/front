@@ -1,5 +1,5 @@
 package com.client.pane.game.space;
-import com.client.pane.game.Player.IPlayer;
+import com.client.pane.game.player.IPlayer;
 
 
 public interface ISpace {

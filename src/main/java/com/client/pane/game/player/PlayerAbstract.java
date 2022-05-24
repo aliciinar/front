@@ -1,12 +1,8 @@
-package com.client.pane.game.Player;
+package com.client.pane.game.player;
 
-import com.client.game.Managers.GameManager;
+import com.client.pane.game.player.playerActionStates.PlayerState;
 import com.client.pane.game.space.ISpace;
-import com.client.pane.game.space.PurchasableSpace.SpaceState;
-import javafx.application.Platform;
 import javafx.util.Pair;
-
-import java.util.List;
 
 public abstract class PlayerAbstract  implements  IPlayer{
 
@@ -17,75 +13,31 @@ public abstract class PlayerAbstract  implements  IPlayer{
     protected int ownedSpecialTile = 0;
     protected  boolean nextTurn = true;
     protected  boolean isPrison = false;
+    protected UserType userType;
+    protected  boolean startPassMoneyChange = false; // if we roll double third time and we in pass through start point we have an unneccesary money change
+                                                        // this is not sutiable for oop but because of time constraints implementation done like that
+
     @Override
     public int getMoney() {
         return money;
     }
 
-    @Override
-    public void goJail(int pos){
-        this.state = new PlayerPrison();
-        this.position = pos;
-    }
+
 
     @Override
     public void purchaseSpecialTile(){
         ownedSpecialTile = ownedSpecialTile + 1;
     }
+
     @Override
     public int getNumOfSpecialTile(){
         return ownedSpecialTile;
     }
-    @Override
-    public void moneyTransition(int amount){
-        //System.out.println("money azaldı" + money  + " - " + amount);
-        System.out.println("Ben Kimim" + getName());
-        money = money + amount;
 
-        System.out.println("Param değişti " + amount + " son Param "  + getMoney());
-        //System.out.println("son param" + money);
-    }
+    public String getName() { return name;}
 
     @Override
-    public void movePlayer(int move){
-        //if(position + move >= 16 ) moneyTransition(1500);
-        if((position + move ) > 17){
-            moneyTransition(100); // increase money of the player since it is go through start point but not  stop in start point
-        }
-        position = (position + move) % 16;
-       // System.out.println("Son pozisyounum " + position);
-
-
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public boolean turn(int diceValue1 , int diceValue2){
-       // Pair<PlayerState,Boolean> newState = state.Play(this,diceValue1,diceValue2);
-       // state = newState.getKey();
-       // return newState.getValue() ;
-        return  true;
-    }
-
-    @Override
-    public int getPosition() {
-        return position;
-    }
-
-    @Override
-    public void action(ISpace space, int diceVal1, int diceVal2) {
-        state =    state.determineState(this,diceVal1,diceVal2);
-        Pair<PlayerState,Boolean> result =   state.Play(this,diceVal1,diceVal2,space);
-        state = result.getKey();
-
-        System.out.println("***************** new State******************************************** " + state + " " + getName());
-       /* if(result.getValue()){
-            GameManager.getInstance().nextTurn();
-        }*/
-    }
+    public int getPosition() {return position;}
 
     @Override
     public boolean isNextTurn() {
@@ -108,6 +60,53 @@ public abstract class PlayerAbstract  implements  IPlayer{
         System.out.println("---------------------------------------------------- " + isPrison);
         this.isPrison = isPrison;
     }
+
+    @Override
+    public void moneyTransition(int amount){
+        //System.out.println("money azaldı" + money  + " - " + amount);
+        System.out.println("Ben Kimim" + getName());
+        money = money + amount;
+
+        System.out.println("Param değişti " + amount + " son Param "  + getMoney());
+        //System.out.println("son param" + money);
+    }
+
+    @Override
+    public void movePlayer(int move){
+        //if(position + move >= 16 ) moneyTransition(1500);
+        if((position + move ) > 17){
+            moneyTransition(100); // increase money of the player since it is go through start point but not  stop in start point
+            startPassMoneyChange = true;
+        }
+        position = (position + move) % 16;
+       // System.out.println("Son pozisyounum " + position);
+
+
+    }
+
+
+
+    @Override
+    public void action(ISpace space, int diceVal1, int diceVal2) {
+        state =    state.determineState(this,diceVal1,diceVal2);
+        state =   state.Play(this,diceVal1,diceVal2,space);
+      //  state = result.getKey();
+
+        System.out.println("***************** new State******************************************** " + state + " " + getName());
+       /* if(result.getValue()){
+            GameManager.getInstance().nextTurn();
+        }*/
+    }
+
+    @Override
+    public  void checkFalseMoneyIncrease(boolean jailCheck){
+        if(jailCheck && startPassMoneyChange){
+            moneyTransition( -100);
+        }
+        startPassMoneyChange = false;
+
+    }
+
 
 
 

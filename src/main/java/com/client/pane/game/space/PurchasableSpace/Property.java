@@ -1,8 +1,6 @@
 package com.client.pane.game.space.PurchasableSpace;
 
-import com.client.pane.game.Player.IPlayer;
-
-import java.sql.SQLOutput;
+import com.client.pane.game.player.IPlayer;
 
 
 public class Property extends SpaceDeed {

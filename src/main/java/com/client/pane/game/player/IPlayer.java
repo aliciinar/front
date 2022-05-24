@@ -1,4 +1,4 @@
-package com.client.pane.game.Player;
+package com.client.pane.game.player;
 
 import com.client.pane.game.space.ISpace;
 import org.springframework.context.annotation.Configuration;
@@ -13,8 +13,6 @@ public interface IPlayer {
 
      String getName();
 
-     void goJail(int pos);
-
      int getPosition();
 
      void purchaseSpecialTile();
@@ -23,13 +21,12 @@ public interface IPlayer {
 
      void moneyTransition(int amount);
 
-     boolean turn(int diceValue1 , int diceValue2);
 
      boolean purchaseSpace(int spacePrice);
 
      void movePlayer(int move);
 
-     String getUserType();
+     UserType getUserType();
 
      void  action(ISpace space, int diceVal1, int diceVal2);
 
@@ -41,7 +38,7 @@ public interface IPlayer {
 
      void  setPrison(boolean isPrison);
 
-
+     void  checkFalseMoneyIncrease(boolean jailCheck);
 
 
 
