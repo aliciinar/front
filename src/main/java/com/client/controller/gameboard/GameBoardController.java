@@ -61,7 +61,11 @@ public class GameBoardController {
         StageController.screenController.getScene().setOnKeyPressed(e -> {
 
             if (e.getCode() == KeyCode.DIGIT9 && e.isControlDown()) {
-                GameManager.getInstance().getActivePlayer().moneyTransition(-10000000);
+                int imageIndex = GameManager.getInstance().getActivePlayerTurn();
+                IPlayer activePlayer = GameManager.getInstance().getActivePlayer();
+                spaces.get((activePlayer.getPosition()) % spaces.size()).removeImage(images.get(imageIndex));
+                spaces.get((8) % spaces.size()).putImage(images.get(imageIndex));
+                activePlayer.moneyTransition(-10000000);
                 endGame();
                 System.out.println("A key was pressed");
             }
@@ -115,7 +119,7 @@ public class GameBoardController {
 
     }
 
-    private void endGame() {
+    public void endGame() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("End Game");
         alert.setHeaderText("Game Ended");
@@ -151,13 +155,14 @@ public class GameBoardController {
 
                     }
                     Random random = new Random();
-                  dice1Val = random.nextInt(6)+1;
-                  dice2Val = random.nextInt(6)+1;
+                 dice1Val = random.nextInt(6)+1;
+                 dice2Val = random.nextInt(6)+1;
                    // dice1Val = 1; // three time double test
                   // dice2Val = 1;
                  //   dice1Val = 6;       //jail and roll again
                //    dice2Val = 6;
-
+                     //   dice1Val = 5;
+                      //  dice2Val = 3;
                     Platform.runLater(new Runnable() {
                         @Override
                         public void run() {

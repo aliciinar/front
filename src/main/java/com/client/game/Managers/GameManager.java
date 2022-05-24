@@ -66,17 +66,18 @@ public  class GameManager  implements IObservable {
 
         if(!gameFinishCheck()){
             notifyObservers();
+            if(activePlayer.isPrison()){
+                sceneType.get(players.get(playerNumber)).nextTurnJail(gameBoardController);
+
+            }else{
+                sceneType.get(players.get(playerNumber)).nextTurnNormal(gameBoardController);
+
+            }
 
         }else{
-
+                gameBoardController.endGame();
         }
-        if(activePlayer.isPrison()){
-            sceneType.get(players.get(playerNumber)).nextTurnJail(gameBoardController);
 
-        }else{
-            sceneType.get(players.get(playerNumber)).nextTurnNormal(gameBoardController);
-
-        }
 
 
     }

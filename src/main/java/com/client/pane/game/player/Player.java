@@ -7,7 +7,7 @@ public class Player extends  PlayerAbstract{
 
     public Player( String name ){
 
-        this.money = 1500;
+        this.money = 0;
         this.name = name;
         this.position = 0;
         this.state = new PlayerNotPrison();
