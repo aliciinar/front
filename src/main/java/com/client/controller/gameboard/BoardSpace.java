@@ -1,19 +1,22 @@
 package com.client.controller.gameboard;
 
 
+import com.client.controller.observer.IObserverText;
 import com.client.pane.game.player.IPlayer;
+import com.client.pane.game.player.Player;
 import com.client.pane.game.space.ISpace;
 
+import javafx.application.Platform;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 
-
-public class BoardSpace extends VBox {
+public class BoardSpace extends VBox  implements IObserverText {
 
     private ISpace space;
     private String owner = "None";
@@ -68,4 +71,38 @@ public class BoardSpace extends VBox {
     public  ISpace  getSpace(){ return  space; }
 
 
+    @Override
+    public void updateOwner(IPlayer player) {
+        System.out.println("owwwwwwwwwner " + owner);
+        Thread taskThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                for(int i = 0; i <1; i++){
+
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+
+                    }
+                    final int d = i;
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            button.setText(space.getName());
+                            button.setBackground(new Background(new BackgroundFill(Color.AQUA, new CornerRadii(0), Insets.EMPTY)));
+
+                        }
+                    });
+                }
+                //System.out.println("Move bitti");
+
+
+            }
+        });
+
+        taskThread.start();
+
+
+    }
 }

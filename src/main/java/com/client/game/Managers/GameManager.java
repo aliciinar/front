@@ -2,6 +2,8 @@ package com.client.game.Managers;
 
 import com.client.controller.gameboard.GameBoardController;
 import com.client.controller.gameboard.IPrepareScene;
+import com.client.controller.observer.IObservable;
+import com.client.controller.observer.IObserverText;
 import com.client.pane.game.player.IPlayer;
 import com.client.pane.game.space.PurchasableSpace.SpaceDeed;
 
@@ -10,7 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class GameManager {
+public  class GameManager  implements IObservable {
     private  static  GameManager instance = null;
     private  List<IPlayer> players = new ArrayList<>();
     private HashMap<IPlayer, IPrepareScene> sceneType = new HashMap<>();
@@ -19,7 +21,7 @@ public class GameManager {
     private SpaceDeed currentDeed;
     private  int dice1;
     private  int dice2;
-
+    private List<IObserverText> observables = new ArrayList<>();
     public  static  synchronized    GameManager getInstance(){
         if(instance == null){
             instance = new GameManager();
@@ -56,6 +58,12 @@ public class GameManager {
      //   System.out.println(activePlayer.getName() + "game manager nextTurn fonksiyonuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
      //   System.out.println("player hapistemi abiii: " + activePlayer.isPrison());
 
+        if(!gameFinishCheck()){
+            notifyObservers();
+
+        }else{
+
+        }
         if(activePlayer.isPrison()){
             sceneType.get(players.get(playerNumber)).nextTurnJail(gameBoardController);
 
@@ -121,8 +129,10 @@ public class GameManager {
 
 
     public  void  endTurn(){
-        gameFinishCheck(); // check whether the game is over or not
+
         sceneType.get(players.get(playerNumber)).endTurn();
+
+
     }
 
     public  void  jailTime(){
@@ -135,15 +145,29 @@ public class GameManager {
 
 
 
-    public  void  gameFinishCheck(){
+    public  boolean  gameFinishCheck(){
         for (IPlayer player: players) {
             if(player.getMoney() < 0){
-                // game over scene
+                return  true;
             }
 
         }
+        return  false;
     }
 
 
+    @Override
+    public void notifyObservers() {
+        System.out.println("player turn değiti");
+        for (IObserverText observable:observables) {
+            observable.updateOwner(getActivePlayer());
+        }
+    }
 
+    @Override
+    public void addUserInformation(IObserverText observerText) {
+        System.out.println("player turn ekle");
+
+        observables.add(observerText);
+    }
 }

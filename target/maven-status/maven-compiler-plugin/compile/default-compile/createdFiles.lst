@@ -24,6 +24,7 @@ com\client\pane\Scores.class
 com\client\controller\StageInitializer$StageReadyEvent.class
 com\client\ClientApplication.class
 com\client\pane\game\space\SpaceCreation\NormalCreation$7.class
+com\client\controller\gameboard\BoardSpace$1$1.class
 com\client\pane\Login$3.class
 com\client\controller\gameboard\PlayerScene.class
 com\client\game\Managers\GameConstructor.class
@@ -48,6 +49,7 @@ com\client\pane\Login$1.class
 com\client\game\Managers\SpaceManager.class
 com\client\pane\game\space\PurchasableSpace\NotPurchased.class
 com\client\pane\game\space\SpaceCreation\NormalCreation$12.class
+com\client\controller\gameboard\BoardSpace$1.class
 com\client\pane\game\player\Player.class
 com\client\pane\game\space\AbstractSpace.class
 com\client\controller\gameboard\GameBoardController$2$1.class
@@ -86,4 +88,5 @@ com\client\pane\game\space\SpaceCreation\SpaceTest.class
 com\client\pane\game\space\SpaceCreation\NormalCreation$GridCord.class
 com\client\controller\StageController.class
 com\client\pane\game\space\PurchasableSpace\NotPurchasedBotAction.class
+com\client\controller\observer\IObserverText.class
 com\client\pane\Register.class

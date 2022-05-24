@@ -11,7 +11,7 @@ public class BotAI extends  PlayerAbstract{
         this.money = 1500;
         this.position = 0;
         this.state = new PlayerNotPrison();
-
+        this.name = "Bot";
         this.userType =  UserType.Bot;
     }
 

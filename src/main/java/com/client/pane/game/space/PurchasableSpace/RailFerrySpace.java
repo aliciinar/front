@@ -1,5 +1,7 @@
 package com.client.pane.game.space.PurchasableSpace;
 
+import com.client.controller.observer.IObserverText;
+import com.client.game.Managers.SpaceManager;
 import com.client.pane.game.player.IPlayer;
 
 public class RailFerrySpace extends SpaceDeed {
@@ -31,6 +33,8 @@ public class RailFerrySpace extends SpaceDeed {
         System.out.println("SAhip: " + player.getName());
         System.out.println("Sahipin Parası: " + player.getMoney());
         System.out.println("Sahibim : " + owner.getName());
+        player.setScore(cost);
+        updateObserver(player);
         state = new Purchased();
     }
 

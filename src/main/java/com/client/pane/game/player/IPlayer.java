@@ -1,12 +1,13 @@
 package com.client.pane.game.player;
 
+import com.client.controller.observer.IObservable;
 import com.client.pane.game.space.ISpace;
 import org.springframework.context.annotation.Configuration;
 
 
 @Configuration
 
-public interface IPlayer {
+public interface IPlayer extends IObservable {
 
 
      int getMoney();
@@ -40,7 +41,9 @@ public interface IPlayer {
 
      void  checkFalseMoneyIncrease(boolean jailCheck);
 
+     void  setScore(int price);
 
+     int getScore();
 
 
 }

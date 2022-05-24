@@ -1,12 +1,17 @@
 package com.client.pane.game.player;
 
+import com.client.controller.observer.IObserverText;
 import com.client.pane.game.player.playerActionStates.PlayerState;
 import com.client.pane.game.space.ISpace;
 import javafx.util.Pair;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class PlayerAbstract  implements  IPlayer{
 
     protected int position;
+    protected  int score = 0;
     protected String name;
     protected int money;
     protected PlayerState state;
@@ -17,6 +22,9 @@ public abstract class PlayerAbstract  implements  IPlayer{
     protected  boolean startPassMoneyChange = false; // if we roll double third time and we in pass through start point we have an unneccesary money change
                                                         // this is not sutiable for oop but because of time constraints implementation done like that
 
+
+
+    protected static List<IObserverText> playerInformation = new ArrayList<>();
     @Override
     public int getMoney() {
         return money;
@@ -68,6 +76,7 @@ public abstract class PlayerAbstract  implements  IPlayer{
         money = money + amount;
 
         System.out.println("Param değişti " + amount + " son Param "  + getMoney());
+        notifyObservers();
         //System.out.println("son param" + money);
     }
 
@@ -79,6 +88,7 @@ public abstract class PlayerAbstract  implements  IPlayer{
             startPassMoneyChange = true;
         }
         position = (position + move) % 16;
+
        // System.out.println("Son pozisyounum " + position);
 
 
@@ -107,8 +117,29 @@ public abstract class PlayerAbstract  implements  IPlayer{
 
     }
 
+    @Override
+    public void  addUserInformation(IObserverText observerText){
+        playerInformation.add(observerText);
+    }
 
+    @Override
+    public  void  notifyObservers(){
+        System.out.println("playeeeeer"+ playerInformation.size());
+        for (IObserverText observerText: playerInformation) {
+            observerText.updateOwner(this);
 
+        }
+    }
+
+    @Override
+    public  void  setScore(int price){
+        score += price;
+    }
+
+    @Override
+    public  int getScore(){
+        return  score + money;
+    }
 
 
 

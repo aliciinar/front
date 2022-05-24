@@ -7,24 +7,31 @@ import com.client.pane.game.space.SpaceCreation.ISpaceCreatorFactory;
 import com.client.pane.game.space.SpaceCreation.NormalCreation;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
 import javafx.event.ActionEvent;
 
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.*;
+import java.util.List;
 
 public class GameBoardController {
 
     @FXML
     Button rollButton , purchaseButton , endTurnButton;
 
+
+    @FXML
+    HBox userInformation;
 
     @FXML
     GridPane gameBoardGrid;
@@ -50,6 +57,7 @@ public class GameBoardController {
         GameManager.getInstance().setGameBoard(this);
         setImages();
         setPlayers();
+        setUserInformation();
 
         for(BoardSpace space : spaces){
             gameBoardGrid.add(space , space.getGridX() , space.getGridY());
@@ -207,10 +215,10 @@ public class GameBoardController {
 
     private void setImages() {
         try {
-            InputStream stream1 = new FileInputStream("C:\\Users\\Sait\\Desktop\\SE\\Ceng453-TermProject-Group-4-frontend\\src\\main\\resources\\images\\duck.jpg");
-            InputStream stream2 = new FileInputStream("C:\\Users\\Sait\\Desktop\\SE\\Ceng453-TermProject-Group-4-frontend\\src\\main\\resources\\images\\reyiz.jpg");
-          //  InputStream stream1 = new FileInputStream("D:\\Yüksek Lisans\\SoftwareConstruction\\FrontEnd\\Ceng453-TermProject-Group-4-frontend\\src\\main\\resources\\images\\duck.jpg");
-          //  InputStream stream2 = new FileInputStream("D:\\Yüksek Lisans\\SoftwareConstruction\\FrontEnd\\Ceng453-TermProject-Group-4-frontend\\src\\main\\resources\\images\\reyiz.jpg");
+           // InputStream stream1 = new FileInputStream("C:\\Users\\Sait\\Desktop\\SE\\Ceng453-TermProject-Group-4-frontend\\src\\main\\resources\\images\\duck.jpg");
+           // InputStream stream2 = new FileInputStream("C:\\Users\\Sait\\Desktop\\SE\\Ceng453-TermProject-Group-4-frontend\\src\\main\\resources\\images\\reyiz.jpg");
+           InputStream stream1 = new FileInputStream("D:\\Yüksek Lisans\\SoftwareConstruction\\FrontEnd\\Ceng453-TermProject-Group-4-frontend\\src\\main\\resources\\images\\duck.jpg");
+            InputStream stream2 = new FileInputStream("D:\\Yüksek Lisans\\SoftwareConstruction\\FrontEnd\\Ceng453-TermProject-Group-4-frontend\\src\\main\\resources\\images\\reyiz.jpg");
             Image image1 = new Image(stream1);
             Image image2 = new Image(stream2);
 
@@ -232,6 +240,31 @@ public class GameBoardController {
         }
     }
 
+
+    private  void  setUserInformation(){
+        UserInformation user1 = new UserInformation(GameManager.getInstance().getPlayerIndex(0));
+        UserInformation user2 = new UserInformation(GameManager.getInstance().getPlayerIndex(1));
+        PlayerTurn playerTurn = new PlayerTurn(GameManager.getInstance().getActivePlayer());
+
+       /* VBox turnInformation = new VBox(20);
+        turnInformation.setPadding(new Insets(20,5,5,45));
+        Label turnWriting = new Label("Turn Of");
+        turnWriting.setMinWidth(50);
+        turnWriting.setMinHeight(50);
+        Label activePlayerTurn = new Label(GameManager.getInstance().getActivePlayer().getName());
+        activePlayerTurn.setMinWidth(30);
+        activePlayerTurn.setMinHeight(30);
+        turnInformation.getChildren().add(turnWriting);
+        turnInformation.getChildren().add(activePlayerTurn);*/
+
+
+
+        userInformation.getChildren().add(user1);
+        userInformation.getChildren().add(user2);
+        userInformation.getChildren().add(playerTurn);
+     //   userInformation.getChildren().add(turnInformation);
+
+    }
 
 
     private void constructSpaces() {

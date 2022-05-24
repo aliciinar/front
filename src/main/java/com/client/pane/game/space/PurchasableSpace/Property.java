@@ -1,5 +1,7 @@
 package com.client.pane.game.space.PurchasableSpace;
 
+import com.client.controller.observer.IObserverText;
+import com.client.game.Managers.SpaceManager;
 import com.client.pane.game.player.IPlayer;
 
 
@@ -22,6 +24,8 @@ public class Property extends SpaceDeed {
 
     public void Purchase(IPlayer player ){
 
+
+
         System.out.println("Normal Player Purchase");
         System.out.println("Alan Adı " + getName() + " Cost " + cost);
         System.out.println("Sahip Olacak Kişi " + player.getName());
@@ -33,7 +37,8 @@ public class Property extends SpaceDeed {
         System.out.println("SAhip: " + player.getName());
         System.out.println("Sahipin Parası: " + player.getMoney());
         System.out.println("Sahibim : " + owner.getName());
-
+        player.setScore(cost);
+        updateObserver(player);
         state = new Purchased();
 
     }

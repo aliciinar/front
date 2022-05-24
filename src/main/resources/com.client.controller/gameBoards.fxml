@@ -14,7 +14,7 @@
    <children>
       <VBox prefHeight="769.0" prefWidth="1044.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="1023.0" />
+            <HBox fx:id="userInformation" prefHeight="100.0" prefWidth="1023.0" />
             <Pane prefHeight="672.0" prefWidth="1044.0">
                <children>
                   <HBox prefHeight="671.0" prefWidth="1044.0">

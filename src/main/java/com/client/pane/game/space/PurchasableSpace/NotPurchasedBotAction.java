@@ -14,6 +14,7 @@ public class NotPurchasedBotAction implements INotPurchasedAction {
             // todo AI of the bot
             if(player.getMoney() > 300){
                 deed.Purchase(player);
+
                 GameManager.getInstance().getSceneType().endTurn();
                 return  new Purchased();
             }

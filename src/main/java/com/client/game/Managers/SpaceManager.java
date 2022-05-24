@@ -1,5 +1,7 @@
 package com.client.game.Managers;
 
+import com.client.controller.observer.IObserverText;
+
 import com.client.pane.game.space.ISpace;
 import com.client.controller.gameboard.BoardSpace;
 import com.client.pane.game.space.SpaceCreation.ISpaceCreatorFactory;
@@ -32,6 +34,14 @@ public class SpaceManager {
          return    spaceCreatorFactory.createSpaces();
     }
 
+
+    public IObserverText getBoardSpace(ISpace space){
+        for (BoardSpace board: boardSpaces) {
+            if(space.equals(board.getSpace()))
+            return  board;
+        }
+        return  null;
+    }
 
 
 }
