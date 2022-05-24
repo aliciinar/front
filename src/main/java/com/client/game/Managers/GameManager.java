@@ -75,7 +75,6 @@ public class GameManager {
         IPlayer activePlayer = players.get(playerNumber); // active player
         activePlayer.movePlayer(rollValue); // set new position of player
         activePlayer.action( SpaceManager.getInstance().getSpace(activePlayer.getPosition()),dice1,dice2);
-
         // System.out.println("hareket bitti");
         //System.out.println(activePlayer.getName());
         // System.out.println(activePlayer.getMoney());
@@ -100,6 +99,7 @@ public class GameManager {
     public  void  purchaseAction(){
         boolean purchase = getActivePlayer().purchaseSpace(currentDeed.GetCost());
         if(purchase){
+
             currentDeed.Purchase(getActivePlayer());
         }else{
 
