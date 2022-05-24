@@ -1,17 +1,17 @@
-package com.client.pane.game;
+package com.client.controller.gameboard;
 
 
-import com.client.pane.game.Player.IPlayer;
+import com.client.pane.game.player.IPlayer;
 import com.client.pane.game.space.ISpace;
-import com.client.pane.game.space.NotPurchasableSpace.StartingPoint;
+
 import javafx.geometry.Pos;
-import javafx.scene.Group;
+
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import javax.swing.*;
+
 
 public class BoardSpace extends VBox {
 

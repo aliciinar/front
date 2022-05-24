@@ -1,7 +1,7 @@
 package com.client.game.Managers;
 
 import com.client.pane.game.space.ISpace;
-import com.client.pane.game.BoardSpace;
+import com.client.controller.gameboard.BoardSpace;
 import com.client.pane.game.space.SpaceCreation.ISpaceCreatorFactory;
 import com.client.pane.game.space.SpaceCreation.NormalCreation;
 

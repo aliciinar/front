@@ -1,12 +1,18 @@
-package com.client.pane.game.Player;
+package com.client.pane.game.player;
+
+import com.client.pane.game.player.playerActionStates.PlayerNotPrison;
 
 public class BotAI extends  PlayerAbstract{
+
+
 
     public BotAI( ){
 
         this.money = 1500;
         this.position = 0;
         this.state = new PlayerNotPrison();
+
+        this.userType =  UserType.Bot;
     }
 
     @Override
@@ -16,4 +22,13 @@ public class BotAI extends  PlayerAbstract{
         }
         return  false;
     }
+
+    @Override
+    public UserType getUserType() {
+        return  userType;
+    }
+
+
+
+
 }

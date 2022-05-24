@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="769.0" prefWidth="1044.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.client.pane.game.GameBoard">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="769.0" prefWidth="1044.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.client.controller.gameboard.GameBoardController">
    <children>
       <VBox prefHeight="769.0" prefWidth="1044.0">
          <children>
@@ -50,6 +50,7 @@
                               <Button fx:id="rollButton" layoutX="273.0" layoutY="250.0" mnemonicParsing="false" onAction="#rollPressed" prefHeight="51.0" prefWidth="90.0" text="Roll" />
                                <Button fx:id="endTurnButton" layoutX="50.0" layoutY="450.0" mnemonicParsing="false" onAction="#endTurnPressed" prefHeight="51.0" prefWidth="150.0" text="End Turn" />
                                <Button fx:id="purchaseButton" layoutX="220.0" layoutY="450.0" mnemonicParsing="false" onAction="#purchasePressed" prefHeight="51.0" prefWidth="150.0" text="Purchase" />
+                               <Button fx:id="playTimeInJail" layoutX="150" layoutY="550.0" mnemonicParsing="false" onAction="#jailTime" prefHeight="51.0" prefWidth="150.0" text="JailTime" />
                            </children></Pane>
                      </children>
                   </HBox>
