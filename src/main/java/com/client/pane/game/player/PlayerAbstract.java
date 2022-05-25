@@ -97,6 +97,7 @@ public abstract class PlayerAbstract  implements  IPlayer{
         if(getMoney() > spacePrice){
             return  true;
         }
+        
         return  false;
     }
 
