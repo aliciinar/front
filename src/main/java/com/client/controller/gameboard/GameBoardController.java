@@ -6,14 +6,12 @@ import com.client.game.Managers.GameManager;
 import com.client.game.Managers.SpaceManager;
 import com.client.pane.Session;
 import com.client.pane.game.player.IPlayer;
-import com.client.pane.game.space.SpaceCreation.ISpaceCreatorFactory;
-import com.client.pane.game.space.SpaceCreation.NormalCreation;
+import com.client.pane.game.space.spaceCreation.ISpaceCreatorFactory;
+import com.client.pane.game.space.spaceCreation.NormalCreation;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -50,15 +48,15 @@ public class GameBoardController {
     @FXML
     Button playTimeInJail;
 
-    private List<BoardSpace> spaces = new ArrayList<>();
+    private List<BoardSpaceController> spaces = new ArrayList<>();
     private List<ImageView> images = new ArrayList<>();
 
     int playerTurn = 0;
 
     @FXML
-    public void initialize() {
+    public void initialize() { // initialize the game
 
-        StageController.screenController.getScene().setOnKeyPressed(e -> {
+        StageController.screenController.getScene().setOnKeyPressed(e -> { // event for CTRL + 9 event. Finish the game when this event called
 
             if (e.getCode() == KeyCode.DIGIT9 && e.isControlDown()) {
                 int imageIndex = GameManager.getInstance().getActivePlayerTurn();
@@ -67,18 +65,19 @@ public class GameBoardController {
                 spaces.get((8) % spaces.size()).putImage(images.get(imageIndex));
                 activePlayer.moneyTransition(-10000000);
                 endGame();
-                System.out.println("A key was pressed");
+
             }
         });
-        constructSpaces();
+
+        constructSpaces(); // prepare spaces and set to the game board
 
         GameManager.getInstance().setGameBoard(this);
         activateButtons(false , true , true , true);
-        setImages();
-        setPlayers();
-        setUserInformation();
+        setImages(); // prepare images on players
+        setPlayers(); // set players
+        setUserInformation(); // set UserInformations
 
-        for(BoardSpace space : spaces){
+        for(BoardSpaceController space : spaces){
             gameBoardGrid.add(space , space.getGridX() , space.getGridY());
         }
 
@@ -89,8 +88,7 @@ public class GameBoardController {
 
 
     @FXML
-    public  void  purchasePressed(ActionEvent event){
-        System.out.println("Game Board purchase Pressed");
+    public  void  purchasePressed(ActionEvent event){ // purchase button event
         activateButtons(true, true,false,true);
         GameManager.getInstance().purchaseAction();
     }
@@ -101,10 +99,9 @@ public class GameBoardController {
     }
 
     @FXML
-    public  void  endTurnPressed(ActionEvent event){
-        //endTurn();
-        System.out.println("Game Board End Turn Pressed");
-        GameManager.getInstance().nextTurn();
+    public  void  endTurnPressed(ActionEvent event){ // end turn button event
+
+        GameManager.getInstance().nextTurn(); // prepare scene for next round
 
     }
 
@@ -113,13 +110,13 @@ public class GameBoardController {
 
 
     @FXML
-    public  void  rollPressed(ActionEvent event){
+    public  void  rollPressed(ActionEvent event){ // roll button event
         activateButtons(true,true,true,true);
-        roll();
+        roll(); // roll the dice
 
     }
 
-    public void endGame() {
+    public void endGame() { // game finished prepare score scene
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("End Game");
         alert.setHeaderText("Game Ended");
@@ -131,14 +128,14 @@ public class GameBoardController {
         GameManager.destroy();
     }
 
-    public   void  activateButtons(boolean rollButtonSet , boolean purchaseButtonSet , boolean endTurnButtonSet, boolean jailTime){
+    public   void  activateButtons(boolean rollButtonSet , boolean purchaseButtonSet , boolean endTurnButtonSet, boolean jailTime){ // activate buttons
         rollButton.setDisable(rollButtonSet);
         purchaseButton.setDisable(purchaseButtonSet);
         endTurnButton.setDisable(endTurnButtonSet);
         playTimeInJail.setDisable(jailTime);
     }
 
-    public void roll() {
+    public void roll() { // animation for roll animation
 
         activateButtons(true,true,true,true);
 
@@ -183,7 +180,7 @@ public class GameBoardController {
         });
         taskThread.start();
     }
-    public void movePlayer(int dice1, int dice2) {
+    public void movePlayer(int dice1, int dice2) { // animation for move
 
         final int  diceVal = dice1 + dice2;
         final  int dice1Val = dice1;
@@ -194,7 +191,6 @@ public class GameBoardController {
                 IPlayer player = GameManager.getInstance().getActivePlayer(); // active player of the game
                 int startPos = player.getPosition();
                 int imageIndex = GameManager.getInstance().getActivePlayerTurn();
-               // System.out.println("Hareket eden kral"  + player.getName()+ "pozisyonym: " + startPos);
                 for(int i = 0; i < diceVal; i++){
 
                     try {
@@ -211,7 +207,6 @@ public class GameBoardController {
                         }
                     });
                 }
-                //System.out.println("Move bitti");
                 GameManager.getInstance().play(dice1Val, dice2Val); // make actions in player according to the dice value
 
 
@@ -230,19 +225,17 @@ public class GameBoardController {
 
 
 
-    public void goJail(){
+    public void goJail(){ // set player GUI in jail
 
 
         IPlayer player = GameManager.getInstance().getActivePlayer(); // active player of the game
         int startPos = player.getPosition();
         int imageIndex = GameManager.getInstance().getActivePlayerTurn();
-        // todo hapse giderken buralar yorum satırına alındı sıkıntı çıkarsa diye
       //  int newPos = 4 - player.getPosition();
 
 
         spaces.get((startPos) % spaces.size()).removeImage(images.get(imageIndex));
         spaces.get((4) % spaces.size()).putImage(images.get(imageIndex));
-        //player.movePlayer(newPos);
         activateButtons(true,true,false,true);
     }
 
@@ -254,9 +247,7 @@ public class GameBoardController {
 
     private void setImages() {
         try {
-           // InputStream stream1 = new FileInputStream("C:\\Users\\Sait\\Desktop\\SE\\Ceng453-TermProject-Group-4-frontend\\src\\main\\resources\\images\\duck.jpg");
-           // InputStream stream2 = new FileInputStream("C:\\Users\\Sait\\Desktop\\SE\\Ceng453-TermProject-Group-4-frontend\\src\\main\\resources\\images\\reyiz.jpg");
-           InputStream stream1 = new FileInputStream("src/main/resources/images/duck.jpg");
+            InputStream stream1 = new FileInputStream("src/main/resources/images/duck.jpg");
             InputStream stream2 = new FileInputStream("src/main/resources/images/reyiz.jpg");
             Image image1 = new Image(stream1);
             Image image2 = new Image(stream2);
@@ -281,27 +272,13 @@ public class GameBoardController {
 
 
     private  void  setUserInformation(){
-        UserInformation user1 = new UserInformation(GameManager.getInstance().getPlayerIndex(0));
-        UserInformation user2 = new UserInformation(GameManager.getInstance().getPlayerIndex(1));
-        PlayerTurn playerTurn = new PlayerTurn(GameManager.getInstance().getActivePlayer());
-
-       /* VBox turnInformation = new VBox(20);
-        turnInformation.setPadding(new Insets(20,5,5,45));
-        Label turnWriting = new Label("Turn Of");
-        turnWriting.setMinWidth(50);
-        turnWriting.setMinHeight(50);
-        Label activePlayerTurn = new Label(GameManager.getInstance().getActivePlayer().getName());
-        activePlayerTurn.setMinWidth(30);
-        activePlayerTurn.setMinHeight(30);
-        turnInformation.getChildren().add(turnWriting);
-        turnInformation.getChildren().add(activePlayerTurn);*/
-
-
+        UserInformationController user1 = new UserInformationController(GameManager.getInstance().getPlayerIndex(0));
+        UserInformationController user2 = new UserInformationController(GameManager.getInstance().getPlayerIndex(1));
+        PlayerTurnController playerTurnController = new PlayerTurnController(GameManager.getInstance().getActivePlayer());
 
         userInformation.getChildren().add(user1);
         userInformation.getChildren().add(user2);
-        userInformation.getChildren().add(playerTurn);
-     //   userInformation.getChildren().add(turnInformation);
+        userInformation.getChildren().add(playerTurnController);
 
     }
 
@@ -315,7 +292,7 @@ public class GameBoardController {
 
         for(NormalCreation.GridCord space : spaceInformation){
 
-            spaces.add(new BoardSpace(width / 5 , height /5 , space.getSpace() , space.getxCor(), space.getyCor()) );
+            spaces.add(new BoardSpaceController(width / 5 , height /5 , space.getSpace() , space.getxCor(), space.getyCor()) );
         }
         SpaceManager.getInstance().setSpaces(spaces);
     }
