@@ -2,6 +2,10 @@ package com.client.pane.game.player;
 
 import com.client.pane.game.player.playerActionStates.PlayerNotPrisonState;
 
+/**
+ * a normal user is a player
+ */
+
 public class Player extends  PlayerAbstract{
     //a normal user is a player
 

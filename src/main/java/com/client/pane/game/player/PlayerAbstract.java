@@ -9,9 +9,12 @@ import com.client.pane.game.space.purchasableSpace.RailFerrySpace;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * abstract class of the player. general methods and attributes are implemented in here
+ */
 public abstract class PlayerAbstract  implements  IPlayer{
 
-    // abstract class of the player. general methods and attributes are implemented in here
+
 
 
 
