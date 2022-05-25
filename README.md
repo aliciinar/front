@@ -3,6 +3,9 @@
 # Demo video
 https://youtu.be/GDoJhrHV1DU
 
+# Test case scenarios are at
+src/test/java/com/client/TestCases.pdf
+
 # Requirements
 * To play the game please run **ClientApplication.java** file under the src/main/java/com/client/ClientApplication.java
 * Please read forget password section in the need of password reset.
