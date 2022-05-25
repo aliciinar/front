@@ -8,44 +8,106 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 
+
+/**
+ * interface of the player.this interface is extending IObservable in order to notify GUI when changes occur
+ */
 public interface IPlayer extends IObservable {
 
-     // interface of the player.this interface is extending IObservable in order to notify GUI when changes occur
 
+     /**
+      * get money of the player
+      * @return money
+      */
      int getMoney(); // get money of the player
 
-     String getName(); // get name of the player
+     /**
+      * get name of the player
+      * @return name
+      */
+     String getName();
 
-     int getPosition(); // get position of the player
+     /**
+      * // get position of the player
+      * @return pos
+      */
 
-     void purchaseSpecialTile(RailFerrySpace railFerrySpace); // purchase special tile which are rail way and ferry port
+     int getPosition();
 
+     /**
+      * // purchase special tile which are rail way and ferry port
+      * @param railFerrySpace
+      */
 
-     void moneyTransition(int amount); // player money is increase or decrease
+     void purchaseSpecialTile(RailFerrySpace railFerrySpace);
 
+     /**
+      * // player money is increase or decrease
+      * @param amount
+      */
+     void moneyTransition(int amount);
 
-     boolean purchaseSpace(int spacePrice); // purchase an deed
+     /**
+      * // purchase an deed
+      * @param spacePrice
+      * @return
+      */
+     boolean purchaseSpace(int spacePrice);
 
-     void movePlayer(int move); // set player new position according to the space index
+     /**
+      * // set player new position according to the space index
+      * @param move
+      */
+     void movePlayer(int move);
 
-     UserType getUserType(); // get user type of the player
+     /**
+      *  // get user type of the player
+      * @return
+      */
+     UserType getUserType();
 
-     void  action(ISpace space, int diceVal1, int diceVal2); // player is determining action according to the dice values.
-                                                            // player can be in prison , can go jail or can be in not prison and these are determined according to the states
-                                                            // this actions are determined with these method
-     // player determine its state according the roll value. After determining its state it give what will happen responsibility to the space
+     /**
+      * player is determining action according to the dice values.
+      * player can be in prison , can go jail or can be in not prison and these are determined according to the states
+      * this actions are determined with these method
+      *  player determine its state according the roll value. After determining its state it give what will happen responsibility to the space
+      * @param space
+      * @param diceVal1
+      * @param diceVal2
+      */
+     void  action(ISpace space, int diceVal1, int diceVal2);
 
-     boolean isNextTurn(); // check whether player  will play again or not
+     /**
+      * check whether player  will play again or not
+      * @return
+      */
+     boolean isNextTurn();
 
-     void  setNextTurn(boolean nextTurn); // set player will play again or not
+     /**
+      * set player will play again or not
+      * @param nextTurn
+      */
+     void  setNextTurn(boolean nextTurn); //
 
-     boolean isPrison(); // check whether the player in prison or not
+     /**
+      * // check whether the player in prison or not
+      * @return
+      */
+     boolean isPrison();
 
-     void  setPrison(boolean isPrison); // set the player in prison or not
+     /**
+      * // set the player in prison or not
+      * @param isPrison
+      */
+     void  setPrison(boolean isPrison);
 
-     void  checkFalseMoneyIncrease(boolean jailCheck);  // we are setting the player to jail after the GUI move.
-     // so if the player roll double three times and pass from start point it can create an false increase in money
-     // it is not suitable for oop but we can not find a suitable solution  because of time constraints
+     /**
+      * // we are setting the player to jail after the GUI move.
+      *   so if the player roll double three times and pass from start point it can create an false increase in money
+      *      // it is not suitable for oop but we can not find a suitable solution  because of time constraints
+      * @param jailCheck
+      */
+     void  checkFalseMoneyIncrease(boolean jailCheck);
 
      void  setScore(int price); // set score of the player
 
