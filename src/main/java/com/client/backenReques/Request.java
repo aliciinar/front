@@ -1,6 +1,7 @@
-package com.client;
+package com.client.backenReques;
 
 
+import com.client.ClientApplication;
 import com.client.dto.AddScoreDto;
 import com.client.dto.ForgetPasswordDto;
 import com.client.dto.LoginDto;
@@ -24,9 +25,19 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Html request are contained in this class
+ */
+
 public class Request {
 
-
+    /**
+     * Response getter for Http post request
+     * @param post
+     * @param params
+     * @return
+     * @throws IOException
+     */
     public String  getResponse(HttpPost post , StringEntity params) throws IOException {
         post.setEntity(params);
         post.setHeader("Content-type", "application/json");
@@ -48,6 +59,13 @@ public class Request {
         return "";
     }
 
+    /**
+     * Response getter for Http get Requests
+     * @param get
+     * @return
+     * @throws IOException
+     */
+
     public String getResponse(HttpGet get) throws IOException {
 
         HttpResponse response = ClientApplication.httpClient.execute(get);
@@ -68,6 +86,12 @@ public class Request {
         return "Error";
     }
 
+    /**
+     * Sets up login request to backend
+     * @param userName
+     * @param password
+     * @return
+     */
     public String loginRequest(String userName , String password){
         HttpPost post = new HttpPost(ClientApplication.backend + "login");
         try {
@@ -81,6 +105,13 @@ public class Request {
         return "";
     }
 
+    /**
+     * Sets up reqister request to the backend
+     * @param userName
+     * @param password
+     * @param email
+     * @return
+     */
     public String RegisterRequest(String userName , String password , String email) {
         HttpPost post = new HttpPost(ClientApplication.backend + "register");
         try {
@@ -94,6 +125,11 @@ public class Request {
         return "";
     }
 
+    /**
+     * Sets up forgot password request for the backend
+     * @param email
+     * @return
+     */
     public String forgotPasswordRequest(String email) {
         HttpPost post = new HttpPost(ClientApplication.backend + "forgot_password");
         try {
@@ -107,6 +143,11 @@ public class Request {
         return "";
     }
 
+    /**
+     * Get weekly scores
+     * @param token
+     * @return
+     */
     public JSONArray GetWeekTableRequest(String token) {
         HttpGet get = new HttpGet(ClientApplication.backend + "ScoresWeek");
         get.setHeader("Authorization", "Bearer " + token);
@@ -124,6 +165,11 @@ public class Request {
         return null;
     }
 
+    /**
+     * Get monthly scores
+     * @param token
+     * @return
+     */
     public JSONArray GetMonthTableRequest(String token) {
         HttpGet get = new HttpGet(ClientApplication.backend + "ScoresMonth");
         get.setHeader("Authorization", "Bearer " + token);
@@ -141,6 +187,12 @@ public class Request {
         return null;
     }
 
+    /**
+     * Http request to add a new score
+     * @param userName
+     * @param score
+     * @param token
+     */
     public void addScore(String userName , int score , String token) {
         HttpPost post = new HttpPost(ClientApplication.backend + "addScoreWeek");
         HttpPost post2 = new HttpPost(ClientApplication.backend + "addScoreMonth");

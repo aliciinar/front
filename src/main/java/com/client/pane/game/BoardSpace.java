@@ -1,10 +1,9 @@
-package com.client.controller.gameboard;
+package com.client.pane.game;
 
 
 import com.client.controller.observer.IObserverText;
 import com.client.game.Managers.GameManager;
 import com.client.pane.game.player.IPlayer;
-import com.client.pane.game.player.Player;
 import com.client.pane.game.space.ISpace;
 
 import javafx.application.Platform;
@@ -19,7 +18,10 @@ import javafx.scene.paint.Color;
 import java.util.HashMap;
 
 
-public class BoardSpaceController extends VBox  implements IObserverText {
+/**
+ * Gui's properties for the Spaces in the game
+ */
+public class BoardSpace extends VBox  implements IObserverText {
 
     //  this class is implementing spaces in GUI.
     // change values according to the price changes in GUI.
@@ -33,7 +35,7 @@ public class BoardSpaceController extends VBox  implements IObserverText {
 
     private HashMap<IPlayer,Color> color = new HashMap<>();
 
-    BoardSpaceController(Double width , Double height , ISpace space , int gridX , int gridY) {
+    BoardSpace(Double width , Double height , ISpace space , int gridX , int gridY) {
         this.width = width;
         this.height = height;
         this.gridX = gridX;

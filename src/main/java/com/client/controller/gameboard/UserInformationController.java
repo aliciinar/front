@@ -13,11 +13,19 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
+/**
+ * Update player info and gui according to the user.
+ */
 public class UserInformationController extends VBox implements IObserverText {
 
     Label money;
     Label score;
     IPlayer playerR;
+
+    /**
+     * initilize the player field of the gui
+     * @param player active player
+     */
     public UserInformationController(IPlayer player){
         player.addUserInformation(this);
         playerR = player;
@@ -31,7 +39,10 @@ public class UserInformationController extends VBox implements IObserverText {
 
     }
 
-
+    /**
+     * update user money and score then show the result at the gui
+     * @param player active player
+     */
     @Override
     public void updateOwner(IPlayer player) {
 

@@ -15,6 +15,9 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
+/**
+ * This class activates the game and set up the stage.
+ */
 @Component
 public class StageController implements ApplicationListener<StageInitializer.StageReadyEvent> {
 
@@ -25,6 +28,13 @@ public class StageController implements ApplicationListener<StageInitializer.Sta
     private double width , height;
     public static SceneController screenController;
 
+    /**
+     * Add static panes such. Panes that are same for every player.
+     * @param applicationTitle
+     * @param width
+     * @param height
+     * @param applicationContext
+     */
     public StageController(@Value("${spring.application.ui.title}") String applicationTitle, @Value("${spring.application.ui.width}") double width, @Value("${spring.application.ui.height}") double height , ApplicationContext applicationContext){
         this.applicationTitle = applicationTitle;
         this.applicationContext = applicationContext;
@@ -41,6 +51,10 @@ public class StageController implements ApplicationListener<StageInitializer.Sta
 
     }
 
+    /**
+     * Starts stage
+     * @param event
+     */
     @Override
     public void onApplicationEvent(StageInitializer.StageReadyEvent event) {
         Stage stage = event.getStage();

@@ -19,7 +19,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import org.springframework.beans.factory.annotation.Value;
 
-
+/**
+ * set up screen for the register pane
+ */
 public class Register extends GridPane{
 
     private TextField userTextField;

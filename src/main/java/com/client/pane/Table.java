@@ -15,6 +15,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 
+/**
+ * Set up tabs for the scores
+ */
 public class Table extends TableView {
 
     private final ObservableList<ScoreDto> data = FXCollections.observableArrayList( new ArrayList<ScoreDto>() );

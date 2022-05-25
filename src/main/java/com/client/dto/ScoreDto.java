@@ -1,5 +1,8 @@
 package com.client.dto;
 
+/**
+ * Converts Json to object.
+ */
 public class ScoreDto {
 
     private String name;

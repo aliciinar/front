@@ -18,7 +18,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-
+/**
+ *  Gui features for forget password screen
+ */
 public class ForgetPassword extends GridPane{
 
     private TextField emailTextField;
@@ -26,6 +28,11 @@ public class ForgetPassword extends GridPane{
 
     private double width,height;
 
+    /**
+     * initialize pane properties
+     * @param width /width of the game
+     * @param height /height of the game
+     */
     public ForgetPassword(Double width , Double height) {
             this.width = width;
             this.height = height;
@@ -45,6 +52,9 @@ public class ForgetPassword extends GridPane{
             addButtons();
     }
 
+    /**
+     * add button on the screen.
+     */
     private void addButtons(){
         HBox hbBtn = new HBox(10);
         hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
@@ -54,6 +64,10 @@ public class ForgetPassword extends GridPane{
 
     }
 
+    /**
+     * set up forget password button
+     * @return
+     */
     private Button addFPButton(){
         Button button = new Button("Reset Password");
         button.setPrefHeight(50);
@@ -77,7 +91,10 @@ public class ForgetPassword extends GridPane{
         return button;
     }
 
-
+    /**
+     * set up back button properties
+     * @return back button
+     */
     private Button addBackButton(){
         Button button = new Button("Back");
         button.setPrefHeight(50);
@@ -93,6 +110,10 @@ public class ForgetPassword extends GridPane{
         return button;
     }
 
+
+    /**
+     * email properties
+     */
     private void addEmail(){
         Label userName = new Label("E-mail:");
         userName.setFont(Font.font("Tahoma", FontWeight.NORMAL, 50));

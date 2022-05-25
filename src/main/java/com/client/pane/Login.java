@@ -42,6 +42,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * set up screen for the login page
+ */
 
 public class Login extends GridPane{
 
@@ -50,6 +53,12 @@ public class Login extends GridPane{
 
     private double width,height;
 
+
+    /**
+     *
+     * @param width
+     * @param height
+     */
     public Login(Double width , Double height) {
             this.width = width;
             this.height = height;

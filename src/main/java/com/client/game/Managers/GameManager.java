@@ -1,6 +1,6 @@
 package com.client.game.Managers;
 
-import com.client.controller.gameboard.GameBoardController;
+import com.client.pane.game.GameBoard;
 import com.client.controller.gameboard.sceneTypes.IPrepareScene;
 import com.client.controller.observer.IObservable;
 import com.client.controller.observer.IObserverText;
@@ -12,6 +12,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+
+/**
+ * Controls the game events.
+ * This class connect GUI to backend of the game
+ * What each method does is understandable from their names.
+ */
 public  class GameManager  implements IObservable {
     // this class manager of the game.
     // this class is determining next player or game finish or not
@@ -23,7 +29,7 @@ public  class GameManager  implements IObservable {
     private  List<IPlayer> players = new ArrayList<>(); // players of the game
     private HashMap<IPlayer, IPrepareScene> sceneType = new HashMap<>(); // hash map betweeen player and player scene type
     private int playerNumber = 0; // active Player  index
-    private GameBoardController gameBoardController;
+    private GameBoard gameBoardController;
     private SpaceDeed currentDeed;
     private  int dice1;
     private  int dice2;
@@ -54,11 +60,11 @@ public  class GameManager  implements IObservable {
 
     public  IPlayer getPlayerIndex(int i){ return  players.get(i);} // return active player with index
 
-    public  void  setGameBoard(GameBoardController gameBoardController){ this.gameBoardController = gameBoardController;} // set game board
+    public  void  setGameBoard(GameBoard gameBoardController){ this.gameBoardController = gameBoardController;} // set game board
 
     public  int getActivePlayerTurn() { return  playerNumber;}  // get active player turn
 
-    public GameBoardController getGameBoard(){return gameBoardController; }
+    public GameBoard getGameBoard(){return gameBoardController; }
 
     public  IPrepareScene getSceneType(){return   sceneType.get(players.get(playerNumber)); } // get scene type of according to the player
 

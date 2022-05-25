@@ -1,4 +1,4 @@
-package com.client.controller.gameboard;
+package com.client.pane.game;
 
 import com.client.controller.observer.IObserverText;
 import com.client.game.Managers.GameManager;
@@ -8,13 +8,21 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
-public class PlayerTurnController extends VBox implements IObserverText {
+/**
+ * Control the back side of the game when
+ * It updates Iplayer object. Effect is directly visible from the gui
+ */
+public class PlayerTurn extends VBox implements IObserverText {
     // GUI for showing current user.
     // Its an observer.
 
     Label activeUser;
 
-    public PlayerTurnController(IPlayer player){
+    /**
+     * Adjust player parameters
+     * @param player current player
+     */
+    public PlayerTurn(IPlayer player){
         GameManager.getInstance().addUserInformation(this); // set this to gameManager
 
         setPadding(new Insets(20,50,5,15));
@@ -26,9 +34,10 @@ public class PlayerTurnController extends VBox implements IObserverText {
     }
 
 
-
-
-
+    /**
+     * Player purchased the space so update the gui.
+     * @param player current player
+     */
 
     @Override
     public void updateOwner(IPlayer player) {

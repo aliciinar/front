@@ -1,7 +1,8 @@
-package com.client.controller.gameboard;
+package com.client.pane.game;
 
 import com.client.ClientApplication;
 import com.client.controller.StageController;
+import com.client.controller.gameboard.UserInformationController;
 import com.client.game.Managers.GameManager;
 import com.client.game.Managers.SpaceManager;
 import com.client.pane.Session;
@@ -27,7 +28,12 @@ import java.io.InputStream;
 import java.util.*;
 import java.util.List;
 
-public class GameBoardController {
+
+/**
+ * This class is called when player click play game button
+ * It connects every subcomponent of the game such as Player info, Game spaces, and game buttons.
+ */
+public class GameBoard {
 
     @FXML
     Button rollButton , purchaseButton , endTurnButton;
@@ -48,7 +54,7 @@ public class GameBoardController {
     @FXML
     Button playTimeInJail;
 
-    private List<BoardSpaceController> spaces = new ArrayList<>();
+    private List<BoardSpace> spaces = new ArrayList<>();
     private List<ImageView> images = new ArrayList<>();
 
     int playerTurn = 0;
@@ -77,7 +83,7 @@ public class GameBoardController {
         setPlayers(); // set players
         setUserInformation(); // set UserInformations
 
-        for(BoardSpaceController space : spaces){
+        for(BoardSpace space : spaces){
             gameBoardGrid.add(space , space.getGridX() , space.getGridY());
         }
 
@@ -274,7 +280,7 @@ public class GameBoardController {
     private  void  setUserInformation(){
         UserInformationController user1 = new UserInformationController(GameManager.getInstance().getPlayerIndex(0));
         UserInformationController user2 = new UserInformationController(GameManager.getInstance().getPlayerIndex(1));
-        PlayerTurnController playerTurnController = new PlayerTurnController(GameManager.getInstance().getActivePlayer());
+        PlayerTurn playerTurnController = new PlayerTurn(GameManager.getInstance().getActivePlayer());
 
         userInformation.getChildren().add(user1);
         userInformation.getChildren().add(user2);
@@ -292,7 +298,7 @@ public class GameBoardController {
 
         for(NormalCreation.GridCord space : spaceInformation){
 
-            spaces.add(new BoardSpaceController(width / 5 , height /5 , space.getSpace() , space.getxCor(), space.getyCor()) );
+            spaces.add(new BoardSpace(width / 5 , height /5 , space.getSpace() , space.getxCor(), space.getyCor()) );
         }
         SpaceManager.getInstance().setSpaces(spaces);
     }

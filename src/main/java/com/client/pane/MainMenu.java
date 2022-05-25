@@ -9,6 +9,9 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
 
+/**
+ * Set up screen for main menu
+ */
 public class MainMenu extends VBox {
 
 

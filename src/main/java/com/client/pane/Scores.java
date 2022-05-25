@@ -13,6 +13,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import org.json.JSONArray;
 
+/**
+ * set up screen for the scores pane
+ */
 public class Scores extends VBox {
 
     public Scores(Double width , Double height , JSONArray scoreWeeks , JSONArray scoreMonth){

@@ -21,6 +21,9 @@ import org.json.JSONArray;
 
 import java.io.IOException;
 
+/**
+ * set up screen for the session page
+ */
 public class Session extends VBox {
 
 

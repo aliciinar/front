@@ -5,7 +5,9 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-
+/**
+ * Converts Json to object.
+ */
 public class RegisterDto {
 
 
