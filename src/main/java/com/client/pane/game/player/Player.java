@@ -7,7 +7,6 @@ import com.client.pane.game.player.playerActionStates.PlayerNotPrisonState;
  */
 
 public class Player extends  PlayerAbstract{
-    //a normal user is a player
 
     public Player( String name ){
 

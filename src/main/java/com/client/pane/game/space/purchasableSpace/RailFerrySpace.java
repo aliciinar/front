@@ -4,8 +4,11 @@ import com.client.pane.game.player.IPlayer;
 import com.client.pane.game.space.purchasableSpace.deedState.NotPurchased;
 import com.client.pane.game.space.purchasableSpace.deedState.Purchased;
 
+/**
+ * Railways and Ferry port spaces implemented in this class
+ */
 public class RailFerrySpace extends SpaceDeed {
-    // Railways and Ferry port spaces implemented in this class
+
 
     public RailFerrySpace(String name , int cost){
         this.name = name;
@@ -14,20 +17,31 @@ public class RailFerrySpace extends SpaceDeed {
         state = new NotPurchased();
     }
 
-    @Override
-    public void action(IPlayer player) { // action of the Railways and Ferry port spaces
 
+    /**
+     *
+     * action of the Railways and Ferry port spaces
+     * @param player active Player
+     */
+
+    @Override
+    public void action(IPlayer player) {
         state = state.Action(player , this);
     }
 
-    public void purchase(IPlayer player ){ // buy this space
 
-        player.moneyTransition(-cost);  // player money should be decrease
-        player.purchaseSpecialTile(this); // player buy an special tile so rent of this special tile should be changed
-        setOwner(player); // set owner
-      //  this.rent = player.getNumOfSpecialTile() * rent; // set rent of this special tile according to the owner special tile count
-        player.setScore(cost); // set player new score
-        state = new Purchased(); // set new state
+    /**
+     *  buy a special tile
+     * @param player active player
+     */
+    public void purchase(IPlayer player ){
+
+        player.moneyTransition(-cost);
+        player.purchaseSpecialTile(this); //
+        setOwner(player);
+
+        player.setScore(cost);
+        state = new Purchased();
     }
 
     @Override

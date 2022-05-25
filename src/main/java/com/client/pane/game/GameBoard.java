@@ -59,6 +59,10 @@ public class GameBoard {
 
     int playerTurn = 0;
 
+
+    /**
+     * initialize the screen
+     */
     @FXML
     public void initialize() { // initialize the game
 
@@ -75,13 +79,13 @@ public class GameBoard {
             }
         });
 
-        constructSpaces(); // prepare spaces and set to the game board
+        constructSpaces();
 
         GameManager.getInstance().setGameBoard(this);
         activateButtons(false , true , true , true);
-        setImages(); // prepare images on players
-        setPlayers(); // set players
-        setUserInformation(); // set UserInformations
+        setImages();
+        setPlayers();
+        setUserInformation();
 
         for(BoardSpace space : spaces){
             gameBoardGrid.add(space , space.getGridX() , space.getGridY());
@@ -92,9 +96,13 @@ public class GameBoard {
     }
 
 
+    /**
+     * purchase button event
+     * @param event
+     */
 
     @FXML
-    public  void  purchasePressed(ActionEvent event){ // purchase button event
+    public  void  purchasePressed(ActionEvent event){
         activateButtons(true, true,false,true);
         GameManager.getInstance().purchaseAction();
     }
@@ -104,25 +112,36 @@ public class GameBoard {
         GameManager.getInstance().jailTime();
     }
 
-    @FXML
-    public  void  endTurnPressed(ActionEvent event){ // end turn button event
 
-        GameManager.getInstance().nextTurn(); // prepare scene for next round
+    /**
+     * end turn button event
+     * prepare scene for next round
+     * @param event
+     */
+    @FXML
+    public  void  endTurnPressed(ActionEvent event){
+
+        GameManager.getInstance().nextTurn();
 
     }
 
 
-
-
+    /**
+     * roll button event
+     * @param event
+     */
 
     @FXML
-    public  void  rollPressed(ActionEvent event){ // roll button event
+    public  void  rollPressed(ActionEvent event){
         activateButtons(true,true,true,true);
         roll(); // roll the dice
 
     }
 
-    public void endGame() { // game finished prepare score scene
+    /**
+     * game finished prepare score scene
+     */
+    public void endGame() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("End Game");
         alert.setHeaderText("Game Ended");
@@ -134,14 +153,24 @@ public class GameBoard {
         GameManager.destroy();
     }
 
-    public   void  activateButtons(boolean rollButtonSet , boolean purchaseButtonSet , boolean endTurnButtonSet, boolean jailTime){ // activate buttons
+    /**
+     * activate buttons
+     * @param rollButtonSet rollbutton
+     * @param purchaseButtonSet purchaseButton
+     * @param endTurnButtonSet endTurnButton
+     * @param jailTime jailTimeButton
+     */
+    public   void  activateButtons(boolean rollButtonSet , boolean purchaseButtonSet , boolean endTurnButtonSet, boolean jailTime){
         rollButton.setDisable(rollButtonSet);
         purchaseButton.setDisable(purchaseButtonSet);
         endTurnButton.setDisable(endTurnButtonSet);
         playTimeInJail.setDisable(jailTime);
     }
 
-    public void roll() { // animation for roll animation
+    /**
+     *  animation for roll animation
+     */
+    public void roll() {
 
         activateButtons(true,true,true,true);
 
@@ -186,7 +215,13 @@ public class GameBoard {
         });
         taskThread.start();
     }
-    public void movePlayer(int dice1, int dice2) { // animation for move
+
+    /**
+     * animation for move
+     * @param dice1 dice value
+     * @param dice2  dice value
+     */
+    public void movePlayer(int dice1, int dice2) {
 
         final int  diceVal = dice1 + dice2;
         final  int dice1Val = dice1;
@@ -194,7 +229,7 @@ public class GameBoard {
         Thread taskThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                IPlayer player = GameManager.getInstance().getActivePlayer(); // active player of the game
+                IPlayer player = GameManager.getInstance().getActivePlayer();
                 int startPos = player.getPosition();
                 int imageIndex = GameManager.getInstance().getActivePlayerTurn();
                 for(int i = 0; i < diceVal; i++){
@@ -213,7 +248,7 @@ public class GameBoard {
                         }
                     });
                 }
-                GameManager.getInstance().play(dice1Val, dice2Val); // make actions in player according to the dice value
+                GameManager.getInstance().play(dice1Val, dice2Val);
 
 
             }
@@ -230,11 +265,13 @@ public class GameBoard {
     }
 
 
+    /**
+     * set player GUI in jail
+     */
+    public void goJail(){
 
-    public void goJail(){ // set player GUI in jail
 
-
-        IPlayer player = GameManager.getInstance().getActivePlayer(); // active player of the game
+        IPlayer player = GameManager.getInstance().getActivePlayer();
         int startPos = player.getPosition();
         int imageIndex = GameManager.getInstance().getActivePlayerTurn();
       //  int newPos = 4 - player.getPosition();
@@ -245,12 +282,17 @@ public class GameBoard {
         activateButtons(true,true,false,true);
     }
 
-
+    /**
+     * set players
+     */
     private void setPlayers() {
         spaces.get(GameManager.getInstance().getPlayerIndex(0).getPosition()).putImage(images.get(0));
         spaces.get(GameManager.getInstance().getPlayerIndex(1).getPosition()).putImage(images.get(1));
     }
 
+    /**
+     * set ımages
+     */
     private void setImages() {
         try {
             InputStream stream1 = new FileInputStream("src/main/resources/images/duck.jpg");
@@ -276,7 +318,9 @@ public class GameBoard {
         }
     }
 
-
+    /**
+     * set user ınformations
+     */
     private  void  setUserInformation(){
         UserInformationController user1 = new UserInformationController(GameManager.getInstance().getPlayerIndex(0));
         UserInformationController user2 = new UserInformationController(GameManager.getInstance().getPlayerIndex(1));
@@ -288,7 +332,9 @@ public class GameBoard {
 
     }
 
-
+    /**
+     * set baord spaces
+     */
     private void constructSpaces() {
         double width = 800;
         double height = 800;

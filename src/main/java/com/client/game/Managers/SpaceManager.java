@@ -11,11 +11,11 @@ import com.client.pane.game.space.spaceCreation.NormalCreation;
 import java.util.List;
 
 
-/**
- * This class mainly connects spaces from to gui to Ispaces class
- */
-public class SpaceManager {
 
+public class SpaceManager {
+    /**
+     * This class mainly connects spaces from to gui to Ispaces class
+     */
     private  static  SpaceManager instance = null;
     private List<BoardSpace> boardSpaceControllers = new ArrayList<>();
     public  static  synchronized  SpaceManager getInstance(){

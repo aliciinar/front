@@ -4,9 +4,11 @@ import com.client.pane.game.player.IPlayer;
 import com.client.pane.game.space.purchasableSpace.deedState.NotPurchased;
 import com.client.pane.game.space.purchasableSpace.deedState.Purchased;
 
-
+/**
+ * this class is implemented property spaces. State of this class is not purchased when its instantiated.
+ */
 public class Property extends SpaceDeed {
-    // this class is implemented property spaces. State of this class is not purchased when its instantiated.
+
 
     public Property(String name , int cost  ){
         this.name = name;
@@ -15,8 +17,12 @@ public class Property extends SpaceDeed {
         state = new NotPurchased();
     }
 
+    /**
+     * player on this space do the action according to the its state
+     * @param player
+     */
     @Override
-    public void action(IPlayer player) { // player on this space do the action according to the its state
+    public void action(IPlayer player) { //
        // System.out.println("Propery," + name + "player" + player.getName() );
 
      state = state.Action(player , this);

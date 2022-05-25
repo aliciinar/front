@@ -6,10 +6,13 @@ import com.client.pane.game.player.IPlayer;
 import com.client.pane.game.space.ISpace;
 import javafx.application.Platform;
 
+/**
+ * player roll double three time so player will go prison
+ */
 public class PlayerWillGoPrisonState implements IPlayerState {
     @Override
-    public IPlayerState Play(IPlayer player, int diceValue1, int diceValue2, ISpace space) { // player roll double three time so player will go prison
-        player.setNextTurn(true); // next player will play game
+    public IPlayerState Play(IPlayer player, int diceValue1, int diceValue2, ISpace space) {
+        player.setNextTurn(true);
         player.setPrison(true);
 
         Thread taskThread = new Thread(new Runnable() {

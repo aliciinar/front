@@ -17,12 +17,13 @@ import java.util.List;
  * Controls the game events.
  * This class connect GUI to backend of the game
  * What each method does is understandable from their names.
+ * this class manager of the game.
+ *  this class is determining next player or game finish or not
+ *   also this class is do some connection between space and player
+ *    this class is single and needed to reached from other classes so we use singleton
  */
 public  class GameManager  implements IObservable {
-    // this class manager of the game.
-    // this class is determining next player or game finish or not
-    // also this class is do some connection between space and player
-    // this class is single and needed to reached from other classes so we use singleton
+
 
     private  static  GameManager instance = null;
 
@@ -54,23 +55,45 @@ public  class GameManager  implements IObservable {
     }
 
 
+    /**
+     *
+     * @return return active player
+     */
 
-    public  IPlayer getActivePlayer(){ return  players.get(playerNumber); } // return active player
+    public  IPlayer getActivePlayer(){ return  players.get(playerNumber); }
 
+    /**
+     *
+     * @param i integer
+     * @return return active player with index
+     */
+    public  IPlayer getPlayerIndex(int i){ return  players.get(i);} //
 
-    public  IPlayer getPlayerIndex(int i){ return  players.get(i);} // return active player with index
+    /**
+     * set game board
+     * @param gameBoardController
+     */
+    public  void  setGameBoard(GameBoard gameBoardController){ this.gameBoardController = gameBoardController;}
 
-    public  void  setGameBoard(GameBoard gameBoardController){ this.gameBoardController = gameBoardController;} // set game board
-
-    public  int getActivePlayerTurn() { return  playerNumber;}  // get active player turn
+    /**
+     *
+     * @return get active player turn
+     */
+    public  int getActivePlayerTurn() { return  playerNumber;}
 
     public GameBoard getGameBoard(){return gameBoardController; }
 
-    public  IPrepareScene getSceneType(){return   sceneType.get(players.get(playerNumber)); } // get scene type of according to the player
+    /**
+     *
+     * @return get scene type of according to the player
+     */
+    public  IPrepareScene getSceneType(){return   sceneType.get(players.get(playerNumber)); }
 
     public  void  setDeed(SpaceDeed spaceDeed){ this.currentDeed = spaceDeed;}
 
-
+    /**
+     *
+     */
 
     public  void  nextTurn(){ // end turn botton is finished so next turn will be started. determine next player and prepare scene
         playerTurn();  // determine next player
@@ -113,7 +136,11 @@ public  class GameManager  implements IObservable {
 
     }
 
-    public  void  purchaseAction(){ // player pressed purchase button so purchase the space
+    /**
+     * player pressed purchase button so purchase the space
+     */
+
+    public  void  purchaseAction(){
         boolean purchase = getActivePlayer().purchaseSpace(currentDeed.getCost());
         if(purchase){
 
@@ -123,23 +150,33 @@ public  class GameManager  implements IObservable {
     }
 
 
+    /**
+     * player in Go Jail space so player will go jail
+     * set image of the player in jail space in GUI
+     * set new position of the player
+     * set jail Position of the player
+     */
+    public  void  goJail(){
 
-    public  void  goJail(){ // player in Go Jail space so player will go jail
-
-        gameBoardController.goJail();  // set image of the player in jail space in GUI
-        int newPos = 4 - getActivePlayer().getPosition(); // new position of the player
-        getActivePlayer().movePlayer(newPos); // set jail Position of the player
+        gameBoardController.goJail();
+        int newPos = 4 - getActivePlayer().getPosition();
+        getActivePlayer().movePlayer(newPos);
     }
 
-
-    public  void  endTurn(){ // set end turn button
+    /**
+     * set end turn button
+     */
+    public  void  endTurn(){
 
         sceneType.get(players.get(playerNumber)).endTurn();
 
 
     }
 
-    public  void  jailTime(){ // jail time button is pressed
+    /**
+     * jail time button is pressed
+     */
+    public  void  jailTime(){
         IPlayer activePlayer = getActivePlayer();
         activePlayer.action( SpaceManager.getInstance().getSpace(4),dice1,dice2);
         endTurn();
@@ -147,8 +184,11 @@ public  class GameManager  implements IObservable {
     }
 
 
-
-    public  boolean  gameFinishCheck(){ // check whether the game is over  or not
+    /**
+     *
+     * @return check whether the game is over  or not
+     */
+    public  boolean  gameFinishCheck(){
         for (IPlayer player: players) {
             if(player.getMoney() < 0){
                 return  true;
@@ -158,17 +198,23 @@ public  class GameManager  implements IObservable {
         return  false;
     }
 
-
+    /**
+     * notify observers in user information GUI when turn ended
+     */
     @Override
-    public void notifyObservers() { // notify observers in user information GUI when turn ended
+    public void notifyObservers() {
 
         for (IObserverText observable:observables) {
             observable.updateOwner(getActivePlayer());
         }
     }
 
+    /**
+     * add user information observers
+     * @param observerText
+     */
     @Override
-    public void addUserInformation(IObserverText observerText) { // add user information observers
+    public void addUserInformation(IObserverText observerText) {
         observables.add(observerText);
     }
 }

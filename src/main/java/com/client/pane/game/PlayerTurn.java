@@ -13,8 +13,6 @@ import javafx.scene.layout.VBox;
  * It updates Iplayer object. Effect is directly visible from the gui
  */
 public class PlayerTurn extends VBox implements IObserverText {
-    // GUI for showing current user.
-    // Its an observer.
 
     Label activeUser;
 

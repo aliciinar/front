@@ -5,8 +5,10 @@ import com.client.game.Managers.GameManager;
 import com.client.pane.game.player.IPlayer;
 import com.client.pane.game.space.ISpace;
 
+/**
+ *     // player not in prison. Player can roll double and in this state we determine player will play again or not
+ */
 public class PlayerNotPrisonState implements IPlayerState {
-    // player not in prison. Player can roll double and in this state we determine player will play again or not
     private int diceThrow; // player will have 3 diceThrow. If player roll double it will increase 1
                             // if diceThrow equal to 0 player will go jail
 
@@ -15,6 +17,8 @@ public class PlayerNotPrisonState implements IPlayerState {
 
 
     }
+
+
 
     @Override
     public IPlayerState Play(IPlayer player , int diceValue1, int diceValue2, ISpace space) {
@@ -55,23 +59,30 @@ public class PlayerNotPrisonState implements IPlayerState {
 
     }
 
-
+    /**
+     * if diceValue1 roll equal to diceVal2 this roll value player check whether player roll again or go jail
+     *
+     * @param player active player
+     * @param diceValue1 current value of dice Value1
+     * @param diceValue2 current value of dice Value2
+     * @return new state
+     */
 
     @Override
     public IPlayerState determineState(IPlayer player, int diceValue1, int diceValue2) {
         int diceValue = diceThrow;
-        if(diceValue1 == diceValue2){// if diceValue1 roll equal to this roll value player check whether player roll again or go jail
+        if(diceValue1 == diceValue2){
             diceValue -=1;
-            if(diceValue == 0){ // player should go to prison
+            if(diceValue == 0){
                 player.setPrison(true);
                 return  new PlayerWillGoPrisonState();
 
-            }else{ // player should roll again
+            }else{
 
                 return  this;
             }
 
-        }else{ // normal play
+        }else{
 
 
             return  this;

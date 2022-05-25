@@ -4,7 +4,9 @@ import com.client.pane.game.player.IPlayer;
 import com.client.pane.game.space.AbstractSpace;
 import javafx.application.Platform;
 
-
+/**
+ * Go to jail class
+ */
 public class GoJail  extends AbstractSpace {
 
     private final int jailLocation = 0;

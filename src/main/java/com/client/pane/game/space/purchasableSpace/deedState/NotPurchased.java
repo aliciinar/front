@@ -9,18 +9,24 @@ import com.client.pane.game.space.purchasableSpace.notPurchasedAction.NotPurchas
 
 import java.util.HashMap;
 
-
+/**
+ *   Not purchased state of the property. Player can buy that space
+ *   not purchased state action is determined according to the player  which are notPurchasedBotAction and notPurcasedUserAction
+ *    a player can buy this space. bot purchase logic is determined in notPurchasedBotAction action
+ */
 public class NotPurchased implements ISpaceState {
 
-    // Not purchased state of the property. Player can buy that space
-    // not purchased state action is determined according to the player  which are notPurchasedBotAction and notPurcasedUserAction
-    // a player can buy this space. // bot purchase logic is determined in notPurchasedBotAction action
+
     private HashMap<UserType, INotPurchasedAction> actionType = new HashMap<>();
 
+
+    /**
+     * hash map between bot and  INotPurchasedAction
+     */
     public  NotPurchased(){
 
-        actionType.put(UserType.Bot,new NotPurchasedBotAction()); // hash map between bot and  INotPurchasedAction
-        actionType.put(UserType.User, new NotPurchasedUserAction()); // hash map between user and INotPurchasedAction
+        actionType.put(UserType.Bot,new NotPurchasedBotAction());
+        actionType.put(UserType.User, new NotPurchasedUserAction());
 
     }
 

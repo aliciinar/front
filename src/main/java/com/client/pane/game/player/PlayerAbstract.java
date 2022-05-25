@@ -40,9 +40,12 @@ public abstract class PlayerAbstract  implements  IPlayer{
     protected  List<RailFerrySpace> specialSpaces = new ArrayList<>();
 
 
-
+    /**
+     * purchase a special tile  which are railways and ferry port.
+     * @param railFerrySpace
+     */
     @Override
-    public void purchaseSpecialTile(RailFerrySpace railFerrySpace){ // purchase a special tile  which are railways and ferry port.
+    public void purchaseSpecialTile(RailFerrySpace railFerrySpace){
 
         specialSpaces.add(railFerrySpace);
         int rent = 25 * specialSpaces.size();
@@ -83,10 +86,15 @@ public abstract class PlayerAbstract  implements  IPlayer{
         notifyObservers(); // notify GUI
     }
 
+    /**
+     * set position of the player according to space index
+     * if player pass start point ,ncrease money of the player since it is go through start point but not  stop in start point
+     * @param move roll value
+     */
     @Override
-    public void movePlayer(int move){ // set position of the player according to space index
+    public void movePlayer(int move){ //
         if((position + move ) > 17){
-            moneyTransition(100); // increase money of the player since it is go through start point but not  stop in start point
+            moneyTransition(100);
             startPassMoneyChange = true;
         }
         position = (position + move) % 16;
@@ -95,8 +103,14 @@ public abstract class PlayerAbstract  implements  IPlayer{
 
     }
 
+
+    /**
+     * determine player can buy a space or not
+     * @param spacePrice price of the space
+     * @return if player can buy return true
+     */
     @Override
-    public boolean purchaseSpace(int spacePrice) { // determine player can buy a space or not
+    public boolean purchaseSpace(int spacePrice) {
         if(getMoney() > spacePrice){
             return  true;
         }
@@ -104,17 +118,29 @@ public abstract class PlayerAbstract  implements  IPlayer{
         return  false;
     }
 
-
+    /**
+     * action of the player according the roll values
+     * determine the state according to the dice values
+     * make action with states
+     * @param space current space
+     * @param diceVal1 value of dice
+     * @param diceVal2 value of dice
+     */
     @Override
-    public void action(ISpace space, int diceVal1, int diceVal2) { //  action of the player according the roll values
-        state =    state.determineState(this,diceVal1,diceVal2);  // determine the state according to the dice values
-        state =   state.Play(this,diceVal1,diceVal2,space); // make action with states
+    public void action(ISpace space, int diceVal1, int diceVal2) {
+        state =    state.determineState(this,diceVal1,diceVal2);
+        state =   state.Play(this,diceVal1,diceVal2,space);
 
 
     }
 
+
+    /**
+     * check whether we increase money falsely or not
+     * @param jailCheck local jail check value
+     */
     @Override
-    public  void checkFalseMoneyIncrease(boolean jailCheck){ // check whether we increase money falsely or not
+    public  void checkFalseMoneyIncrease(boolean jailCheck){
         if(jailCheck && startPassMoneyChange){
             moneyTransition( -100);
         }
@@ -122,13 +148,21 @@ public abstract class PlayerAbstract  implements  IPlayer{
 
     }
 
+    /**
+     * add observer
+     * @param observerText observer
+     */
     @Override
-    public void  addUserInformation(IObserverText observerText){ //  add observer
+    public void  addUserInformation(IObserverText observerText){
         playerInformation.add(observerText);
     }
 
+
+    /**
+     * notify observers
+     */
     @Override
-    public  void  notifyObservers(){ // notify observer
+    public  void  notifyObservers(){
 
         for (IObserverText observerText: playerInformation) {
             observerText.updateOwner(this);

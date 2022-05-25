@@ -16,9 +16,12 @@ import java.util.*;
 
 public class NormalCreation implements   ISpaceCreatorFactory{
 
-    // creation of the spaces according to the project rules
 
-    private  List<GridCord> spaces = new ArrayList<>();
+    /**
+     * creation of the spaces according to the project rules
+     */
+    private  List<GridCord> spaces = new ArrayList<>(); //**
+
 
 
     @Override
@@ -103,8 +106,14 @@ public class NormalCreation implements   ISpaceCreatorFactory{
         }
     }
 
-    private  int setPrice(int index){ // set price of the property spaces
-        int initialCost = 100; // initial cost of properties
+    /**
+     *
+     *      * @param indexset price of the property spaces
+     *
+            initial cost of properties
+     */
+    private  int setPrice(int index){ //
+        int initialCost = 100; //
         int price = 100 + index * 60;
         if(price > 500){
             price = 500;
@@ -113,9 +122,12 @@ public class NormalCreation implements   ISpaceCreatorFactory{
     }
 
 
+    /**
+     * add railway ferry port space
+     *
+     */
 
-
-    private  void  AddRailFerry(LinkedHashMap<String,ArrayList> railFerryInfo ){ // add railway ferry port space
+    private  void  AddRailFerry(LinkedHashMap<String,ArrayList> railFerryInfo ){ //
 
         Set<String> keySet = railFerryInfo.keySet();
         ArrayList<String> listOfKeys = new ArrayList<String>(keySet);
@@ -136,7 +148,11 @@ public class NormalCreation implements   ISpaceCreatorFactory{
 
     }
 
-    public  class  GridCord{ // inner class for returning spaces with position and coordinates
+    /**
+     * inner class for returning spaces with position and coordinates
+     */
+
+    public  class  GridCord{
         int pos;
         int xCor;
         int yCor;

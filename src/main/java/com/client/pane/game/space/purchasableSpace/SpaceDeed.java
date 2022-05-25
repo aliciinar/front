@@ -5,8 +5,11 @@ import com.client.pane.game.player.IPlayer;
 import com.client.pane.game.space.AbstractSpace;
 import com.client.pane.game.space.purchasableSpace.deedState.ISpaceState;
 
+/**
+ * abstract class for deed spaces. Deed can be purchased.
+ */
 public  abstract class SpaceDeed extends AbstractSpace {
-    // abstract class for deed spaces. Deed can be purchased.
+
     protected IPlayer owner = null; // owner of the deed
     protected ISpaceState state;  // state of the deed
     protected int rent;  // rent of the dedd
@@ -16,7 +19,7 @@ public  abstract class SpaceDeed extends AbstractSpace {
 
         this.owner = player;
     }
-    abstract public void purchase(IPlayer player );  // purchase this deed
+    abstract public void purchase(IPlayer player );
 
     public int getCost(){return cost;}
     public int getRent(){

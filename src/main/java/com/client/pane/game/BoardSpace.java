@@ -23,8 +23,11 @@ import java.util.HashMap;
  */
 public class BoardSpace extends VBox  implements IObserverText {
 
-    //  this class is implementing spaces in GUI.
-    // change values according to the price changes in GUI.
+    /**
+     *  this class is implementing spaces in GUI.
+     *      change values according to the price changes in GUI.
+     */
+
 
     private ISpace space;
     private String owner = "None";
@@ -85,9 +88,12 @@ public class BoardSpace extends VBox  implements IObserverText {
     }
     public  ISpace  getSpace(){ return  space; }
 
-
+    /**
+     *  space is purchased. Set owner information values to the GUI.
+     *
+     */
     @Override
-    public void updateOwner(IPlayer player) { // space is purchased. Set owner information values to the GUI.
+    public void updateOwner(IPlayer player) {
         Thread taskThread = new Thread(new Runnable() {
             @Override
             public void run() {
