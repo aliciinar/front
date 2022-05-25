@@ -125,6 +125,7 @@ public class Session extends VBox {
             public void handle(ActionEvent event) {
                 JSONArray scoreWeeks = ClientApplication.request.GetWeekTableRequest(token);
                 JSONArray scoreMonths = ClientApplication.request.GetMonthTableRequest(token);
+                System.out.println("Here" + scoreMonths.length());
                 StageController.screenController.addScreen("Scores",new Scores(width,height,scoreWeeks,scoreMonths ));
                 StageController.screenController.activate("Scores");
             }

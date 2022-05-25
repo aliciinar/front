@@ -53,7 +53,6 @@ public class Login extends GridPane{
 
     private double width,height;
 
-
     /**
      *
      * @param width

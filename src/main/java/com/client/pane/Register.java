@@ -80,9 +80,7 @@ public class Register extends GridPane{
                 else{
                     String content = ClientApplication.request.RegisterRequest(userTextField.getText() , pwBox.getText() , emailTextField.getText());
                     if(content.length() != 0){
-                        Pane pane = new Session(width , height , userTextField.getText() , content);
-                        StageController.screenController.addScreen("Session" , pane);
-                        StageController.screenController.activate("Session");
+                        StageController.screenController.activate("Login");
                     }
                     else {
                         userTextField.setText("");
