@@ -45,7 +45,7 @@ public class StageController implements ApplicationListener<StageInitializer.Sta
         screenController = new SceneController(scene);
         screenController.addScreen("MainMenu",pane);
         screenController.addScreen("Login",new Login(width , height));
-       screenController.addScreen("Register",new Register(width , height));
+        screenController.addScreen("Register",new Register(width , height));
         screenController.addScreen("ForgetPassword",new ForgetPassword(width , height));
 
 
