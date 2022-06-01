@@ -4,7 +4,7 @@ import com.client.pane.game.player.IPlayer;
 import com.client.pane.game.space.AbstractSpace;
 
 /**
- * Starting Point Class
+ * Starting Point Class.
  */
 public class StartingPoint extends AbstractSpace {
 

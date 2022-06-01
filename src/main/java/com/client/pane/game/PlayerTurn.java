@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
 /**
- * Control the back side of the game when
+ * Guı for showing active player.
  * It updates Iplayer object. Effect is directly visible from the gui
  */
 public class PlayerTurn extends VBox implements IObserverText {

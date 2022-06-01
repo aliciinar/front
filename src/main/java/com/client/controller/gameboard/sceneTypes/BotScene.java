@@ -22,7 +22,7 @@ public class BotScene implements IPrepareScene{
 
 
     /**
-     *
+     *  prepare scne for the bot
      * @param gameBoardController main controller of the game.
      */
     @Override

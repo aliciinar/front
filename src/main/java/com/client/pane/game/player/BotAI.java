@@ -2,11 +2,11 @@ package com.client.pane.game.player;
 
 import com.client.pane.game.player.playerActionStates.PlayerNotPrisonState;
 
-
+/**
+ * Bot player class
+ */
 public class BotAI extends  PlayerAbstract{
-    /**
-     * Bot ai
-     */
+
 
 
     public BotAI( ){

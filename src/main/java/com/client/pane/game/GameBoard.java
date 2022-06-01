@@ -107,6 +107,10 @@ public class GameBoard {
         GameManager.getInstance().purchaseAction();
     }
 
+    /**
+     * wait in jail one time
+     * @param event jail time button event
+     */
     @FXML
     public  void  jailTime(ActionEvent event){
         GameManager.getInstance().jailTime();
@@ -116,7 +120,7 @@ public class GameBoard {
     /**
      * end turn button event
      * prepare scene for next round
-     * @param event
+     * @param event end turn button event
      */
     @FXML
     public  void  endTurnPressed(ActionEvent event){
@@ -128,7 +132,7 @@ public class GameBoard {
 
     /**
      * roll button event
-     * @param event
+     * @param event roll button event
      */
 
     @FXML
@@ -217,7 +221,7 @@ public class GameBoard {
     }
 
     /**
-     * animation for move
+     * animation for move. Players move according to the dice values
      * @param dice1 dice value
      * @param dice2  dice value
      */

@@ -5,7 +5,7 @@ import com.client.pane.game.player.IPlayer;
 import com.client.pane.game.space.AbstractSpace;
 
 /**
- * Visit Jail Class
+ * Visit Jail Class.
  */
 public class JailVisit extends AbstractSpace {
 

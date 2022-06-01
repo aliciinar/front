@@ -15,6 +15,7 @@ public class NotPurchasedUserAction implements INotPurchasedAction {
      * @param deed current deed
      * @param ISpaceState  state of the space
      * @return new state
+     *
      */
 
 

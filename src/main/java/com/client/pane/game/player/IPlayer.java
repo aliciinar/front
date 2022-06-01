@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * interface of the player.this interface is extending IObservable in order to notify GUI when changes occur
+ * a player can be bot or normal player
  */
 public interface IPlayer extends IObservable {
 
@@ -109,9 +110,16 @@ public interface IPlayer extends IObservable {
       */
      void  checkFalseMoneyIncrease(boolean jailCheck);
 
-     void  setScore(int price); // set score of the player
+     /**
+      * set score of the player
+      * @param price
+      */
+     void  setScore(int price);
 
-     int getScore(); // get score of the player
-
+     /**
+      * get score of the player
+      * @return score
+      */
+     int getScore();
 
 }

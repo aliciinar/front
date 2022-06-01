@@ -13,13 +13,13 @@ import com.client.pane.game.space.purchasableSpace.RailFerrySpace;
 
 import java.util.ArrayList;
 import java.util.*;
-
+/**
+ * creation of the spaces according to the project rules with factory pattern
+ */
 public class NormalCreation implements   ISpaceCreatorFactory{
 
 
-    /**
-     * creation of the spaces according to the project rules
-     */
+
     private  List<GridCord> spaces = new ArrayList<>(); //**
 
 

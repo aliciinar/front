@@ -6,7 +6,9 @@ import com.client.pane.game.space.AbstractSpace;
 import com.client.pane.game.space.purchasableSpace.deedState.ISpaceState;
 
 /**
- * abstract class for deed spaces. Deed can be purchased.
+ * abstract class for deed spaces.
+ * a deed can be purchased by a player so it has two state which is not purchased and purchased.
+ * actions of the player determined according to the deed state
  */
 public  abstract class SpaceDeed extends AbstractSpace {
 

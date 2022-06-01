@@ -4,7 +4,7 @@ import com.client.pane.game.player.IPlayer;
 import com.client.pane.game.space.AbstractSpace;
 
 /**
- * Income Tax class
+ * Income Tax class.
  */
 public class IncomeTax extends AbstractSpace {
 

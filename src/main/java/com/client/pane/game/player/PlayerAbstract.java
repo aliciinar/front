@@ -42,7 +42,7 @@ public abstract class PlayerAbstract  implements  IPlayer{
 
     /**
      * purchase a special tile  which are railways and ferry port.
-     * @param railFerrySpace
+     * @param railFerrySpace active player is on this railFerrySpace
      */
     @Override
     public void purchaseSpecialTile(RailFerrySpace railFerrySpace){
