@@ -25,6 +25,11 @@ public class SpaceManager {
         return  instance;
     }
 
+    /**
+     * set spaces
+     * @param boardSpaceControllers
+     */
+
     public  void  setSpaces(List<BoardSpace> boardSpaceControllers){
         this.boardSpaceControllers = boardSpaceControllers;
 
@@ -34,6 +39,11 @@ public class SpaceManager {
         return  boardSpaceControllers.get(i).getSpace();
     }
 
+    /**
+     * create spaces according to the factory pattern
+     * @param spaceCreatorFactory type of creation according to the factory pattern
+     * @return
+     */
     public  List<NormalCreation.GridCord> createSpaces(ISpaceCreatorFactory spaceCreatorFactory){
          return    spaceCreatorFactory.createSpaces();
     }

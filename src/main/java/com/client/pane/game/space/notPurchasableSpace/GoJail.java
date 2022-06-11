@@ -6,6 +6,7 @@ import javafx.application.Platform;
 
 /**
  * Go to jail class
+ * this is the space where player go to the jail
  */
 public class GoJail  extends AbstractSpace {
 

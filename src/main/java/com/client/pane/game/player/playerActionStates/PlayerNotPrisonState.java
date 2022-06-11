@@ -6,7 +6,8 @@ import com.client.pane.game.player.IPlayer;
 import com.client.pane.game.space.ISpace;
 
 /**
- *     // player not in prison. Player can roll double and in this state we determine player will play again or not
+ *     player not in prison. Player can roll double and in this state we determine player will play again or not.
+ *     Also player can go jail if roll double three times
  */
 public class PlayerNotPrisonState implements IPlayerState {
     private int diceThrow; // player will have 3 diceThrow. If player roll double it will increase 1

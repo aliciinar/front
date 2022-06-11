@@ -5,6 +5,7 @@ import com.client.pane.game.space.ISpace;
 
 /**
  * player in prison state.
+ * player should wait 2 round in prision
  */
 public class PlayerPrisonState implements IPlayerState {
     //
@@ -19,8 +20,8 @@ public class PlayerPrisonState implements IPlayerState {
     /**
      * player in prison so wait this turn  in prison
      * @param player current player
-     * @param diceValue1
-     * @param diceValue2
+     * @param diceValue1 dice value 1
+     * @param diceValue2 dice value 2
      * @param space current space
      * @return  new state
      */

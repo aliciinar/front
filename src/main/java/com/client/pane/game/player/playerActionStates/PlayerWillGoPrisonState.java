@@ -8,6 +8,7 @@ import javafx.application.Platform;
 
 /**
  * player roll double three time so player will go prison
+ * this state is just move player to the jail. and after that players new state will player prison state
  */
 public class PlayerWillGoPrisonState implements IPlayerState {
     @Override

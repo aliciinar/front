@@ -21,7 +21,7 @@ public abstract class AbstractSpace implements ISpace {
 
     /**
      * update GUI according the action of the spaces
-     * @param player
+     * @param player active player
      */
     protected void updateObserver(IPlayer player){
         IObserverText observerText =  SpaceManager.getInstance().getBoardSpace(this);

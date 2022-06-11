@@ -31,8 +31,8 @@ public class StageController implements ApplicationListener<StageInitializer.Sta
     /**
      * Add static panes such. Panes that are same for every player.
      * @param applicationTitle
-     * @param width
-     * @param height
+     * @param width width of the screen
+     * @param height     height of the screen
      * @param applicationContext
      */
     public StageController(@Value("${spring.application.ui.title}") String applicationTitle, @Value("${spring.application.ui.width}") double width, @Value("${spring.application.ui.height}") double height , ApplicationContext applicationContext){

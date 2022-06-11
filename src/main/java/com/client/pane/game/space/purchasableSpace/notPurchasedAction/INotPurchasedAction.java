@@ -7,8 +7,10 @@ import com.client.pane.game.space.purchasableSpace.deedState.ISpaceState;
 /**
  *  this is the interface of INotPurchasedAction. Player purchase action is determined in this interface according to the player type
  *     Deed spaces can invoke this interface if they are in notPurchased state
+ *
  */
 public interface INotPurchasedAction {
+
 
 
     ISpaceState notPurchasedAction(IPlayer player, SpaceDeed deed, ISpaceState ISpaceState);

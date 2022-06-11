@@ -6,6 +6,7 @@ import com.client.pane.game.space.purchasableSpace.deedState.Purchased;
 
 /**
  * Railways and Ferry port spaces implemented in this class
+ *
  */
 public class RailFerrySpace extends SpaceDeed {
 

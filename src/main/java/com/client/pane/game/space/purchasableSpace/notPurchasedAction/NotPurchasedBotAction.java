@@ -8,6 +8,7 @@ import com.client.pane.game.space.purchasableSpace.deedState.ISpaceState;
 
 /**
  * If a bot in deed space which is not purchased, whether the bot is buy or not determined in there.
+ *
  */
 public class NotPurchasedBotAction implements INotPurchasedAction {
 

@@ -43,13 +43,21 @@ public  class GameManager  implements IObservable {
         return  instance;
     }
 
-    public  static  synchronized    void destroy(){ // destroy the game
+    /**
+     *  destroy the game
+     */
+    public  static  synchronized    void destroy(){
 
         instance = null;
 
     }
 
-    public  void  addPlayer(IPlayer player, IPrepareScene sceneType){ // add player
+    /**
+     * // add player
+     * @param player registered player or bot
+     * @param sceneType type of scene according to user Type which are user or bot
+     */
+    public  void  addPlayer(IPlayer player, IPrepareScene sceneType){
             players.add(player);
             this.sceneType.put(player,sceneType);
     }
@@ -89,13 +97,20 @@ public  class GameManager  implements IObservable {
      */
     public  IPrepareScene getSceneType(){return   sceneType.get(players.get(playerNumber)); }
 
+    /**
+     *  If a player in a deed which is not purchased set this deed in order to buy that
+     * @param spaceDeed  deed which current player is on that
+     */
+
     public  void  setDeed(SpaceDeed spaceDeed){ this.currentDeed = spaceDeed;}
 
     /**
+     *  end turn button is finished so next turn will be started. determine next player and prepare scene
+     *  In this method game is checking whether game is finished or not and if not finished scene is prepared according to the user type
      *
      */
 
-    public  void  nextTurn(){ // end turn botton is finished so next turn will be started. determine next player and prepare scene
+    public  void  nextTurn(){
         playerTurn();  // determine next player
         IPlayer activePlayer = getActivePlayer();
         if(!gameFinishCheck()){ // check whether the game is finished or not
@@ -116,19 +131,27 @@ public  class GameManager  implements IObservable {
 
     }
 
-    public void  play(int dice1 , int dice2){ // roll button is pressed and movement animation finished so player should do animation
+    /**
+     *  roll button is pressed and movement animation finished so player should  make action
+     * @param dice1 first dice value
+     * @param dice2 second dice value
+     */
+    public void  play(int dice1 , int dice2){
         this.dice1 = dice1;
         this.dice2 = dice2;
         int rollValue = dice1 + dice2;
 
-        IPlayer activePlayer = players.get(playerNumber); // active player
+        IPlayer activePlayer = players.get(playerNumber);
         activePlayer.movePlayer(rollValue); // set new position of player
         activePlayer.action( SpaceManager.getInstance().getSpace(activePlayer.getPosition()),dice1,dice2); // player will make action
 
 
     }
 
-    private  void  playerTurn(){ // turn finished so determine who is next player
+    /**
+     * turn finished so determine who is next player
+     */
+    private  void  playerTurn(){ //
         if(getActivePlayer().isNextTurn()){ // last player not roll double so change player
             playerNumber = (playerNumber + 1) % 2;
         }

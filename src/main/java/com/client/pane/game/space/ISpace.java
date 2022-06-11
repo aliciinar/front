@@ -3,6 +3,8 @@ import com.client.pane.game.player.IPlayer;
 
 /**
  * Interface for spaces on game board
+ * Spaces responsible for actions of the player in a space.
+ *
  */
 public interface ISpace {
     /**

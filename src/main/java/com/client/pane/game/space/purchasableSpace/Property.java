@@ -19,7 +19,7 @@ public class Property extends SpaceDeed {
 
     /**
      * player on this space do the action according to the its state
-     * @param player
+     * @param player active player
      */
     @Override
     public void action(IPlayer player) { //
@@ -28,6 +28,12 @@ public class Property extends SpaceDeed {
      state = state.Action(player , this);
        // System.out.println("name" + state);
     }
+
+    /**
+     * Player purchase this space
+     * take cost of the this scpace and set new owner
+     * @param player active player
+     */
 
     public void purchase(IPlayer player ){ // player purchase this space
 
