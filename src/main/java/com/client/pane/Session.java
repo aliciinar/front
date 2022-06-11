@@ -63,6 +63,11 @@ public class Session extends VBox {
         setPrefHeight(this.height);
         setPrefWidth(this.width);
 
+        ResponseEntity<String> response = ClientApplication.multiplayerRequest.playMultiplayer("sait" , token);
+        ResponseEntity<String> response2 = ClientApplication.multiplayerRequest.addAction("sait","b",1,2,token);
+        ClientApplication.multiplayerRequest.addAction("sait","c",3,4,token);
+        ClientApplication.multiplayerRequest.deleteAction("sait",token);
+
 
     }
 

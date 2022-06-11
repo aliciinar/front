@@ -96,7 +96,7 @@ public class MultiplayerRequest {
 
     }
     public ResponseEntity<String> addAction(String userName , String type , int dice1 , int dice2 ,String token) {
-        HttpPost post = new HttpPost(ClientApplication.backend + "deleteAction");
+        HttpPost post = new HttpPost(ClientApplication.backend + "addAction");
         try {
             StringEntity params = new StringEntity(ClientApplication.gson.toJson(new ActionDto(userName , type , dice1 , dice2)));
             post.setHeader("Authorization", "Bearer " + token);
