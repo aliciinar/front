@@ -3,6 +3,7 @@ package com.client.pane;
 import com.client.ClientApplication;
 import com.client.controller.StageController;
 import com.client.controller.gameboard.sceneTypes.BotScene;
+import com.client.dto.jsonObj.GameObj;
 import com.client.game.Managers.GameManager;
 import com.client.pane.game.player.BotAI;
 import com.client.pane.game.player.IPlayer;
@@ -20,6 +21,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.json.JSONArray;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -133,7 +135,14 @@ public class Session extends VBox {
                         while(true){
                             ResponseEntity<String> response = ClientApplication.multiplayerRequest.playMultiplayer(name , token);
                             if(response.getStatusCode() == HttpStatus.FOUND) {
-                                System.out.println("Found");
+                                ObjectMapper mapper = new ObjectMapper();
+                                GameObj gameObj = null;
+                                try {
+                                    gameObj =  mapper.readValue(response.getBody() , GameObj.class);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                                System.out.println(gameObj.getUser1());
                                 break;
                             }
                             try {
