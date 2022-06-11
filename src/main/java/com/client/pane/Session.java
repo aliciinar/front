@@ -8,18 +8,25 @@ import com.client.pane.game.player.BotAI;
 import com.client.pane.game.player.IPlayer;
 import com.client.pane.game.player.Player;
 import com.client.controller.gameboard.sceneTypes.PlayerScene;
+import com.google.gson.JsonParser;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import org.json.JSONArray;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 /**
  * set up screen for the session page
@@ -114,6 +121,50 @@ public class Session extends VBox {
     private Button playMultiplayerButton() {
 
         Button button = commonButton("Play Multiplayer");
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+
+                Thread taskThread = new Thread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        while(true){
+                            ResponseEntity<String> response = ClientApplication.multiplayerRequest.playMultiplayer(name , token);
+                            if(response.getStatusCode() == HttpStatus.FOUND) {
+                                System.out.println("Found");
+                                break;
+                            }
+                            try {
+                                Thread.sleep(100);
+                            } catch (InterruptedException e) {
+
+                            }
+
+                        }
+
+                        IPlayer player1 = new Player(name);
+                        IPlayer player2 = new BotAI();
+                        GameManager.getInstance().addPlayer(player1, new PlayerScene());
+                        GameManager.getInstance().addPlayer(player2,new BotScene());
+                        Pane root = null;
+                        try {
+                            root = FXMLLoader.load(getClass().getResource("/com.client.controller/gameBoards.fxml"));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        StageController.screenController.addScreen("Game" , root);
+                        StageController.screenController.activate("Game");
+
+                    }
+                });
+                taskThread.start();
+
+
+
+            }
+        });
         return button;
     }
 
@@ -136,3 +187,4 @@ public class Session extends VBox {
 
 
 }
+

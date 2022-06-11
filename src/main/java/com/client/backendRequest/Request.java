@@ -1,29 +1,20 @@
-package com.client.backenReques;
+package com.client.backendRequest;
 
 
 import com.client.ClientApplication;
-import com.client.dto.AddScoreDto;
-import com.client.dto.ForgetPasswordDto;
-import com.client.dto.LoginDto;
-import com.client.dto.RegisterDto;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
+import com.client.dto.*;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
-import java.util.List;
-import java.util.Scanner;
 
 /**
  * Html request are contained in this class

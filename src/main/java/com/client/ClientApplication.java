@@ -1,6 +1,7 @@
 package com.client;
 
-import com.client.backenReques.Request;
+import com.client.backendRequest.MultiplayerRequest;
+import com.client.backendRequest.Request;
 import com.client.controller.StageInitializer;
 import com.google.gson.Gson;
 import javafx.application.Application;
@@ -19,6 +20,7 @@ public class ClientApplication {
 	public static String backend = "http://localhost:8080/";
 	//public static String backend = "https://ceng453-term-project-group-4.herokuapp.com/";
 	public static Request request = new Request();
+	public static MultiplayerRequest multiplayerRequest = new MultiplayerRequest();
 
 	public static void main(String[] args) {
 		Application.launch(StageInitializer.class , args);
