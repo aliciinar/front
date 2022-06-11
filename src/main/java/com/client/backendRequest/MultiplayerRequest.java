@@ -66,7 +66,49 @@ public class MultiplayerRequest {
 
     }
 
+    public ResponseEntity<String> getAction(String userName , String token) {
+        HttpPost post = new HttpPost(ClientApplication.backend + "getAction");
+        try {
+            StringEntity params = new StringEntity(ClientApplication.gson.toJson(new GameDto(userName)));
+            post.setHeader("Authorization", "Bearer " + token);
+            return getResponse(post, params);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>("Something Went Wrong" , HttpStatus.BAD_GATEWAY);
 
+    }
+
+    public ResponseEntity<String> deleteAction(String userName , String token) {
+        HttpPost post = new HttpPost(ClientApplication.backend + "deleteAction");
+        try {
+            StringEntity params = new StringEntity(ClientApplication.gson.toJson(new GameDto(userName)));
+            post.setHeader("Authorization", "Bearer " + token);
+            return getResponse(post, params);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>("Something Went Wrong" , HttpStatus.BAD_GATEWAY);
+
+    }
+    public ResponseEntity<String> addAction(String userName , String type , int dice1 , int dice2 ,String token) {
+        HttpPost post = new HttpPost(ClientApplication.backend + "deleteAction");
+        try {
+            StringEntity params = new StringEntity(ClientApplication.gson.toJson(new ActionDto(userName , type , dice1 , dice2)));
+            post.setHeader("Authorization", "Bearer " + token);
+            return getResponse(post, params);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>("Something Went Wrong" , HttpStatus.BAD_GATEWAY);
+
+    }
 
 
 
