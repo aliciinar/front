@@ -8,6 +8,7 @@ import com.client.controller.gameboard.sceneTypes.MultiPlayerScene;
 import com.client.game.Managers.GameManager;
 import com.client.game.Managers.GameType;
 import com.client.game.Managers.SpaceManager;
+import com.client.pane.MainMenu;
 import com.client.pane.MultiplayerManager;
 import com.client.pane.Session;
 import com.client.pane.game.player.IPlayer;
@@ -64,6 +65,11 @@ public class GameBoard {
 
     int playerTurn = 0;
 
+    void setButton(Button button) {
+        button.setStyle(MainMenu.IDLE_BUTTON_STYLE);
+        button.setOnMouseEntered(e -> button.setStyle(MainMenu.HOVERED_BUTTON_STYLE));
+        button.setOnMouseExited(e -> button.setStyle(MainMenu.IDLE_BUTTON_STYLE));
+    }
 
     /**
      * initialize the screen
@@ -71,15 +77,23 @@ public class GameBoard {
     @FXML
     public void initialize() { // initialize the game
 
+        setButton(rollButton);
+        setButton(purchaseButton);
+        setButton(endTurnButton);
+        setButton(playTimeInJail );
         StageController.screenController.getScene().setOnKeyPressed(e -> { // event for CTRL + 9 event. Finish the game when this event called
 
-            if (e.getCode() == KeyCode.DIGIT9 && e.isControlDown()) {
-                int imageIndex = GameManager.getInstance().getActivePlayerTurn();
-                IPlayer activePlayer = GameManager.getInstance().getActivePlayer();
-                spaces.get((activePlayer.getPosition()) % spaces.size()).removeImage(images.get(imageIndex));
-                spaces.get((8) % spaces.size()).putImage(images.get(imageIndex));
-                activePlayer.moneyTransition(-10000000);
-                endGame();
+            if (e.getCode() == KeyCode.DIGIT9 && e.isControlDown() ) {
+                if(GameManager.getInstance().getGameType() == GameType.Multiplayer ) {
+                    if( GameManager.getInstance().getActivePlayer().getName().equals(Session.name)){
+                        System.out.println("name of the player " + GameManager.getInstance().getActivePlayer().getName());
+                        forceFinish();
+                    }
+                }
+                else{
+                    forceFinish();
+                }
+
 
             }
         });
@@ -112,6 +126,17 @@ public class GameBoard {
 
     }
 
+
+    private  void  forceFinish(){
+        int imageIndex = GameManager.getInstance().getActivePlayerTurn();
+        IPlayer activePlayer = GameManager.getInstance().getActivePlayer();
+        spaces.get((activePlayer.getPosition()) % spaces.size()).removeImage(images.get(imageIndex));
+        spaces.get((8) % spaces.size()).putImage(images.get(imageIndex));
+        activePlayer.moneyTransition(-10000000);
+
+        GameManager.getInstance().forceFinishGame();
+        endGame();
+    }
 
     /**
      * purchase button event
@@ -163,15 +188,40 @@ public class GameBoard {
      * game finished prepare score scene
      */
     public void endGame() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("End Game");
-        alert.setHeaderText("Game Ended");
-        alert.setContentText("Scores: \nPlayer1 : "+ + GameManager.getInstance().getPlayerIndex(0).getMoney() + " \n" + "Player2 : " + GameManager.getInstance().getPlayerIndex(1).getMoney()  );
-        alert.showAndWait();
-        ClientApplication.request.addScore(GameManager.getInstance().getPlayerIndex(0).getName() , GameManager.getInstance().getPlayerIndex(0).getScore() , Session.token);
-        StageController.screenController.removeScreen("Game");
-        StageController.screenController.activate("Session");
-        GameManager.destroy();
+
+        Thread taskThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+
+
+
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("End Game");
+                            alert.setHeaderText("Game Ended");
+                            alert.setContentText("Scores: \nPlayer1 : "+ + GameManager.getInstance().getPlayerIndex(0).getMoney() + " \n" + "Player2 : " + GameManager.getInstance().getPlayerIndex(1).getMoney()  );
+                            alert.showAndWait();
+                            ClientApplication.request.addScore(GameManager.getInstance().getPlayerIndex(0).getName() , GameManager.getInstance().getPlayerIndex(0).getScore() , Session.token);
+                            StageController.screenController.removeScreen("Game");
+                            StageController.screenController.activate("Session");
+                            GameManager.destroy();
+                        }
+                    });
+
+
+
+            }
+        });
+
+        taskThread.start();
+        try {
+            taskThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

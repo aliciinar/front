@@ -86,6 +86,7 @@ public class MultiplayerManager {
         if(response.getStatusCode() == HttpStatus.OK){
             try {
                 action = mapper.readValue(response.getBody() , Action.class);
+                System.out.println("info aldım " + action.getType());
                 if(action.getName().equals(Session.name)) return;
                 if(action.getType().equals(lastAction)) return;
                 lastAction = action.getType();
@@ -102,12 +103,21 @@ public class MultiplayerManager {
                 }else if(action.getType().equals("nextTurn")){
                     nextTurnAction(action);
                 }
+                else if(action.getType().equals("gameFinish")){
+                    gameFinishAction(action);
+                }
             }catch (IOException e){
                 e.printStackTrace();
             }
 
         }
 
+    }
+
+    private void gameFinishAction(Action action) {
+        System.out.println("Game finish infosu aldım");
+        gameBoard.endGame();
+        gameFinish();
     }
 
 
@@ -147,6 +157,11 @@ public class MultiplayerManager {
         taskThread = null;
     }
 
+
+    public  void  gameFinish(){
+        System.out.println("game finish");
+       multiplayerRequest.deleteAllGames(Session.token);
+    }
 
 
 }

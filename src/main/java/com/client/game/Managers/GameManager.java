@@ -261,11 +261,26 @@ public  class GameManager  implements IObservable {
     public  boolean  gameFinishCheck(){
         for (IPlayer player: players) {
             if(player.getMoney() < 0){
+                finishGame();
                 return  true;
             }
 
         }
         return  false;
+    }
+
+    public  void  finishGame(){
+        if(gameType == GameType.Multiplayer && getActivePlayer().getName().equals(Session.name)){
+            MultiplayerManager.getInstance().gameFinish();
+        }
+    }
+
+    public  void  forceFinishGame(){
+        if(gameType == GameType.Multiplayer && getActivePlayer().getName().equals(Session.name)){
+            MultiplayerManager.getInstance().sendInformation("gameFinish",0,0);
+        }
+
+
     }
 
     /**

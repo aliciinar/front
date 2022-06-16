@@ -14,7 +14,7 @@
    <children>
       <VBox prefHeight="769.0" prefWidth="1044.0">
          <children>
-            <HBox fx:id="userInformation" prefHeight="100.0" prefWidth="1023.0" />
+            <HBox fx:id="userInformation" prefHeight="100.0" prefWidth="1023.0" style="-fx-background-color: lightblue;" />
             <Pane prefHeight="672.0" prefWidth="1044.0">
                <children>
                   <HBox prefHeight="671.0" prefWidth="1044.0">
@@ -47,10 +47,10 @@
                                     <Image url="@../images/Dice1.png" />
                                  </image>
                               </ImageView>
-                              <Button fx:id="rollButton" layoutX="273.0" layoutY="250.0" mnemonicParsing="false" onAction="#rollPressed" prefHeight="51.0" prefWidth="90.0" text="Roll" />
-                               <Button fx:id="endTurnButton" layoutX="50.0" layoutY="450.0" mnemonicParsing="false" onAction="#endTurnPressed" prefHeight="51.0" prefWidth="150.0" text="End Turn" />
-                               <Button fx:id="purchaseButton" layoutX="220.0" layoutY="450.0" mnemonicParsing="false" onAction="#purchasePressed" prefHeight="51.0" prefWidth="150.0" text="Purchase" />
-                               <Button fx:id="playTimeInJail" layoutX="150" layoutY="550.0" mnemonicParsing="false" onAction="#jailTime" prefHeight="51.0" prefWidth="150.0" text="JailTime" />
+                              <Button fx:id="rollButton" layoutX="211.0" layoutY="248.0" mnemonicParsing="false" onAction="#rollPressed" prefHeight="51.0" prefWidth="150.0" text="Roll" />
+                               <Button fx:id="endTurnButton" layoutX="14.0" layoutY="450.0" mnemonicParsing="false" onAction="#endTurnPressed" prefHeight="51.0" prefWidth="175.0" text="End Turn" />
+                               <Button fx:id="purchaseButton" layoutX="207.0" layoutY="450.0" mnemonicParsing="false" onAction="#purchasePressed" prefHeight="51.0" prefWidth="186.0" text="Purchase" />
+                               <Button fx:id="playTimeInJail" layoutX="114.0" layoutY="550.0" mnemonicParsing="false" onAction="#jailTime" prefHeight="51.0" prefWidth="186.0" text="JailTime" />
                            </children></Pane>
                      </children>
                   </HBox>
