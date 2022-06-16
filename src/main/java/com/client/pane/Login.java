@@ -108,7 +108,9 @@ public class Login extends GridPane{
         Button button = new Button("Login");
         button.setPrefHeight(50);
         button.setPrefWidth(200);
-
+        button.setStyle(MainMenu.IDLE_BUTTON_STYLE);
+        button.setOnMouseEntered(e -> button.setStyle(MainMenu.HOVERED_BUTTON_STYLE));
+        button.setOnMouseExited(e -> button.setStyle(MainMenu.IDLE_BUTTON_STYLE));
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -140,6 +142,9 @@ public class Login extends GridPane{
         Button button = new Button("Forgot Password?");
         button.setPrefHeight(50);
         button.setPrefWidth(200);
+        button.setStyle(MainMenu.IDLE_BUTTON_STYLE);
+        button.setOnMouseEntered(e -> button.setStyle(MainMenu.HOVERED_BUTTON_STYLE));
+        button.setOnMouseExited(e -> button.setStyle(MainMenu.IDLE_BUTTON_STYLE));
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -154,7 +159,9 @@ public class Login extends GridPane{
         Button button = new Button("Back");
         button.setPrefHeight(50);
         button.setPrefWidth(200);
-
+        button.setStyle(MainMenu.IDLE_BUTTON_STYLE);
+        button.setOnMouseEntered(e -> button.setStyle(MainMenu.HOVERED_BUTTON_STYLE));
+        button.setOnMouseExited(e -> button.setStyle(MainMenu.IDLE_BUTTON_STYLE));
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {

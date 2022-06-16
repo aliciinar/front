@@ -22,8 +22,9 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.json.JSONArray;
@@ -31,6 +32,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Random;
 
@@ -55,7 +58,8 @@ public class Session extends VBox {
         setSpacing(50);
 
         Label welcome = new Label("Welcome " + this.name);
-        welcome.setFont(Font.font(50));
+        welcome.setTextFill(Color.WHITE);
+        welcome.setFont(Font.font(75));
         getChildren().add(welcome);
 
         getChildren().add(playSingleButton());
@@ -67,7 +71,19 @@ public class Session extends VBox {
         setPrefHeight(this.height);
         setPrefWidth(this.width);
 
+        try {
+            Image image = new Image(new FileInputStream("src/main/resources/images/mainscreen.png"));
+            BackgroundImage bImg = new BackgroundImage(image,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundPosition.DEFAULT,
+                    BackgroundSize.DEFAULT);
+            Background bGround = new Background(bImg);
+            setBackground(bGround);
 
+        } catch (FileNotFoundException e) {
+            //e.printStackTrace();
+        }
 
 
     }
