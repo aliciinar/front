@@ -100,11 +100,13 @@ public class GameBoard {
                 MultiplayerManager.getInstance().startGetInformation();
 
             }
-            for(BoardSpace space : spaces){
-                gameBoardGrid.add(space , space.getGridX() , space.getGridY());
-            }
-        }
 
+        }else{
+            activateButtons(false , true , true , true);
+        }
+        for(BoardSpace space : spaces){
+            gameBoardGrid.add(space , space.getGridX() , space.getGridY());
+        }
 
 
 
@@ -206,12 +208,12 @@ public class GameBoard {
 
                     }
                     Random random = new Random();
-                 dice1Val = random.nextInt(6)+1;
+                dice1Val = random.nextInt(6)+1;
                  dice2Val = random.nextInt(6)+1;
                    // dice1Val = 1; // three time double test
                   // dice2Val = 1;
-                 //   dice1Val = 6;       //jail and roll again
-               //    dice2Val = 6;
+                 //  dice1Val = 6;       //jail and roll again
+              //  dice2Val = 6;
                      //   dice1Val = 5;
                       //  dice2Val = 3;
                     Platform.runLater(new Runnable() {
@@ -305,7 +307,19 @@ public class GameBoard {
 
         spaces.get((startPos) % spaces.size()).removeImage(images.get(imageIndex));
         spaces.get((4) % spaces.size()).putImage(images.get(imageIndex));
-        activateButtons(true,true,false,true);
+        if(GameManager.getInstance().getGameType() == GameType.Multiplayer){
+            if(GameManager.getInstance().getActivePlayer().getName().equals(Session.name)){
+                activateButtons(true,true,false,true);
+
+            }else{
+                activateButtons(true,true,true,true);
+            }
+
+        }else{
+            activateButtons(true,true,false,true);
+
+        }
+
     }
 
     /**

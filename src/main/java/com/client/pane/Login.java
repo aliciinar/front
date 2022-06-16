@@ -13,9 +13,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -33,6 +33,7 @@ import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -75,6 +76,23 @@ public class Login extends GridPane{
             addUserName();
             addPassword();
             addButtons();
+            //setStyle("-fx-background-color:powderblue;");
+
+            try {
+                Image image = new Image(new FileInputStream("src/main/resources/images/login.png"));
+
+                BackgroundImage bImg = new BackgroundImage(image,
+                        BackgroundRepeat.NO_REPEAT,
+                        BackgroundRepeat.NO_REPEAT,
+                        BackgroundPosition.DEFAULT,
+                        BackgroundSize.DEFAULT);
+                Background bGround = new Background(bImg);
+                setBackground(bGround);
+            }catch (Exception e){
+                System.out.println("hata var " + e);
+            }
+
+
     }
 
     private void addButtons(){
@@ -150,10 +168,18 @@ public class Login extends GridPane{
     }
 
     private void addLogin(){
-        Label login = new Label("Login");
+        try{
+            Image image2 = new Image(new FileInputStream("src/main/resources/images/loginIcon.jpeg"));
+            ImageView imageView = new ImageView(image2);
+            getChildren().add(imageView);
+        }catch (Exception e){
+
+        }
+
+       /* Label login = new Label("Login");
         login.setFont(Font.font("Tahoma", FontWeight.NORMAL, 100));
         login.setTextFill(Color.BLUE);
-        add(login , 0 ,0);
+        add(login , 0 ,0);*/
 
     }
     private void addUserName(){

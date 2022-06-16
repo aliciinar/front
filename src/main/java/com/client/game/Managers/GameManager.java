@@ -1,6 +1,7 @@
 package com.client.game.Managers;
 
 import com.client.pane.MultiplayerManager;
+import com.client.pane.Session;
 import com.client.pane.game.GameBoard;
 import com.client.controller.gameboard.sceneTypes.IPrepareScene;
 import com.client.controller.observer.IObservable;
@@ -242,7 +243,7 @@ public  class GameManager  implements IObservable {
         IPlayer activePlayer = getActivePlayer();
         activePlayer.action( SpaceManager.getInstance().getSpace(4),dice1,dice2);
         endTurn();
-        if(gameType == GameType.Multiplayer){
+        if(gameType == GameType.Multiplayer  && activePlayer.getName().equals(Session.name)){
             // System.out.println("gönderdiğim bilgi " + dice1 + " "+ dice2);
             // MultiplayerManager.getInstance().sendInformation("roll", dice1,dice2);
             // todo jail time

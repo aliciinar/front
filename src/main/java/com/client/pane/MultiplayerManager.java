@@ -45,7 +45,7 @@ public class MultiplayerManager {
 
     public  void  sendInformation( String type , int dice1 , int dice2 ){
         System.out.println(Session.name + " information gönderdim");
-        System.out.println(dice1 + " " + dice2);
+        System.out.println("gönderdiğim infor " + type);
           multiplayerRequest.addAction(Session.name,type,dice1,dice2,Session.token);
     }
 

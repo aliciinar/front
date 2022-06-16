@@ -11,11 +11,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+
+import java.io.FileInputStream;
 
 /**
  * set up screen for the register pane
@@ -49,6 +52,19 @@ public class Register extends GridPane{
             addPassword();
             addEmail();
             addButtons();
+        try {
+            Image image = new Image(new FileInputStream("src/main/resources/images/login.png"));
+
+            BackgroundImage bImg = new BackgroundImage(image,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundPosition.DEFAULT,
+                    BackgroundSize.DEFAULT);
+            Background bGround = new Background(bImg);
+            setBackground(bGround);
+        }catch (Exception e){
+            System.out.println("hata var " + e);
+        }
 
     }
 
@@ -110,10 +126,15 @@ public class Register extends GridPane{
 
 
     private void addRegister(){
-        Label login = new Label("Register");
-        login.setFont(Font.font("Tahoma", FontWeight.NORMAL, 100));
-        login.setTextFill(Color.BLUE);
-        add(login , 0 ,0);
+
+        try{
+            Image image2 = new Image(new FileInputStream("src/main/resources/images/registerIcon.jpeg"));
+            ImageView imageView = new ImageView(image2);
+            getChildren().add(imageView);
+        }catch (Exception e){
+
+        }
+
 
     }
     private void addUserName(){
