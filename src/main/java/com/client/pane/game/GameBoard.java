@@ -1,12 +1,17 @@
 package com.client.pane.game;
 
 import com.client.ClientApplication;
+import com.client.backendRequest.MultiplayerRequest;
 import com.client.controller.StageController;
 import com.client.controller.gameboard.UserInformationController;
+import com.client.controller.gameboard.sceneTypes.MultiPlayerScene;
 import com.client.game.Managers.GameManager;
+import com.client.game.Managers.GameType;
 import com.client.game.Managers.SpaceManager;
+import com.client.pane.MultiplayerManager;
 import com.client.pane.Session;
 import com.client.pane.game.player.IPlayer;
+import com.client.pane.game.player.UserType;
 import com.client.pane.game.space.spaceCreation.ISpaceCreatorFactory;
 import com.client.pane.game.space.spaceCreation.NormalCreation;
 import javafx.application.Platform;
@@ -82,14 +87,24 @@ public class GameBoard {
         constructSpaces();
 
         GameManager.getInstance().setGameBoard(this);
-        activateButtons(false , true , true , true);
         setImages();
         setPlayers();
         setUserInformation();
+        if(GameManager.getInstance().getGameType() == GameType.Multiplayer){
+            MultiplayerManager.getInstance().SetGameBoard(this);
+            if(Session.name == GameManager.getInstance().getPlayerIndex(0).getName()){
+                activateButtons(false , true , true , true);
+            }
+            else{
+                activateButtons(true , true , true , true);
+                MultiplayerManager.getInstance().startGetInformation();
 
-        for(BoardSpace space : spaces){
-            gameBoardGrid.add(space , space.getGridX() , space.getGridY());
+            }
+            for(BoardSpace space : spaces){
+                gameBoardGrid.add(space , space.getGridX() , space.getGridY());
+            }
         }
+
 
 
 
@@ -211,8 +226,15 @@ public class GameBoard {
                         }
                     });
                 }
+                if(GameManager.getInstance().getGameType() == GameType.Multiplayer && GameManager.getInstance().getActivePlayer().getUserType() == UserType.User){
+                    System.out.println("gönderdiğim bilgi " + dice1Val + " "+ dice2Val);
+                    MultiplayerManager.getInstance().sendInformation("roll", dice1Val,dice2Val);
+                }
                 movePlayer(dice1Val, dice2Val);
                 playerTurn = (playerTurn + 1) % 2;
+               // MultiplayerRequest multiplayerRequest = new MultiplayerRequest();
+              //  multiplayerRequest.addAction(Session.name,"roll",dice1Val,dice2Val,Session.token);
+
 
 
             }

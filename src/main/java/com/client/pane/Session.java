@@ -3,10 +3,14 @@ package com.client.pane;
 import com.client.ClientApplication;
 import com.client.controller.StageController;
 import com.client.controller.gameboard.sceneTypes.BotScene;
+import com.client.controller.gameboard.sceneTypes.MultiPlayerScene;
 import com.client.dto.jsonObj.GameObj;
 import com.client.game.Managers.GameManager;
+import com.client.game.Managers.GameType;
+import com.client.pane.game.MatchScreen;
 import com.client.pane.game.player.BotAI;
 import com.client.pane.game.player.IPlayer;
+import com.client.pane.game.player.MultiPlayer;
 import com.client.pane.game.player.Player;
 import com.client.controller.gameboard.sceneTypes.PlayerScene;
 import com.google.gson.JsonParser;
@@ -37,7 +41,7 @@ public class Session extends VBox {
 
 
     private double width , height;
-    private String name ;
+    public static String name ;
     private int id;
     public static String token;
 
@@ -63,10 +67,7 @@ public class Session extends VBox {
         setPrefHeight(this.height);
         setPrefWidth(this.width);
 
-        ResponseEntity<String> response = ClientApplication.multiplayerRequest.playMultiplayer("sait" , token);
-        ResponseEntity<String> response2 = ClientApplication.multiplayerRequest.addAction("sait","b",1,2,token);
-        ClientApplication.multiplayerRequest.addAction("sait","c",3,4,token);
-        ClientApplication.multiplayerRequest.deleteAction("sait",token);
+
 
 
     }
@@ -131,17 +132,21 @@ public class Session extends VBox {
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                StageController.screenController.addScreen("MatchScreen", new MatchScreen());
+                StageController.screenController.activate("MatchScreen");
 
 
                 Thread taskThread = new Thread(new Runnable() {
 
                     @Override
                     public void run() {
+                        ObjectMapper mapper = new ObjectMapper();
+                        GameObj gameObj = null;
                         while(true){
+
                             ResponseEntity<String> response = ClientApplication.multiplayerRequest.playMultiplayer(name , token);
                             if(response.getStatusCode() == HttpStatus.FOUND) {
-                                ObjectMapper mapper = new ObjectMapper();
-                                GameObj gameObj = null;
+
                                 try {
                                     gameObj =  mapper.readValue(response.getBody() , GameObj.class);
                                 } catch (IOException e) {
@@ -157,11 +162,25 @@ public class Session extends VBox {
                             }
 
                         }
+                        IPlayer player1;
+                        IPlayer player2;
+                        if(gameObj.getUser1().equals(name)){
+                            player1 = new Player(name);
+                            player2 = new MultiPlayer(gameObj.getUser2());
+                            GameManager.getInstance().addPlayer(player1, new PlayerScene());
+                            GameManager.getInstance().addPlayer(player2,new MultiPlayerScene());
+                        }
+                        else{
+                            player2 = new Player(name);
+                            player1 = new MultiPlayer(gameObj.getUser1());
+                            GameManager.getInstance().addPlayer(player1,new MultiPlayerScene());
+                            GameManager.getInstance().addPlayer(player2, new PlayerScene());
 
-                        IPlayer player1 = new Player(name);
-                        IPlayer player2 = new BotAI();
-                        GameManager.getInstance().addPlayer(player1, new PlayerScene());
-                        GameManager.getInstance().addPlayer(player2,new BotScene());
+                        }
+
+
+
+                        GameManager.getInstance().SetGameType(GameType.Multiplayer); // set game type of the game
                         Pane root = null;
                         try {
                             root = FXMLLoader.load(getClass().getResource("/com.client.controller/gameBoards.fxml"));
@@ -180,6 +199,7 @@ public class Session extends VBox {
             }
         });
         return button;
+
     }
 
     private Button leaderBordButton() {

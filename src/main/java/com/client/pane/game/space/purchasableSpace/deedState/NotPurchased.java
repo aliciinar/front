@@ -5,6 +5,7 @@ import com.client.pane.game.player.UserType;
 import com.client.pane.game.space.purchasableSpace.SpaceDeed;
 import com.client.pane.game.space.purchasableSpace.notPurchasedAction.INotPurchasedAction;
 import com.client.pane.game.space.purchasableSpace.notPurchasedAction.NotPurchasedBotAction;
+import com.client.pane.game.space.purchasableSpace.notPurchasedAction.NotPurchasedMultiAction;
 import com.client.pane.game.space.purchasableSpace.notPurchasedAction.NotPurchasedUserAction;
 
 import java.util.HashMap;
@@ -27,6 +28,7 @@ public class NotPurchased implements ISpaceState {
 
         actionType.put(UserType.Bot,new NotPurchasedBotAction());
         actionType.put(UserType.User, new NotPurchasedUserAction());
+        actionType.put(UserType.MultiPlayer,new NotPurchasedMultiAction());
 
     }
 

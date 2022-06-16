@@ -1,10 +1,12 @@
 package com.client.game.Managers;
 
+import com.client.pane.MultiplayerManager;
 import com.client.pane.game.GameBoard;
 import com.client.controller.gameboard.sceneTypes.IPrepareScene;
 import com.client.controller.observer.IObservable;
 import com.client.controller.observer.IObserverText;
 import com.client.pane.game.player.IPlayer;
+import com.client.pane.game.player.UserType;
 import com.client.pane.game.space.purchasableSpace.SpaceDeed;
 
 
@@ -35,6 +37,7 @@ public  class GameManager  implements IObservable {
     private  int dice1;
     private  int dice2;
     private List<IObserverText> observables = new ArrayList<>(); // observers of the Game Manager for GUI
+    private  GameType gameType = GameType.Local;
 
     public  static  synchronized    GameManager getInstance(){
         if(instance == null){
@@ -62,6 +65,11 @@ public  class GameManager  implements IObservable {
             this.sceneType.put(player,sceneType);
     }
 
+    public  void  SetGameType(GameType gameType){
+        this.gameType = gameType;
+    }
+
+    public  GameType getGameType(){ return  gameType;}
 
     /**
      *
@@ -111,7 +119,15 @@ public  class GameManager  implements IObservable {
      */
 
     public  void  nextTurn(){
+        if(gameType == GameType.Multiplayer && getActivePlayer().getUserType() == UserType.User){
+            // System.out.println("gönderdiğim bilgi " + dice1 + " "+ dice2);
+            // MultiplayerManager.getInstance().sendInformation("roll", dice1,dice2);
+            // todo next turn
+            System.out.println("next turn bilgisi gönderdim");
+            MultiplayerManager.getInstance().sendInformation("nextTurn",0,0);
+        }
         playerTurn();  // determine next player
+
         IPlayer activePlayer = getActivePlayer();
         if(!gameFinishCheck()){ // check whether the game is finished or not
             notifyObservers();
@@ -127,7 +143,19 @@ public  class GameManager  implements IObservable {
                 gameBoardController.endGame();
         }
 
+        if(gameType == GameType.Multiplayer ){
+            if(getActivePlayer().getUserType() == UserType.MultiPlayer){
+                System.out.println("karşı tarafta sıra");
+                MultiplayerManager.getInstance().startGetInformation();
 
+
+
+            }else{
+                System.out.println("sıra bende ");
+                MultiplayerManager.getInstance().stopRequest();
+
+            }
+        }
 
     }
 
@@ -146,6 +174,7 @@ public  class GameManager  implements IObservable {
         activePlayer.action( SpaceManager.getInstance().getSpace(activePlayer.getPosition()),dice1,dice2); // player will make action
 
 
+
     }
 
     /**
@@ -159,6 +188,8 @@ public  class GameManager  implements IObservable {
 
     }
 
+
+
     /**
      * player pressed purchase button so purchase the space
      */
@@ -169,7 +200,14 @@ public  class GameManager  implements IObservable {
 
             currentDeed.purchase(getActivePlayer());
         }
+        if(gameType == GameType.Multiplayer && getActivePlayer().getUserType() == UserType.User){
+            // System.out.println("gönderdiğim bilgi " + dice1 + " "+ dice2);
+            // MultiplayerManager.getInstance().sendInformation("roll", dice1,dice2);
+            // todo purchase action
+            System.out.println("purchase bilgisi gönderdim");
+            MultiplayerManager.getInstance().sendInformation("purchase",0,0);
 
+        }
     }
 
 
@@ -194,6 +232,7 @@ public  class GameManager  implements IObservable {
         sceneType.get(players.get(playerNumber)).endTurn();
 
 
+
     }
 
     /**
@@ -203,6 +242,13 @@ public  class GameManager  implements IObservable {
         IPlayer activePlayer = getActivePlayer();
         activePlayer.action( SpaceManager.getInstance().getSpace(4),dice1,dice2);
         endTurn();
+        if(gameType == GameType.Multiplayer){
+            // System.out.println("gönderdiğim bilgi " + dice1 + " "+ dice2);
+            // MultiplayerManager.getInstance().sendInformation("roll", dice1,dice2);
+            // todo jail time
+            System.out.println("jail time bilgisi gönderdim");
+            MultiplayerManager.getInstance().sendInformation("jailTime",0,0);
+        }
 
     }
 

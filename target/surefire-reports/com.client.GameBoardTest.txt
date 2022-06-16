@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: com.client.GameBoardTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.786 s <<< FAILURE! - in com.client.GameBoardTest
+contextLoads  Time elapsed: 0 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'stageController' defined in file [D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\target\classes\com\client\controller\StageController.class]: Bean instantiation via constructor failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.client.controller.StageController]: Constructor threw exception; nested exception is java.lang.NoClassDefFoundError: Could not initialize class javafx.scene.control.Button
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.client.controller.StageController]: Constructor threw exception; nested exception is java.lang.NoClassDefFoundError: Could not initialize class javafx.scene.control.Button
+Caused by: java.lang.NoClassDefFoundError: Could not initialize class javafx.scene.control.Button
+

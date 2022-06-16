@@ -1,54 +1,55 @@
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\player\BotAI.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\dto\LoginDto.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\controller\gameboard\PlayerScene.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\SpaceCreation\SpaceTest.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\PurchasableSpace\SpaceDeed.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\controller\gameboard\GameBoardController.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\controller\gameboard\IPrepareScene.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\player\playerActionStates\PlayerState.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\player\IPlayer.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\game\Managers\SpaceManager.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\controller\gameboard\BoardSpace.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\player\Player.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\PurchasableSpace\Property.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\PurchasableSpace\INotPurchasedAction.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\Table.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\player\UnitTestPlayer.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\PurchasableSpace\NotPurchased.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\PurchasableSpace\NotPurchasedUserAction.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\NotPurchasableSpace\JailVisit.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\PurchasableSpace\NotPurchasedBotAction.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\controller\SceneController.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\NotPurchasableSpace\StartingPoint.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\Scores.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\PurchasableSpace\Purchased.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\UserInformationTry.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\player\playerActionStates\PlayerPrison.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\player\UserType.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\AbstractSpace.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\game\Managers\GameConstructor.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\dto\RegisterDto.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\player\PlayerAbstract.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\dto\ForgetPasswordDto.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\UnitTestSpaces.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\SpaceCreation\ISpaceCreatorFactory.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\PurchasableSpace\RailFerrySpace.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\controller\StageInitializer.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\Request.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\controller\StageController.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\PurchasableSpace\SpaceState.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\ClientApplication.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\player\playerActionStates\PlayerWillGoPrison.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\Login.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\game\Managers\GameManager.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\ForgetPassword.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\player\playerActionStates\PlayerNotPrison.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\MainMenu.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\Session.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\NotPurchasableSpace\IncomeTax.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\dto\ScoreDto.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\ISpace.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\controller\gameboard\BotScene.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\SpaceCreation\NormalCreation.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\NotPurchasableSpace\GoJail.java
-D:\Yüksek Lisans\SoftwareConstruction\FrontEnd\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\Register.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\player\BotAI.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\Session.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\dto\RegisterDto.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\controller\SceneController.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\dto\ForgetPasswordDto.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\ISpace.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\player\playerActionStates\PlayerWillGoPrisonState.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\Login.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\purchasableSpace\SpaceDeed.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\ForgetPassword.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\controller\StageInitializer.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\controller\UserInformation.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\PlayerTurn.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\Scores.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\player\playerActionStates\PlayerPrisonState.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\player\playerActionStates\IPlayerState.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\purchasableSpace\RailFerrySpace.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\purchasableSpace\deedState\Purchased.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\player\IPlayer.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\controller\StageController.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\controller\gameboard\UserInformationController.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\controller\gameboard\sceneTypes\PlayerScene.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\purchasableSpace\Property.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\purchasableSpace\deedState\ISpaceState.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\notPurchasableSpace\IncomeTax.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\controller\gameboard\sceneTypes\BotScene.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\backenReques\Request.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\dto\AddScoreDto.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\player\UserType.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\AbstractSpace.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\spaceCreation\NormalCreation.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\controller\observer\IObservable.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\Table.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\dto\LoginDto.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\notPurchasableSpace\JailVisit.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\purchasableSpace\notPurchasedAction\NotPurchasedUserAction.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\purchasableSpace\notPurchasedAction\INotPurchasedAction.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\player\playerActionStates\PlayerNotPrisonState.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\spaceCreation\ISpaceCreatorFactory.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\notPurchasableSpace\StartingPoint.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\MainMenu.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\dto\ScoreDto.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\player\Player.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\BoardSpace.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\purchasableSpace\notPurchasedAction\NotPurchasedBotAction.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\controller\gameboard\sceneTypes\IPrepareScene.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\game\Managers\GameManager.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\ClientApplication.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\game\Managers\SpaceManager.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\purchasableSpace\deedState\NotPurchased.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\Register.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\GameBoard.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\space\notPurchasableSpace\GoJail.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\controller\observer\IObserverText.java
+D:\FrontEndLast\Ceng453-TermProject-Group-4-frontend\src\main\java\com\client\pane\game\player\PlayerAbstract.java
