@@ -74,6 +74,8 @@ public class Session extends VBox {
 
     private Button commonButton(String name) {
         Button button = new Button(name );
+        button.setOnMouseEntered(e -> button.setStyle(MainMenu.HOVERED_BUTTON_STYLE));
+        button.setOnMouseExited(e -> button.setStyle(MainMenu.IDLE_BUTTON_STYLE));
         button.setStyle("-fx-font-size: 3em; ");
         button.setPrefWidth(this.width/2);
         button.setPrefHeight(this.height / 6 );
@@ -83,6 +85,9 @@ public class Session extends VBox {
 
     private Button addLogoutButton(){
         Button button = new Button("Logout");
+        button.setOnMouseEntered(e -> button.setStyle(MainMenu.HOVERED_BUTTON_STYLE));
+        button.setOnMouseExited(e -> button.setStyle(MainMenu.IDLE_BUTTON_STYLE));
+        button.setStyle(MainMenu.IDLE_BUTTON_STYLE);
         button.setPrefHeight(50);
         button.setPrefWidth(200);
 
@@ -101,7 +106,7 @@ public class Session extends VBox {
 
     private Button playSingleButton() {
         Button button = commonButton("Play Single");
-
+        button.setStyle(MainMenu.IDLE_BUTTON_STYLE);
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -129,6 +134,7 @@ public class Session extends VBox {
     private Button playMultiplayerButton() {
 
         Button button = commonButton("Play Multiplayer");
+        button.setStyle(MainMenu.IDLE_BUTTON_STYLE);
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -205,6 +211,7 @@ public class Session extends VBox {
     private Button leaderBordButton() {
 
         Button button = commonButton("LeaderBoard");
+        button.setStyle(MainMenu.IDLE_BUTTON_STYLE);
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {

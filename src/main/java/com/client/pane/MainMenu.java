@@ -23,7 +23,7 @@ public class MainMenu extends VBox {
 
     private double width , height;
 
-    private static final String IDLE_BUTTON_STYLE = " -fx-background-color: \n" +
+    public static final String IDLE_BUTTON_STYLE = " -fx-background-color: \n" +
             "        #ecebe9,\n" +
             "        rgba(0,0,0,0.05),\n" +
             "        linear-gradient(#dcca8a, #c7a740),\n" +
@@ -35,10 +35,10 @@ public class MainMenu extends VBox {
             "    -fx-font-family: \"Helvetica\";\n" +
             "    -fx-font-size: 18px;\n" +
             "    -fx-text-fill: #311c09;\n" +
-            " -fx-font-size : 75px; \n" +
+            " -fx-font-size : 25px; \n" +
             "    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.1) , 2, 0.0 , 0 , 1);";
 
-    private static final String HOVERED_BUTTON_STYLE = " -fx-background-color: \n" +
+    public static final String HOVERED_BUTTON_STYLE = " -fx-background-color: \n" +
             "        #ecebe9,\n" +
             "        rgba(128,0,0,0.05),\n" +
             "    -fx-background-insets: 0,9 9 8 9,9,10,11;\n" +
@@ -47,7 +47,7 @@ public class MainMenu extends VBox {
             "    -fx-font-family: \"Helvetica\";\n" +
             "    -fx-font-size: 18px;\n" +
             "    -fx-text-fill: #311c09;\n" +
-            " -fx-font-size : 75px; \n" +
+            " -fx-font-size : 25px; \n" +
             "    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.1) , 2, 0.0 , 0 , 1);";
 
     public MainMenu(Double width , Double height) {
