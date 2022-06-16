@@ -12,6 +12,8 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+
 
 /**
  * Update player info and gui according to the user.
@@ -31,12 +33,18 @@ public class UserInformationController extends VBox implements IObserverText {
         playerR = player;
         setPadding(new Insets(20,50,5,15));
         Label userName1= new Label("Username : " + player.getName());
+        userName1.setFont(new Font("Arial" , 24));
          money = new Label("Money: " + player.getMoney());
+         money.setFont(new Font("Arial" , 24));
          score = new Label("Score: " + player.getScore());
+         score.setFont(new Font("Arial" , 24));
          getChildren().add(userName1);
          getChildren().add(money);
         getChildren().add(score);
-
+        setStyle("-fx-border-color: red;\n" +
+                "-fx-border-insets: 5;\n" +
+                "-fx-border-width: 5;\n" +
+                "-fx-border-style: dashed;\n");
     }
 
     /**

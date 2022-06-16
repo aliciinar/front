@@ -5,8 +5,10 @@ import com.client.game.Managers.GameManager;
 import com.client.pane.game.player.IPlayer;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 /**
  * Guı for showing active player.
@@ -25,9 +27,15 @@ public class PlayerTurn extends VBox implements IObserverText {
 
         setPadding(new Insets(20,50,5,15));
         Label currentUser= new Label("Current User");
+        currentUser.setFont(new Font("Arial" , 24));
         activeUser = new Label(player.getName());
+        activeUser.setFont(new Font("Arial" , 24));
         getChildren().add(currentUser);
         getChildren().add(activeUser);
+        setStyle("-fx-border-color: red;\n" +
+                "-fx-border-insets: 5;\n" +
+                "-fx-border-width: 5;\n" +
+                "-fx-border-style: dashed;\n");
 
     }
 

@@ -17,6 +17,7 @@ import com.client.pane.game.space.spaceCreation.ISpaceCreatorFactory;
 import com.client.pane.game.space.spaceCreation.NormalCreation;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -99,6 +100,7 @@ public class GameBoard {
         });
 
         constructSpaces();
+        userInformation.setAlignment(Pos.CENTER);
 
         GameManager.getInstance().setGameBoard(this);
         setImages();
