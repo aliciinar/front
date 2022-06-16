@@ -6,6 +6,7 @@ import com.client.dto.*;
 import com.google.gson.JsonParser;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.util.EntityUtils;
@@ -51,6 +52,25 @@ public class MultiplayerRequest {
         return new ResponseEntity<>("",HttpStatus.resolve(response.getStatusLine().getStatusCode()));
     }
 
+    public ResponseEntity<String> getResponse(HttpGet get) throws IOException {
+
+        HttpResponse response = ClientApplication.httpClient.execute(get);
+        HttpEntity entity = response.getEntity();
+        if (entity != null) {
+            try (InputStream inputStream = entity.getContent()) {
+                String content = EntityUtils.toString(entity);
+                if(content.length() != 0){
+                    return  new ResponseEntity<>(content,HttpStatus.resolve(response.getStatusLine().getStatusCode()));
+                }
+                else {
+                    return new ResponseEntity<>(content,HttpStatus.resolve(response.getStatusLine().getStatusCode()));
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return new ResponseEntity<>("Fail",HttpStatus.resolve(response.getStatusLine().getStatusCode()));
+    }
 
     public ResponseEntity<String> playMultiplayer(String userName , String token) {
         HttpPost post = new HttpPost(ClientApplication.backend + "findGame");
@@ -110,7 +130,19 @@ public class MultiplayerRequest {
         return new ResponseEntity<>("Something Went Wrong" , HttpStatus.BAD_GATEWAY);
 
     }
+    public ResponseEntity<String> deleteAllGames(String token) {
+        HttpGet post = new HttpGet(ClientApplication.backend + "deleteGames");
+        try {
+            post.setHeader("Authorization", "Bearer " + token);
+            return getResponse(post);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>("Something Went Wrong" , HttpStatus.BAD_GATEWAY);
 
+    }
 
 
 }
