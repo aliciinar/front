@@ -5,6 +5,7 @@ https://youtu.be/GDoJhrHV1DU
 
 # Test case scenarios are at
 src/test/java/com/client/TestCases.pdf
+Both single player and multiplayer game test cases in the same pdf.
 
 # Requirements
 * To play the game please run **ClientApplication.java** file under the src/main/java/com/client/ClientApplication.java
@@ -14,6 +15,11 @@ src/test/java/com/client/TestCases.pdf
 # Game Play:
 In order to start game we should login or register after that we can start game with play single button. In the upper part of the game scene we can see player information which are money of the player and score of the player.Also we can see current user name in current user panel. Actions of the player and button actions are explained below.
 
+# Single Player Game 
+In order to play with bot single player button should be pressed. A game will start automatically.
+
+#Multiplayer Game 
+In order the play with a human multiplayer game button should be pressed. When  a match happen with another player game started automatically.
 
 # End Turn Button: 
 This button should pressed in order to finish the current player turn. If player do not prefer to buy a purchase, player should press end turn button.Player should press end turn button when bot turn finished.
@@ -37,7 +43,9 @@ After successful register user will be sent to log in screen.
 
 # Login:
 In order to log in the game we should give email and username. If we do not register this account  we will be warn.
-
+ 
+# GamePlay During Multiplayer Game
+During the multiplayer game if game turn is on us we can use the buttons mentioned above. If the game turn is on other player we can not press any of the button, all  of the buttons are deactive 
 # Forget Password:
 
 
