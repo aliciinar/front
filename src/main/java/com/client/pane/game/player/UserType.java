@@ -1,7 +1,7 @@
 package com.client.pane.game.player;
 
 /**
- * // user type of player. A player can be bot or normal user
+ * // user type of player. A player can be bot , normal user or  MultiPlayer
  */
 public enum UserType {
 

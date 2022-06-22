@@ -4,6 +4,9 @@ import com.client.game.Managers.GameManager;
 import com.client.pane.game.GameBoard;
 import com.client.pane.game.space.purchasableSpace.SpaceDeed;
 
+/**
+ *  this class is preparing scene for the multiplayer game
+ */
 public class MultiPlayerScene implements IPrepareScene{
 
 

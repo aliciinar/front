@@ -269,12 +269,19 @@ public  class GameManager  implements IObservable {
         return  false;
     }
 
+    /**
+     *  finish the game  in the multiplayer game
+     */
     public  void  finishGame(){
         if(gameType == GameType.Multiplayer && getActivePlayer().getName().equals(Session.name)){
             MultiplayerManager.getInstance().gameFinish();
         }
     }
 
+
+    /**
+     *  force the game in order to finish when ctrl + 9 pressed in multiplayer game
+     */
     public  void  forceFinishGame(){
         if(gameType == GameType.Multiplayer && getActivePlayer().getName().equals(Session.name)){
             MultiplayerManager.getInstance().sendInformation("gameFinish",0,0);

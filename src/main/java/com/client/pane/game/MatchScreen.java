@@ -8,6 +8,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
+/**
+ *  Waiting screen in multiplayer game while waiting other player
+ */
 public class MatchScreen  extends BorderPane {
 
 

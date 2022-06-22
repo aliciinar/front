@@ -129,6 +129,9 @@ public class GameBoard {
     }
 
 
+    /**
+     *  finish the game when ctrl + 9 pressed
+     */
     private  void  forceFinish(){
         int imageIndex = GameManager.getInstance().getActivePlayerTurn();
         IPlayer activePlayer = GameManager.getInstance().getActivePlayer();

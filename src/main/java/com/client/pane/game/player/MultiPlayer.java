@@ -2,6 +2,10 @@ package com.client.pane.game.player;
 
 import com.client.pane.game.player.playerActionStates.PlayerNotPrisonState;
 
+
+/**
+ * Player type for the multiplayer game
+ */
 public class MultiPlayer extends  PlayerAbstract{
 
     public MultiPlayer( String name ){

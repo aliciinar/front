@@ -19,16 +19,16 @@ import java.io.UnsupportedEncodingException;
 import java.sql.SQLOutput;
 
 /**
- * Html request are contained in this class
+ * Html request are contained in this class during the multiplayer game
  */
 
 public class MultiplayerRequest {
 
     /**
      * Response getter for Http post request
-     * @param post
+     * @param post httppost type
      * @param params
-     * @return
+     * @return response of the data base
      * @throws IOException
      */
     public ResponseEntity<String> getResponse (HttpPost post , StringEntity params) throws IOException {
@@ -52,6 +52,12 @@ public class MultiplayerRequest {
         return new ResponseEntity<>("",HttpStatus.resolve(response.getStatusLine().getStatusCode()));
     }
 
+    /**
+     * get response from database while turn of the game in other player
+     * @param get request type
+     * @return
+     * @throws IOException
+     */
     public ResponseEntity<String> getResponse(HttpGet get) throws IOException {
 
         HttpResponse response = ClientApplication.httpClient.execute(get);
@@ -72,6 +78,12 @@ public class MultiplayerRequest {
         return new ResponseEntity<>("Fail",HttpStatus.resolve(response.getStatusLine().getStatusCode()));
     }
 
+    /**
+     *  try to find a game in order to play a game
+     * @param userName username of the player
+     * @param token token of the player
+     * @return matching game
+     */
     public ResponseEntity<String> playMultiplayer(String userName , String token) {
         HttpPost post = new HttpPost(ClientApplication.backend + "findGame");
         try {
@@ -87,6 +99,12 @@ public class MultiplayerRequest {
 
     }
 
+    /**
+     * get actions when turn of the game in other player
+     * @param userName username of the user
+     * @param token token of the user
+     * @return action  of the other player
+     */
     public ResponseEntity<String> getAction(String userName , String token) {
         HttpPost post = new HttpPost(ClientApplication.backend + "getAction");
         try {
@@ -102,6 +120,12 @@ public class MultiplayerRequest {
 
     }
 
+    /**
+     * delete last action when take an action from other player in order do not create a misunderstanding
+     * @param userName username of the user
+     * @param token   token of the uesr
+     * @return http response
+     */
     public ResponseEntity<String> deleteAction(String userName , String token) {
         HttpPost post = new HttpPost(ClientApplication.backend + "deleteAction");
         try {
@@ -116,6 +140,16 @@ public class MultiplayerRequest {
         return new ResponseEntity<>("Something Went Wrong" , HttpStatus.BAD_GATEWAY);
 
     }
+
+    /**
+     * add actions to the database when the game turn is on the player
+     * @param userName  username of the player
+     * @param type type of the action
+     * @param dice1 dice value
+     * @param dice2 dice value
+     * @param token token of the user
+     * @return http status
+     */
     public ResponseEntity<String> addAction(String userName , String type , int dice1 , int dice2 ,String token) {
         HttpPost post = new HttpPost(ClientApplication.backend + "addAction");
         try {
@@ -130,6 +164,12 @@ public class MultiplayerRequest {
         return new ResponseEntity<>("Something Went Wrong" , HttpStatus.BAD_GATEWAY);
 
     }
+
+    /**
+     * delete the game information from the table when game finish
+     * @param token token of the use r
+     * @return http status
+     */
     public ResponseEntity<String> deleteAllGames(String token) {
         HttpGet post = new HttpGet(ClientApplication.backend + "deleteGames");
         try {
