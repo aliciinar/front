@@ -141,7 +141,7 @@ public class Login extends GridPane{
     private Button addForgetPasswordButton(){
         Button button = new Button("Forgot Password?");
         button.setPrefHeight(50);
-        button.setPrefWidth(200);
+        button.setPrefWidth(400);
         button.setStyle(MainMenu.IDLE_BUTTON_STYLE);
         button.setOnMouseEntered(e -> button.setStyle(MainMenu.HOVERED_BUTTON_STYLE));
         button.setOnMouseExited(e -> button.setStyle(MainMenu.IDLE_BUTTON_STYLE));

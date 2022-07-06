@@ -83,7 +83,7 @@ public class ForgetPassword extends GridPane{
                 else{
                     emailInfo.setText("Please Wait");
                     String content = ClientApplication.request.forgotPasswordRequest(emailTextField.getText());
-                    emailInfo.setText(content);
+                    emailInfo.setText("Please Check Your Mail.");
 
                 }
             }

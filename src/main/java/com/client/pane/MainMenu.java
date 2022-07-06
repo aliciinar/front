@@ -39,8 +39,7 @@ public class MainMenu extends VBox {
             "    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.1) , 2, 0.0 , 0 , 1);";
 
     public static final String HOVERED_BUTTON_STYLE = " -fx-background-color: \n" +
-            "        #ecebe9,\n" +
-            "        rgba(128,0,0,0.05),\n" +
+
             "    -fx-background-insets: 0,9 9 8 9,9,10,11;\n" +
             "    -fx-background-radius: 50;\n" +
             "    -fx-padding: 15 30 15 30;\n" +
