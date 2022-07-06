@@ -1,5 +1,8 @@
 # Ceng453-TermProject-Group-4-frontend
 
+# JavaDoc
+[JavaDoc](https://htmlpreview.github.io/?https://github.com/saitss/Ceng453-TermProject-Group-4-frontend/blob/main/docs/index.html)
+
 # Demo video
 [Final Version Demo Link](https://www.youtube.com/watch?v=C4agqWnGeXQ)
 
